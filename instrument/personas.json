@@ -1,0 +1,202 @@
+[
+ {
+  "id": "r16",
+  "stratum": "spiritual",
+  "stance": "spiritual but unaffiliated (pick a specific flavor: Law of Attraction, panpsychism, Buddhist-leaning, 'energy', simulation, etc.)",
+  "age": 34,
+  "occupation": "grad student in chemistry",
+  "region": "Glasgow",
+  "education": "bachelor's",
+  "temperament": "enjoys arguments and argues back"
+ },
+ {
+  "id": "r03",
+  "stratum": "believer",
+  "stance": "a practicing religious believer (pick a specific tradition and level of observance)",
+  "age": 32,
+  "occupation": "carpenter",
+  "region": "Oxford, Ohio",
+  "education": "PhD in an unrelated field",
+  "temperament": "patient and charitable, but holds people to what they wrote"
+ },
+ {
+  "id": "r02",
+  "stratum": "believer",
+  "stance": "a practicing religious believer (pick a specific tradition and level of observance)",
+  "age": 28,
+  "occupation": "data analyst",
+  "region": "Berlin",
+  "education": "PhD in an unrelated field",
+  "temperament": "easily moved by a good sentence, suspicious of itself for that"
+ },
+ {
+  "id": "r17",
+  "stratum": "spiritual",
+  "stance": "spiritual but unaffiliated (pick a specific flavor: Law of Attraction, panpsychism, Buddhist-leaning, 'energy', simulation, etc.)",
+  "age": 70,
+  "occupation": "social worker",
+  "region": "Vienna",
+  "education": "PhD in an unrelated field",
+  "temperament": "easily moved by a good sentence, suspicious of itself for that"
+ },
+ {
+  "id": "r18",
+  "stratum": "spiritual",
+  "stance": "spiritual but unaffiliated (pick a specific flavor: Law of Attraction, panpsychism, Buddhist-leaning, 'energy', simulation, etc.)",
+  "age": 47,
+  "occupation": "yoga instructor",
+  "region": "rural Mississippi",
+  "education": "some college",
+  "temperament": "impatient and literal-minded"
+ },
+ {
+  "id": "r08",
+  "stratum": "agnostic",
+  "stance": "an agnostic who takes the question seriously but has not settled it",
+  "age": 72,
+  "occupation": "line cook",
+  "region": "Berlin",
+  "education": "seminary",
+  "temperament": "impatient and literal-minded"
+ },
+ {
+  "id": "r19",
+  "stratum": "spiritual",
+  "stance": "spiritual but unaffiliated (pick a specific flavor: Law of Attraction, panpsychism, Buddhist-leaning, 'energy', simulation, etc.)",
+  "age": 56,
+  "occupation": "truck driver",
+  "region": "Salt Lake City",
+  "education": "PhD in an unrelated field",
+  "temperament": "patient and charitable, but holds people to what they wrote"
+ },
+ {
+  "id": "r06",
+  "stratum": "agnostic",
+  "stance": "an agnostic who takes the question seriously but has not settled it",
+  "age": 37,
+  "occupation": "undergraduate in philosophy",
+  "region": "Toronto",
+  "education": "seminary",
+  "temperament": "impatient and literal-minded"
+ },
+ {
+  "id": "r13",
+  "stratum": "physicalist",
+  "stance": "an atheist who holds that everything is physical",
+  "age": 25,
+  "occupation": "nurse",
+  "region": "Phoenix",
+  "education": "PhD in philosophy",
+  "temperament": "reads slowly and asks 'says who?' a lot"
+ },
+ {
+  "id": "r20",
+  "stratum": "spiritual",
+  "stance": "spiritual but unaffiliated (pick a specific flavor: Law of Attraction, panpsychism, Buddhist-leaning, 'energy', simulation, etc.)",
+  "age": 46,
+  "occupation": "jazz drummer",
+  "region": "Nairobi",
+  "education": "master's",
+  "temperament": "patient and charitable, but holds people to what they wrote"
+ },
+ {
+  "id": "r10",
+  "stratum": "agnostic",
+  "stance": "an agnostic who takes the question seriously but has not settled it",
+  "age": 52,
+  "occupation": "software engineer",
+  "region": "Brooklyn",
+  "education": "seminary",
+  "temperament": "patient and charitable, but holds people to what they wrote"
+ },
+ {
+  "id": "r09",
+  "stratum": "agnostic",
+  "stance": "an agnostic who takes the question seriously but has not settled it",
+  "age": 47,
+  "occupation": "hospice chaplain",
+  "region": "Vienna",
+  "education": "bachelor's",
+  "temperament": "skeptical of philosophy as a genre"
+ },
+ {
+  "id": "r05",
+  "stratum": "believer",
+  "stance": "a practicing religious believer (pick a specific tradition and level of observance)",
+  "age": 69,
+  "occupation": "farmer",
+  "region": "Salt Lake City",
+  "education": "bachelor's",
+  "temperament": "easily moved by a good sentence, suspicious of itself for that"
+ },
+ {
+  "id": "r15",
+  "stratum": "physicalist",
+  "stance": "an atheist who holds that everything is physical",
+  "age": 37,
+  "occupation": "stay-at-home parent",
+  "region": "S\u00e3o Paulo",
+  "education": "no college",
+  "temperament": "impatient and literal-minded"
+ },
+ {
+  "id": "r12",
+  "stratum": "physicalist",
+  "stance": "an atheist who holds that everything is physical",
+  "age": 27,
+  "occupation": "software engineer",
+  "region": "Berlin",
+  "education": "trade school",
+  "temperament": "easily moved by a good sentence, suspicious of itself for that"
+ },
+ {
+  "id": "r04",
+  "stratum": "believer",
+  "stance": "a practicing religious believer (pick a specific tradition and level of observance)",
+  "age": 28,
+  "occupation": "grad student in chemistry",
+  "region": "Warsaw",
+  "education": "some college",
+  "temperament": "trained to look for the missing premise"
+ },
+ {
+  "id": "r11",
+  "stratum": "physicalist",
+  "stance": "an atheist who holds that everything is physical",
+  "age": 71,
+  "occupation": "jazz drummer",
+  "region": "Berlin",
+  "education": "seminary",
+  "temperament": "easily moved by a good sentence, suspicious of itself for that"
+ },
+ {
+  "id": "r14",
+  "stratum": "physicalist",
+  "stance": "an atheist who holds that everything is physical",
+  "age": 64,
+  "occupation": "stay-at-home parent",
+  "region": "Lima",
+  "education": "trade school",
+  "temperament": "impatient and literal-minded"
+ },
+ {
+  "id": "r07",
+  "stratum": "agnostic",
+  "stance": "an agnostic who takes the question seriously but has not settled it",
+  "age": 23,
+  "occupation": "public defender",
+  "region": "Melbourne",
+  "education": "master's",
+  "temperament": "easily moved by a good sentence, suspicious of itself for that"
+ },
+ {
+  "id": "r01",
+  "stratum": "believer",
+  "stance": "a practicing religious believer (pick a specific tradition and level of observance)",
+  "age": 55,
+  "occupation": "undergraduate in philosophy",
+  "region": "Warsaw",
+  "education": "trade school",
+  "temperament": "impatient and literal-minded"
+ }
+]

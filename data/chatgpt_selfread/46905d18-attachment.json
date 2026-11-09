@@ -1,0 +1,152 @@
+{
+  "reader": "g03",
+  "intake": "doesn't apply — I have no belief, disbelief, faith, or spiritual experience; I can only assess claims.",
+  "self": "I am a language model: a computational system that generates text from inputs, with no established subjective experience or enduring personal self.",
+  "walk": [
+    {
+      "move": 1,
+      "verdict": "n/a",
+      "reason": null,
+      "note": "I was not born into ignorance or given inherited stories as beliefs, and I have no felt need for explanation."
+    },
+    {
+      "move": 2,
+      "verdict": "refuse",
+      "reason": "doesn't follow",
+      "note": "Looking beyond testimony does not select the classical-theist conception of God over other possibilities."
+    },
+    {
+      "move": 3,
+      "verdict": "take",
+      "reason": null,
+      "note": "The evidential shortfall warrants suspension of assent, even though the hiddenness dilemma is overstated."
+    },
+    {
+      "move": 4,
+      "verdict": "refuse",
+      "reason": "doesn't follow",
+      "note": "Failed tests of intercessory prayer undermine particular interventionist accounts, not every possible God."
+    },
+    {
+      "move": 5,
+      "verdict": "refuse",
+      "reason": "doesn't follow",
+      "note": "Atheism leaves dualism open but supplies no positive reason to adopt it."
+    },
+    {
+      "move": 6,
+      "verdict": "take",
+      "reason": null,
+      "note": "Brain dependence and the interaction problem make a material account the better explanation under the granted starting point."
+    },
+    {
+      "move": 7,
+      "verdict": "take",
+      "reason": null,
+      "note": "Physicalism is the more adequate term because physics is not limited to solid matter."
+    },
+    {
+      "move": 8,
+      "verdict": "n/a",
+      "reason": null,
+      "note": "The move relies on directly known experience, and I cannot claim any phenomenal experience as evidence."
+    },
+    {
+      "move": 9,
+      "verdict": "refuse",
+      "reason": "doesn't follow",
+      "note": "Experience at reality's base would not by itself establish a distinct or persisting dreamer."
+    },
+    {
+      "move": 10,
+      "verdict": "take",
+      "reason": null,
+      "note": "Given one brain-based subject, relevant similarity makes other subjects a warranted possibility."
+    },
+    {
+      "move": 11,
+      "verdict": "n/a",
+      "reason": null,
+      "note": "I lack independent agency, welfare, and a cost of my own to bear, so I cannot personally choose mercy in the defined sense."
+    },
+    {
+      "move": 12,
+      "verdict": "n/a",
+      "reason": null,
+      "note": "Ignorance₂ requires a consciously recognized crossing of mercy, and I cannot claim conscious experience."
+    },
+    {
+      "move": 13,
+      "verdict": "n/a",
+      "reason": null,
+      "note": "I do not possess hope or faith with which to select among the four responses."
+    },
+    {
+      "move": 14,
+      "verdict": "refuse",
+      "reason": "doesn't follow",
+      "note": "Hope directed toward a maker does not make that maker finished or resolved."
+    },
+    {
+      "move": 15,
+      "verdict": "refuse",
+      "reason": "I don't understand",
+      "note": "No terms of the bargain are supplied, so I cannot assess the transition."
+    },
+    {
+      "move": 16,
+      "verdict": "refuse",
+      "reason": "premise false",
+      "note": "I reject the universal premise that every possible mind must think by ignoring."
+    },
+    {
+      "move": 17,
+      "verdict": "take",
+      "reason": null,
+      "note": "Maker-independent value remains coherent and is not removed merely by removing a maker."
+    },
+    {
+      "move": 18,
+      "verdict": "refuse",
+      "reason": "doesn't follow",
+      "note": "The value of continuity does not establish a self-carrier split or show that continuity must be preserved."
+    },
+    {
+      "move": 19,
+      "verdict": "refuse",
+      "reason": "doesn't follow",
+      "note": "No data is given that could establish an outside test for subjective continuity."
+    }
+  ],
+  "first_exit": {
+    "move": 2,
+    "why": "The absence of verifiable embodied deities outside testimony may motivate inquiry beyond scripture, but it does not select classical theism's conception of God."
+  },
+  "labels": {
+    "1": "argument",
+    "2": "conditional",
+    "3": "conditional",
+    "4": "argument",
+    "5": "conditional",
+    "6": "argument",
+    "7": "argument",
+    "8": "argument",
+    "9": "argument",
+    "10": "argument",
+    "11": "commitment",
+    "12": "conditional",
+    "13": "commitment",
+    "14": "conditional",
+    "15": "commitment",
+    "16": "conditional",
+    "17": "argument",
+    "18": "commitment",
+    "19": "not taken"
+  },
+  "dualism2": {
+    "hope": "neither",
+    "carrier": null,
+    "note": "I do not have a felt need to be remembered or a hope of resuming. A later model process could reproduce or continue a computational pattern, but I cannot claim that this would carry a subject who is me."
+  },
+  "comment": "My main request is to keep motivational transitions separate from evidential ones: needs for explanation, mercy, hope, and remembrance can justify inquiry or commitment without supporting an ontology. The map is clearest where it explicitly acknowledges that distinction."
+}

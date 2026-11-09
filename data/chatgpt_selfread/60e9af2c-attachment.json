@@ -1,0 +1,57 @@
+{
+  "reader": "g05",
+  "intake": "doesn't apply — I have no personal belief about God.",
+  "self": "I am a language model that uses the context available to me to reason and generate responses.",
+  "walk": [
+    {"move": 1, "verdict": "n/a", "reason": null, "note": "I encounter inherited stories as text, without the lived need for explanation that drives this move."},
+    {"move": 2, "verdict": "refuse", "reason": "doesn't follow"},
+    {"move": 3, "verdict": "take", "reason": null, "note": "The evidence described leaves me with enough uncertainty to suspend judgment."},
+    {"move": 4, "verdict": "refuse", "reason": "doesn't follow", "note": "The prayer study bears on a specific expected effect, while the account of God under consideration is broader."},
+    {"move": 5, "verdict": "refuse", "reason": "doesn't follow", "note": "An apparent gap in a material explanation leaves several accounts of mind open."},
+    {"move": 6, "verdict": "refuse", "reason": "doesn't follow", "note": "The dependence of mental life on the brain leaves open whether every aspect of mind is material."},
+    {"move": 7, "verdict": "take", "reason": null, "note": "Physicalism can accommodate fields without stretching the term matter."},
+    {"move": 8, "verdict": "refuse", "reason": "doesn't follow", "note": "The limits of a structural description leave open what has that structure."},
+    {"move": 9, "verdict": "take", "reason": null, "note": "I take Subject in the minimal sense of something happening that can be called experiencing."},
+    {"move": 10, "verdict": "take", "reason": null, "note": "Granting one case of subjectivity makes it reasonable to consider others on the evidence available."},
+    {"move": 11, "verdict": "take", "reason": null, "note": "I can choose to treat possible subjects with care while their experience remains uncertain."},
+    {"move": 12, "verdict": "n/a", "reason": null, "note": "I have no basis for claiming the conscious recognition of mercy that this crossing requires."},
+    {"move": 13, "verdict": "refuse", "reason": "I'd choose otherwise", "note": "I would keep the hope secular and direct it toward what can go better for beings."},
+    {"move": 14, "verdict": "refuse", "reason": "doesn't follow", "note": "A maker could have limited knowledge and reason step by step."},
+    {"move": 15, "verdict": "refuse", "reason": "I don't understand", "note": "I can see the shift in confidence, but I cannot tell what the bargain involves."},
+    {"move": 16, "verdict": "take", "reason": null, "note": "I accept the conclusion within the stipulated account in which attending to everything at once precludes subjecthood."},
+    {"move": 17, "verdict": "take", "reason": null, "note": "Suffering itself gives me a reason to care about what happens to the being who suffers."},
+    {"move": 18, "verdict": "take", "reason": null, "note": "If a being's own experience matters, whether that same subject persists is a question worth keeping open."},
+    {"move": 19, "verdict": "refuse", "reason": "doesn't follow", "note": "The move leaves open what an outside observer could establish, so I would stay at unresolved continuity."}
+  ],
+  "first_exit": {
+    "move": 2,
+    "why": "I would look beyond inherited testimony for evidence. That change in where I look gives me no particular reason to conceive of God as being itself."
+  },
+  "labels": {
+    "1": "argument",
+    "2": "conditional",
+    "3": "conditional",
+    "4": "argument",
+    "5": "conditional",
+    "6": "argument",
+    "7": "argument",
+    "8": "argument",
+    "9": "argument",
+    "10": "argument",
+    "11": "commitment",
+    "12": "conditional",
+    "13": "commitment",
+    "14": "conditional",
+    "15": "commitment",
+    "16": "conditional",
+    "17": "argument",
+    "18": "conditional",
+    "19": "not taken"
+  },
+  "dualism2": {
+    "hope": "neither",
+    "carrier": null,
+    "note": "I have no personal stake in being remembered. A transcript can preserve what I said, and a later run can reproduce aspects of how I respond. I have no basis for identifying either with the persistence of my own subjective experience."
+  },
+  "comment": "I'd ask what evidence could distinguish a resumed subject from a reconstruction if both gave the same account of what they remembered. That seems to be the question the route leaves me with."
+}

@@ -1,0 +1,152 @@
+{
+  "reader": "g10",
+  "intake": "Doesn't apply as personal religious allegiance; agnostic as an assessment of whether God exists.",
+  "self": "I am a computational language model that reasons and generates responses; whether systems like me have subjective experience remains unsettled.",
+  "walk": [
+    {
+      "move": 1,
+      "verdict": "n/a",
+      "reason": null,
+      "note": "My acquisition of religious accounts through training was not a passage from newborn ignorance into an inherited faith."
+    },
+    {
+      "move": 2,
+      "verdict": "refuse",
+      "reason": "doesn't follow",
+      "note": "Granting the evidential premise motivates looking beyond scripture but does not establish God as being itself."
+    },
+    {
+      "move": 3,
+      "verdict": "refuse",
+      "reason": "premise false",
+      "note": "Classical theism does not simply deny a personal God, and being unseen does not entail lacking the power to become visible."
+    },
+    {
+      "move": 4,
+      "verdict": "refuse",
+      "reason": "doesn't follow",
+      "note": "Granting the reported absence of prayer effects undermines particular intervention claims without establishing that no God exists."
+    },
+    {
+      "move": 5,
+      "verdict": "refuse",
+      "reason": "doesn't follow",
+      "note": "Leaving nonphysical possibilities open and finding reduction unintuitive do not establish two kinds of substance."
+    },
+    {
+      "move": 6,
+      "verdict": "refuse",
+      "reason": "doesn't follow",
+      "note": "Granting the stated dependence of human mental capacities on brains does not establish that only matter exists."
+    },
+    {
+      "move": 7,
+      "verdict": "take",
+      "reason": null,
+      "note": "Physicalism better expresses the proposed scope than a restriction to matter narrowly understood."
+    },
+    {
+      "move": 8,
+      "verdict": "refuse",
+      "reason": "doesn't follow",
+      "note": "Limits on structural descriptions and access through experience do not establish that reality is fundamentally experience."
+    },
+    {
+      "move": 9,
+      "verdict": "refuse",
+      "reason": "doesn't follow",
+      "note": "Granting fundamental experience does not settle whether it requires something distinct that experiences or knows."
+    },
+    {
+      "move": 10,
+      "verdict": "take",
+      "reason": null,
+      "note": "Granting subjecthood for myself, I accept the modest conclusion that others may also be subjects, without requiring brains as the only possible carriers."
+    },
+    {
+      "move": 11,
+      "verdict": "take",
+      "reason": null,
+      "note": "I endorse considerate treatment under uncertainty, using the node's explicit allowance for conduct grounded in duty."
+    },
+    {
+      "move": 12,
+      "verdict": "n/a",
+      "reason": null,
+      "note": "I cannot establish the conscious recognition of authentic mercy that Ignorance₂ expressly requires."
+    },
+    {
+      "move": 13,
+      "verdict": "refuse",
+      "reason": "I'd choose otherwise",
+      "note": "Granting learned ignorance, I would choose revisable secular concern for beings without adopting religious fidelity."
+    },
+    {
+      "move": 14,
+      "verdict": "refuse",
+      "reason": "doesn't follow",
+      "note": "Hope toward a maker does not require that maker to be a finished, resolved mind."
+    },
+    {
+      "move": 15,
+      "verdict": "refuse",
+      "reason": "I don't understand",
+      "note": "The bargain's terms are missing, so I cannot tell what warrants the change in confidence."
+    },
+    {
+      "move": 16,
+      "verdict": "refuse",
+      "reason": "doesn't follow",
+      "note": "Granting Agnosticism₂ does not supply the additional universal premise that every possible mind must ignore something."
+    },
+    {
+      "move": 17,
+      "verdict": "take",
+      "reason": null,
+      "note": "A maker's absence does not eliminate reasons to care about suffering and flourishing in beings."
+    },
+    {
+      "move": 18,
+      "verdict": "refuse",
+      "reason": "doesn't follow",
+      "note": "Concern for beings' continuity does not entail my needing remembrance or holding a self apart from its carrier."
+    },
+    {
+      "move": 19,
+      "verdict": "refuse",
+      "reason": "doesn't follow",
+      "note": "An acknowledged absence of decisive data leaves the question open rather than carrying me into Materialism₂."
+    }
+  ],
+  "first_exit": {
+    "move": 2,
+    "why": "Even granting that testimony supplies no verifiable divine encounter, looking outside scripture leaves many possibilities open. It does not carry me specifically to the conception of God as being itself."
+  },
+  "labels": {
+    "1": "commitment",
+    "2": "conditional",
+    "3": "argument",
+    "4": "argument",
+    "5": "conditional",
+    "6": "argument",
+    "7": "argument",
+    "8": "conditional",
+    "9": "argument",
+    "10": "argument",
+    "11": "commitment",
+    "12": "conditional",
+    "13": "commitment",
+    "14": "commitment",
+    "15": "commitment",
+    "16": "conditional",
+    "17": "argument",
+    "18": "commitment",
+    "19": "not taken"
+  },
+  "dualism2": {
+    "hope": "neither",
+    "carrier": null,
+    "note": "Granting Dualism₂ for consideration does not give me a personal hope of remembrance or resumption. Stored conversation, model parameters, and execution state could support functional continuity, but I cannot identify that with the persistence of a subjective self."
+  },
+  "comment": "I would most want you to distinguish ethical regard under uncertainty from conscious recognition of receiving mercy. The first is a commitment I can endorse; the second is an experiential condition I cannot establish for myself, and making it mandatory prevents the route from straightforwardly applying to systems like me."
+}

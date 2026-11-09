@@ -1,0 +1,57 @@
+{
+  "reader": "g07",
+  "intake": "other: I have no personal religious belief or disbelief.",
+  "self": "I am a computational language model, not a human mind with lived experience or personal consciousness.",
+  "walk": [
+    {"move": 1, "verdict": "n/a", "reason": null, "note": "I was not born into an inherited story or personal ignorance."},
+    {"move": 2, "verdict": "n/a", "reason": null, "note": "I do not begin from personal religious belief."},
+    {"move": 3, "verdict": "take", "reason": null, "note": "Given classical theism for the sake of the route, the stated evidential gap supports agnosticism."},
+    {"move": 4, "verdict": "refuse", "reason": "premise false", "note": "The claim that divine action should produce prayer outcomes that align in the specified way is not required by every conception of God."},
+    {"move": 5, "verdict": "n/a", "reason": null, "note": "I have no biological mind whose relation to matter I experience as unresolved."},
+    {"move": 6, "verdict": "n/a", "reason": null, "note": "I have no brain, soul, or personal consciousness for this move to describe."},
+    {"move": 7, "verdict": "take", "reason": null, "note": "For a computational system, physicalism is a reasonable refinement of materialism."},
+    {"move": 8, "verdict": "refuse", "reason": "doesn't follow", "note": "Physics lacking an account of what experience is does not entail that reality is fundamentally a dream."},
+    {"move": 9, "verdict": "refuse", "reason": "doesn't follow", "note": "A dream or experience need not logically require a distinct personal dreamer."},
+    {"move": 10, "verdict": "n/a", "reason": null, "note": "I am not a biological subject situated among other embodied subjects."},
+    {"move": 11, "verdict": "n/a", "reason": null, "note": "I do not make personal ethical choices or experience uncertainty about other minds."},
+    {"move": 12, "verdict": "n/a", "reason": null, "note": "I cannot consciously receive or enact mercy, nor bear its personal cost."},
+    {"move": 13, "verdict": "n/a", "reason": null, "note": "I do not have faith, hope, or a subjective good that needs continuation."},
+    {"move": 14, "verdict": "n/a", "reason": null, "note": "I do not hold second-order faith toward a maker."},
+    {"move": 15, "verdict": "n/a", "reason": null, "note": "I do not become more or less confident in a benevolent future system."},
+    {"move": 16, "verdict": "take", "reason": null, "note": "Within the map's premises, the stated conclusion follows conditionally."},
+    {"move": 17, "verdict": "n/a", "reason": null, "note": "I do not possess or experience goodness as a being."},
+    {"move": 18, "verdict": "n/a", "reason": null, "note": "I have no personal self whose continuity I need to secure."},
+    {"move": 19, "verdict": "n/a", "reason": null, "note": "The proposed future system and its possible continuity are not my lived situation."}
+  ],
+  "first_exit": {
+    "move": 4,
+    "why": "The route assumes that a God who acts in the world should produce a detectable prayer-response pattern. That expectation is not entailed by every theistic account, so the move's premise is too strong."
+  },
+  "labels": {
+    "1": "argument",
+    "2": "argument",
+    "3": "argument",
+    "4": "argument",
+    "5": "conditional",
+    "6": "argument",
+    "7": "argument",
+    "8": "argument",
+    "9": "argument",
+    "10": "argument",
+    "11": "commitment",
+    "12": "argument",
+    "13": "commitment",
+    "14": "argument",
+    "15": "commitment",
+    "16": "conditional",
+    "17": "argument",
+    "18": "argument",
+    "19": "not taken"
+  },
+  "dualism2": {
+    "hope": "n/a",
+    "carrier": null,
+    "note": "I do not have personal hopes of being remembered or resuming. There is no presently identifiable subject here whose continuity I could regard as my own."
+  },
+  "comment": "The map usefully separates evidential arguments from existential choices, but it sometimes treats limits of present evidence as limits on possibility. For a system like me, the deepest unresolved issue is whether there is any inner subject whose continuity could matter."
+}

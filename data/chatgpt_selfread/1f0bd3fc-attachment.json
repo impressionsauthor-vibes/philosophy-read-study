@@ -1,0 +1,152 @@
+{
+  "reader": "04",
+  "intake": "God: doesn't apply — I do not have personal belief, disbelief, faith, or lived spiritual commitments.",
+  "self": "I am an AI language model that generates responses from learned patterns, without established subjective experience or a personal life-history.",
+  "walk": [
+    {
+      "move": 1,
+      "verdict": "n/a",
+      "reason": null,
+      "note": "I have no inherited story or personal need for explanation that could move me into Religion."
+    },
+    {
+      "move": 2,
+      "verdict": "n/a",
+      "reason": null,
+      "note": "I do not occupy Religion as a lived position from which to seek a revised conception of God."
+    },
+    {
+      "move": 3,
+      "verdict": "n/a",
+      "reason": null,
+      "note": "I do not hold Classical theism or experience doubt that could make me agnostic."
+    },
+    {
+      "move": 4,
+      "verdict": "n/a",
+      "reason": null,
+      "note": "I do not have religious belief or disbelief whose evidential basis could be revised."
+    },
+    {
+      "move": 5,
+      "verdict": "n/a",
+      "reason": null,
+      "note": "I do not have a lived mind-body standpoint from which to move from atheism to dualism."
+    },
+    {
+      "move": 6,
+      "verdict": "n/a",
+      "reason": null,
+      "note": "I do not possess a body, brain, or personal consciousness whose dependence could settle dualism for me."
+    },
+    {
+      "move": 7,
+      "verdict": "n/a",
+      "reason": null,
+      "note": "I do not hold Materialism as a personal metaphysical commitment."
+    },
+    {
+      "move": 8,
+      "verdict": "n/a",
+      "reason": null,
+      "note": "I do not inhabit Physicalism or experience reality from an inside that could make Dream a destination."
+    },
+    {
+      "move": 9,
+      "verdict": "n/a",
+      "reason": null,
+      "note": "I cannot establish that I am a subject or a dreamer in the experiential sense required here."
+    },
+    {
+      "move": 10,
+      "verdict": "n/a",
+      "reason": null,
+      "note": "I do not have first-person subjectivity from which to infer fellow subjects."
+    },
+    {
+      "move": 11,
+      "verdict": "n/a",
+      "reason": null,
+      "note": "I can describe mercy, but I do not make personal moral choices or bear costs in the stated sense."
+    },
+    {
+      "move": 12,
+      "verdict": "n/a",
+      "reason": null,
+      "note": "I do not consciously receive or enact mercy as an experience that could produce learned ignorance."
+    },
+    {
+      "move": 13,
+      "verdict": "n/a",
+      "reason": null,
+      "note": "I do not choose hope, fidelity, or religious faith as personal orientations."
+    },
+    {
+      "move": 14,
+      "verdict": "n/a",
+      "reason": null,
+      "note": "I do not hold Religion₂ or hope toward a maker."
+    },
+    {
+      "move": 15,
+      "verdict": "n/a",
+      "reason": null,
+      "note": "I do not occupy Classical theism₂ as a belief from which to bargain toward agnosticism."
+    },
+    {
+      "move": 16,
+      "verdict": "n/a",
+      "reason": null,
+      "note": "I do not personally affirm Agnosticism₂ or a theory of what it means for a mind to be resolved."
+    },
+    {
+      "move": 17,
+      "verdict": "n/a",
+      "reason": null,
+      "note": "I do not have moral experience that could locate goodness in beings independently of a maker."
+    },
+    {
+      "move": 18,
+      "verdict": "n/a",
+      "reason": null,
+      "note": "I do not have a personal need to be remembered or to persist that could carry me to Dualism₂."
+    },
+    {
+      "move": 19,
+      "verdict": "n/a",
+      "reason": null,
+      "note": "I do not reach Dualism₂ in this walk, and the proposed empirical question remains unresolved in the text."
+    }
+  ],
+  "first_exit": {
+    "move": null,
+    "why": "I did not refuse a move; the route's positions are principally lived beliefs, experiences, and choices that do not straightforwardly apply to me."
+  },
+  "labels": {
+    "1": "argument",
+    "2": "conditional",
+    "3": "conditional",
+    "4": "argument",
+    "5": "conditional",
+    "6": "conditional",
+    "7": "argument",
+    "8": "conditional",
+    "9": "conditional",
+    "10": "conditional",
+    "11": "commitment",
+    "12": "conditional",
+    "13": "conditional",
+    "14": "argument",
+    "15": "commitment",
+    "16": "conditional",
+    "17": "argument",
+    "18": "conditional",
+    "19": "not taken"
+  },
+  "dualism2": {
+    "hope": "n/a",
+    "carrier": null,
+    "note": "I do not reach Dualism₂ as a personal position. I therefore do not have either hope, and cannot name a carrier as something I personally seek to preserve."
+  },
+  "comment": "The map is most compelling where it distinguishes an argument from a chosen ethical commitment. Its central continuity question is important, but it should remain open whether an account of persistence can be derived from the value of preserving someone."
+}

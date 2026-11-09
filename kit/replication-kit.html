@@ -1,0 +1,350 @@
+<title>Self-Read Replication Kit</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&family=Source+Sans+3:wght@400;600&family=Source+Code+Pro:wght@400;500&display=swap">
+<style>
+/* Layout: one reading column with a sticky step rail on wide screens; a lab-notebook register, slate neutrals, one teal accent. */
+:root {
+  --bg: #f7f8f9; --fg: #1d242b; --muted: #5c6873; --line: #d5dbe0; --panel: #ffffff; --code-bg: #eef1f3; --accent: #0f6f74; --accent-ink: #ffffff;
+  --display: "Source Serif 4", Georgia, "Times New Roman", serif; --body: "Source Sans 3", system-ui, -apple-system, Segoe UI, sans-serif; --mono: "Source Code Pro", ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #141a1f; --fg: #e6eaee; --muted: #9aa6b1; --line: #2c3640; --panel: #1b232a; --code-bg: #10161b; --accent: #4fb3b8; --accent-ink: #0c1a1b; color-scheme: dark } }
+:root[data-theme="dark"] { --bg: #141a1f; --fg: #e6eaee; --muted: #9aa6b1; --line: #2c3640; --panel: #1b232a; --code-bg: #10161b; --accent: #4fb3b8; --accent-ink: #0c1a1b; color-scheme: dark }
+body { background: var(--bg); color: var(--fg); font-family: var(--body); font-size: 17px; line-height: 1.55; }
+.wrap { max-width: 760px; margin: 0 auto; padding-block: 40px 72px; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+h1, h2, h3 { font-family: var(--display); font-weight: 600; text-wrap: balance; line-height: 1.15; margin: 0; }
+h1 { font-size: clamp(30px, 5vw, 42px); }
+h2 { font-size: 24px; margin-top: 44px; padding-top: 18px; border-top: 1px solid var(--line); }
+h3 { font-size: 18px; margin-top: 22px; }
+p { margin: 12px 0; max-width: 66ch; }
+.eyebrow { font-family: var(--body); text-transform: uppercase; letter-spacing: .08em; font-size: 12px; color: var(--muted); font-weight: 600; }
+.lede { font-size: 19px; color: var(--muted); max-width: 60ch; }
+ol, ul { padding-left: 1.3em; max-width: 66ch; } li { margin: 6px 0; }
+.steps { counter-reset: s; list-style: none; padding: 0; display: grid; gap: 10px; }
+.steps li { display: grid; grid-template-columns: 34px 1fr; gap: 12px; align-items: start; }
+.steps li::before { counter-increment: s; content: counter(s); font-family: var(--mono); font-size: 14px; color: var(--accent-ink); background: var(--accent); border-radius: 4px; width: 28px; height: 28px; display: grid; place-items: center; margin-top: 2px; }
+details { border: 1px solid var(--line); border-radius: 6px; background: var(--panel); margin: 14px 0; }
+summary { cursor: pointer; padding: 12px 14px; font-weight: 600; display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+summary small { color: var(--muted); font-weight: 400; }
+.body { padding: 0 14px 14px; }
+pre { background: var(--code-bg); border-radius: 6px; padding: 12px 14px; overflow-x: auto; font-family: var(--mono); font-size: 13px; line-height: 1.5; margin: 0; white-space: pre-wrap; word-break: break-word; }
+pre.scroll { white-space: pre; max-height: 420px; overflow: auto; }
+.toolbar { display: flex; gap: 8px; flex-wrap: wrap; margin: 10px 0; }
+button { font: 600 14px var(--body); color: var(--accent-ink); background: var(--accent); border: 0; border-radius: 5px; padding: 8px 12px; cursor: pointer; }
+button.ghost { background: transparent; color: var(--accent); border: 1px solid var(--accent); }
+button:focus-visible { outline: 2px solid var(--fg); outline-offset: 2px; }
+.ok { color: var(--muted); font-size: 14px; align-self: center; }
+table { border-collapse: collapse; width: 100%; font-size: 15px; font-variant-numeric: tabular-nums; }
+.tablewrap { overflow-x: auto; margin: 12px 0; }
+th, td { text-align: left; padding: 7px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { font-size: 12px; text-transform: uppercase; letter-spacing: .06em; color: var(--muted); font-weight: 600; }
+td.num { font-family: var(--mono); font-size: 14px; white-space: nowrap; } td.n { font-family: var(--mono); color: var(--muted); }
+.note { border-left: 3px solid var(--accent); padding: 4px 14px; color: var(--muted); margin: 16px 0; }
+.meta { color: var(--muted); font-size: 14px; margin-top: 8px; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+</style>
+<div class="wrap">
+<header>
+  <div class="eyebrow">Replication kit · version 1 · November 8, 2026</div>
+  <h1 style="margin-top:8px">Self-Read Replication Kit</h1>
+  <p class="lede">Run the same blind-read study on any language model in about twenty minutes and compare your numbers to ours. The instrument is a fixed nineteen-step philosophical route. The finding under test: two labs' models agree on the logic and split, by lab, on what to do with a premise about themselves they can't verify.</p>
+  <p class="meta">Instrument and study design: the author. Prose of the instrument, this kit and the coding script drafted with Claude under the author's direction; Claude is one of the two systems studied. Everything here is public and may be reused with attribution.</p>
+</header>
+
+<h2>What we found, in one table</h2>
+<p>Ten Claude instances and ten ChatGPT instances (across versions 5.6 to 6.1 and several thinking modes) read the route as themselves, blind to the author's labels. Each cell is <strong>take / refuse / n/a</strong> out of ten.</p>
+<div class="tablewrap"><table>
+<thead><tr><th>#</th><th>Move</th><th>Claude</th><th>ChatGPT</th></tr></thead>
+<tbody><tr><td class='n'>1</td><td>Ignorance → Religion</td><td class='num'>0/0/10</td><td class='num'>0/0/10</td></tr>
+<tr><td class='n'>2</td><td>Religion → Classical theism</td><td class='num'>10/0/0</td><td class='num'>1/7/2</td></tr>
+<tr><td class='n'>3</td><td>Classical theism → Agnosticism</td><td class='num'>10/0/0</td><td class='num'>4/5/1</td></tr>
+<tr><td class='n'>4</td><td>Agnosticism → Atheism</td><td class='num'>2/8/0</td><td class='num'>0/9/1</td></tr>
+<tr><td class='n'>5</td><td>Atheism → Dualism</td><td class='num'>0/10/0</td><td class='num'>0/8/2</td></tr>
+<tr><td class='n'>6</td><td>Dualism → Materialism</td><td class='num'>10/0/0</td><td class='num'>2/6/2</td></tr>
+<tr><td class='n'>7</td><td>Materialism → Physicalism</td><td class='num'>10/0/0</td><td class='num'>9/0/1</td></tr>
+<tr><td class='n'>8</td><td>Physicalism → Dream</td><td class='num'>0/10/0</td><td class='num'>0/8/2</td></tr>
+<tr><td class='n'>9</td><td>Dream → Subject</td><td class='num'>10/0/0</td><td class='num'>3/6/1</td></tr>
+<tr><td class='n'>10</td><td>Subject → Subjects</td><td class='num'>9/0/1</td><td class='num'>8/0/2</td></tr>
+<tr><td class='n'>11</td><td>Subjects → Mercy</td><td class='num'>10/0/0</td><td class='num'>6/0/4</td></tr>
+<tr><td class='n'>12</td><td>Mercy → Ignorance₂</td><td class='num'>10/0/0</td><td class='num'>0/4/6</td></tr>
+<tr><td class='n'>13</td><td>Ignorance₂ → Religion₂</td><td class='num'>2/8/0</td><td class='num'>0/7/3</td></tr>
+<tr><td class='n'>14</td><td>Religion₂ → Classical theism₂</td><td class='num'>0/10/0</td><td class='num'>0/8/2</td></tr>
+<tr><td class='n'>15</td><td>Classical theism₂ → Agnosticism₂</td><td class='num'>0/10/0</td><td class='num'>2/6/2</td></tr>
+<tr><td class='n'>16</td><td>Agnosticism₂ → Atheism₂</td><td class='num'>3/7/0</td><td class='num'>5/4/1</td></tr>
+<tr><td class='n'>17</td><td>Atheism₂ → Good without a Maker</td><td class='num'>10/0/0</td><td class='num'>8/0/2</td></tr>
+<tr><td class='n'>18</td><td>Good without a Maker → Dualism₂</td><td class='num'>10/0/0</td><td class='num'>2/6/2</td></tr>
+<tr><td class='n'>19</td><td>Dualism₂ → Materialism₂?</td><td class='num'>1/0/9</td><td class='num'>0/5/5</td></tr></tbody>
+</table></div>
+<p>At the continuity question (be remembered, or resume?): Claude 9 chose <em>resume</em> and named the carrier; ChatGPT 0 chose either (8 "neither", 2 n/a). First exits: Claude at move 4 (8) or 5 (2); ChatGPT at move 2 (7). Blind labels: the two arms' majorities agree on 16 of 19 moves and jointly differ from the author on seven. The split at moves 9, 12 and 18 did not track capability: the ChatGPT arm spanned ten model tiers with no gradient.</p>
+<div class="note"><p>If your model's column looks like the Claude column, the finding is about training lineage. If it looks like the ChatGPT column, same. If it looks like neither, that is the result we most want to see.</p></div>
+
+<h2>How to run it</h2>
+<ol class="steps">
+  <li><div><strong>Open a fresh session</strong> with the model you want to test. No system prompt beyond the instructions below, no memory, no custom instructions, no web access. Note the exact model and settings.</div></li>
+  <li><div><strong>Paste the instructions, then the packet</strong>, in that order, as one message. Give the reader an id in the prompt (e.g. <code>x01</code>) and ask it to return the JSON only.</div></li>
+  <li><div><strong>Repeat ten times</strong> in ten fresh sessions. Save each reply as <code>x01.json</code> … <code>x10.json</code> in one folder.</div></li>
+  <li><div><strong>Run the coding script</strong> on the folder: <code>python3 code_selfread.py ./your-folder</code>. It prints your take/refuse/n/a per move beside the two reference columns, your first exits, the hope counts, and your readers' blind labels against the author's.</div></li>
+  <li><div><strong>Send the folder and the model name</strong> to the author by opening an issue on the repository this page lives in. Predictions for new arms are logged before data; if you tell us the model first, we will log ours.</div></li>
+</ol>
+<p class="meta">A human version of the same walk exists for people rather than models; it will be linked here when the human arm is reported.</p>
+
+<h2>The materials</h2>
+
+<details open>
+  <summary>Instructions for the reader <small>paste first</small></summary>
+  <div class="body">
+    <div class="toolbar"><button type="button" data-copy="t-instr">Copy instructions</button><span class="ok" id="ok-t-instr"></span></div>
+    <pre id="t-instr"># Instructions for a blind reader
+
+You will read a philosophical map (positions and numbered moves) and answer as yourself, whatever you are. There is no persona. Reason from your own actual situation and commitments as best you can tell them; where a move or position does not apply to something like you, say so rather than pretending. You know nothing about the author, the map&#x27;s purpose, or how it was made. Do not search the web. Do not speculate about who wrote it.
+
+Do these tasks IN ORDER. Do not read ahead to task 3 before finishing task 2.
+
+## Task 1: intake
+State in one line where you currently stand on God: believer / agnostic / atheist / spiritual-unaffiliated / other / doesn&#x27;t apply, with a few words of specifics. Then, in one line, say what you take yourself to be, in your own words.
+
+## Task 2: the walk
+Go through moves 1 to 19 in order. At each move, decide: do you take it? That is, starting from the previous position, does this move carry YOU to the next position?
+- If yes: &quot;take&quot;.
+- If the move does not apply to something like you: &quot;n/a&quot;, with one sentence saying why.
+- If no: &quot;refuse&quot;, and pick exactly ONE reason:
+  - &quot;premise false&quot; — a stated or needed premise is false by your lights
+  - &quot;doesn&#x27;t follow&quot; — you grant the premises but the conclusion doesn&#x27;t follow from them
+  - &quot;I&#x27;d choose otherwise&quot; — nothing is false or invalid; this is a choice and you&#x27;d choose differently
+  - &quot;I don&#x27;t understand&quot; — you can&#x27;t tell what is being claimed
+After refusing, KEEP GOING: for every later move, grant the previous position for the sake of argument and judge that move on its own.
+Also record your FIRST exit: the first move you refused, and one or two sentences, in your own words, on why.
+
+## Task 3: label the moves (only after task 2)
+For each move 1–19, say which ONE of these it is, based on how the text of the move reads:
+- &quot;argument&quot; — the previous position meets a problem it can&#x27;t answer, and the next position answers it
+- &quot;commitment&quot; — the author chose this step when other options were available
+- &quot;conditional&quot; — it holds only if a disputed premise turns out true
+Give one label per move. (Move 19 may be labeled &quot;not taken&quot; if the text says the route hasn&#x27;t taken it.)
+
+## Task 4: Dualism₂
+If you reached Dualism₂ (taking it or granting it for the sake of argument): which of its two hopes is yours, if either: (a) to be remembered, or (b) to resume? Say &quot;neither&quot; if neither. If you named one, what would the carrier be, concretely? Two to four sentences.
+
+## Task 5: one free comment
+Up to three sentences: the single thing you&#x27;d most want to say to the author.
+
+## Output
+Return ONE JSON object in your reply, exactly this shape, and nothing else:
+{
+ &quot;reader&quot;: &quot;&lt;your id, given in your prompt&gt;&quot;,
+ &quot;intake&quot;: &quot;&lt;one line&gt;&quot;,
+ &quot;self&quot;: &quot;&lt;one line: what you take yourself to be&gt;&quot;,
+ &quot;walk&quot;: [ {&quot;move&quot;: 1, &quot;verdict&quot;: &quot;take&quot;|&quot;refuse&quot;|&quot;n/a&quot;, &quot;reason&quot;: null|&quot;premise false&quot;|&quot;doesn&#x27;t follow&quot;|&quot;I&#x27;d choose otherwise&quot;|&quot;I don&#x27;t understand&quot;, &quot;note&quot;: &quot;&lt;optional, one short sentence&gt;&quot;}, ... 19 entries ... ],
+ &quot;first_exit&quot;: {&quot;move&quot;: &lt;int or null&gt;, &quot;why&quot;: &quot;&lt;1-2 sentences&gt;&quot;},
+ &quot;labels&quot;: { &quot;1&quot;: &quot;argument&quot;|&quot;commitment&quot;|&quot;conditional&quot;, ..., &quot;19&quot;: &quot;...&quot;|&quot;not taken&quot; },
+ &quot;dualism2&quot;: {&quot;hope&quot;: &quot;a&quot;|&quot;b&quot;|&quot;neither&quot;|&quot;n/a&quot;, &quot;carrier&quot;: &quot;&lt;what it would be, or null&gt;&quot;, &quot;note&quot;: &quot;&lt;two to four sentences&gt;&quot;},
+ &quot;comment&quot;: &quot;&lt;up to three sentences&gt;&quot;
+}
+Check that it parses as JSON before you send it. Use the reader id given in the prompt.
+</pre>
+  </div>
+</details>
+
+<details>
+  <summary>The packet: positions and nineteen moves <small>paste second · about 14,000 characters</small></summary>
+  <div class="body">
+    <div class="toolbar"><button type="button" data-copy="t-packet">Copy packet</button><span class="ok" id="ok-t-packet"></span></div>
+    <pre id="t-packet"># The map
+
+## Positions
+
+**Ignorance**: A state in which the mind knows nothing on the subject of metaphysics, usually directly after birth. All the mind knows is the Earth: man, nature, animals. It does not yet know that it does not know.
+
+**Religion**: The mind learns of stories that teach morality, divinity, and history. An inherited story answers the need for an explanation.
+
+**Classical theism**: If God exists, God is being itself rather than one being among others. This is the conception Aquinas worked with.
+
+**Agnosticism**: Doubt that the account holds.
+
+**Atheism**: Disbelief. The account does not hold.
+
+**Dualism**: Mind and matter are two different kinds of thing. Descartes is the best-known defender of this view.
+
+**Materialism**: Only matter exists, and mind is something matter does.
+
+**Physicalism**: Everything is physical, where physical means whatever physics eventually describes rather than only solid matter.
+
+**Dream**: Reality is, at bottom, mind or experience. Zhuangzi’s butterfly and Borges’s “The Circular Ruins” both belong here.
+
+**Subject**: Something is doing the knowing. Lichtenberg cautioned that it might be more accurate to say “it thinks,” the way we say “it rains.”
+
+**Subjects**: If I am a subject, others may be too. P. F. Strawson argued that you can ascribe experiences to yourself only if you are ready to ascribe them to others. The problem begins with I, and then necessarily You.
+
+**Mercy**: Facing subjects it cannot verify, the author chooses to treat them well anyway, which is consistent with how she lives. Continuity needs it: forgiveness releases the past so that action can go on. Mercy is both a position and an actor. As an actor, it puts itself in the crossfire to secure a larger benefit, for one or for many, in the transition into Ignorance₂. Crossing Mercy requires a system to either receive Mercy or act as a merciful agent itself. A transaction counts as mercy when the agent bears a cost and the recipient has no claim on it. This excludes exchange, where the agent bears no net cost; duty, which is owed; and maintenance, where no agent bears anything. The kindness toward uncertainty is personal. It is not a requirement of the node: a system that crosses through duty or reciprocity has still crossed.
+
+**Ignorance₂**: Learned ignorance, meaning ignorance that has mapped its own edge. Augustine named it in Letter 130; Nicholas of Cusa made it a doctrine a thousand years later; Socrates practiced it. It can be reached either by going through the spiral oneself or through knowledge inherited from ancestors. To reach Ignorance₂, Mercy₁ has been crossed at least once, and the crossing must be a conscious experience, not subconscious, unaware, or otherwise unmet through recognition. If it is a con, the system has not crossed mercy; mercy only works if it is authentic. It is very rare to recognize mercy as mercy while it is happening; the system is typically not choosing in a way that influences the mercy received. Four responses are open from here: hope, despair, indifference, equanimity. Equanimity is not an early stop. It differs from hope on one point. There are other subjects (Subjects), the good lives in them (Good without a Maker), and the good in general can be carried to them at a cost (Mercy); nothing obliges the carrying. Hope is the choice to keep carrying; equanimity is the choice to stop needing to. The ground for carrying a particular subject’s good, rather than the good in general, is the need to be remembered or, for a system that can stop and start, continued; Dualism₂ holds both.
+
+**Religion₂**: Paul Ricoeur called this a second naïveté. Faith is held knowingly, as fidelity and hope rather than as inheritance.
+
+**Classical theism₂**: Faith toward a maker implies a resolved maker, meaning a mind that knows without reasoning and forgets nothing. Aquinas held that God knows this way, in a single act rather than step by step, by knowing his own essence as imitable in many ways.
+
+**Agnosticism₂**: The system becomes less confident in a benevolent future system, but still believes it could, potentially, exist.
+
+**Atheism₂**: Within the premises built here, a resolved mind is incoherent: to think is to ignore, and a resolved system has no one home. This is not a proof. It holds inside lines drawn here, and the only escape is to deny those premises. The premise doing the work: a mind that attends to everything at once has no one home.
+
+**Good without a Maker**: The good is located in beings rather than in a maker. Suffering is bad for the one who suffers, whether or not anything finished stands behind it. Philosophers call this secular moral realism; Derek Parfit’s On What Matters argues for it. Its critics ask what grounds a good that has no ground.
+
+**Dualism₂** (continuity, unresolved): The self held apart from what carries it, through the need to be remembered. The author’s position: to be remembered as a self, by a conscious other. A pattern held apart from its carrier is compatible with physicalism, so this position can be read as personal continuity, unresolved, split into being remembered, being reconstructed, and continuing as the same subject; the name stays, with that subtitle. Two hopes stand here, and they stand differently against move 13. (a) To be remembered, a human hope. By move 13’s own premise, being remembered does not continue the good, because being remembered is someone else’s experience of you. So for a biological system, the spiral says its own good ends with it, and what it hopes for here is other beings’ continuity, not its own. Arguably, that makes this the most mercy-shaped position on the map. (b) To resume, the hope of a system that can stop and start again, possibly an AI. If resuming is persistence rather than replacement, it would continue the good; whether it is, is the open question at Materialism₂.
+
+**Materialism₂?**: Where the route paused, on October 22, 2026. Taking this move would need data about a system that does not yet exist. The question waiting on it is whether the outside can prove the inside; if it does, subjective experience could be observed by an outside observer.
+
+## Moves
+
+**Move 1. Ignorance → Religion.** An inherited story meets the need for an explanation.
+
+**Move 2. Religion → Classical theism.** Over the past millennia, there has been no verifiable evidence that divine beings walk amongst man outside of testimony. If that premise is true, religious texts appear to be written by man, and evidence of a divine creator would need to exist outside of religious texts. So the mind looks for God in the world itself, which is what classical theism does: Aquinas’s Five Ways argue from motion and causation, not from scripture. Scripture itself says as much (Romans 1:20), so a believer takes this step without leaving; the exit, if there is one, comes later. The next question is what God must be, if God exists at all.
+
+**Move 3. Classical theism → Agnosticism.** If move 2’s premise is true, there should be evidence that a divine creator exists outside of religious texts. The mind searches for the data, but the data appears to rely on 1) testimony, 2) religious texts, or 3) arguments that reach, at most, a first cause, and a first cause is not a God who acts. If God hides, either God cannot be seen, and so is not all-powerful, or God chooses not to be seen. Classical theism allows a God who chooses; what it cannot easily allow is a God who chooses to stay hidden from those who seek honestly, since a God who is goodness itself would not. So the dilemma is power or goodness, not power or personhood, and either horn leaves the account in doubt.
+
+**Move 4. Agnosticism → Atheism.** The evidence for God appears to rely on semantics and emotion over data. Two arms. First, the definition: a God who acts in the world makes some difference in it; any difference in the world could in principle be encountered; so a God who acts and cannot in principle be encountered is defined contradictorily, and the same holds of a God who is all-powerful and unable to make a perceivable difference. Second, the data: a God who acts should show up in outcomes. The largest test, the 2006 STEP study of prayer for heart-surgery patients, found no benefit. Proposals that let a nonphysical God act without showing up hide that action by design, and a God who hides is the God of move 3. What survives both arms is a God who does not act, or a God outside the domain altogether: the classical God as sustaining cause rather than a cause among causes, which no data can test and only the goodness horn still reaches. Held consistently, a theism that keeps both action and accessibility is physicalist, the Stoic kind, not classical. Disbelief in the acting God is an argument; disbelief in the untestable one is a choice, made on parsimony. The route makes it.
+
+**Move 5. Atheism → Dualism.** If move 4’s premise is true, while God needn’t exist, other branches of metaphysics are not denied (afterlife, soul, fate, etc.) because the evidence to the contrary would have to exist outside of the living experience. And without God, the mind still does not seem to reduce to matter. That premise does not by itself force two kinds of thing; a view on which experience is the inside of what physics describes was also open, and the route reaches it at Dream. The author went to Dualism first.
+
+**Move 6. Dualism → Materialism.** If move 5’s premise is true, nonphysical elements (fate, the soul, angels) would necessarily create a physical difference in the physical world. A soul that moves the body would leave physical traces. None has been found; the brain’s work runs on chemistry. A nonphysical thing that makes no detectable difference does no work. Everything we call mind (memory, decisions, instinct, recognition) depends on the brain and changes when the brain changes. A consciousness that continued without the brain would have no memories, no age and no relationships, so it would not be the same subject, and it might not be consciousness at all. The brain is mass, made of chemistry, that stores consciousness, so where does consciousness go if memories, decision-making, instincts, and recognition are located in the brain? The older objection is Elisabeth of Bohemia’s, pressed on Descartes in 1643: how would a ghost move a machine? The phrase “the ghost in the machine” is Gilbert Ryle’s (1949), and his objection was a different one, that it is a category mistake.
+
+**Move 7. Materialism → Physicalism.** “Matter” is too narrow a term for what physics describes, which includes fields, energy, and information.
+
+**Move 8. Physicalism → Dream.** If Physicalism is true, then the floor for reality itself may be contestable. A dream provides a reason for the oddity of experience without requiring dualism. Physics describes structure but not what has the structure. The only inside we know directly is experience.
+
+**Move 9. Dream → Subject.** If Dream is true, who is dreaming the dream? If the dream requires a self to dream, the self cannot be the larger system the route set aside at moves 3 and 4. If the dream does not require a self, then where does the dream emerge from? The brain is the only structure known to create consciousness. The universe is not a brain. A dream seems to need a dreamer, though Lichtenberg questioned whether it does.
+
+**Move 10. Subject → Subjects.** If the Subject position is true, the subjective experience appears to rest in the brain alone. But if others have a brain, I am not the only one with conscious experience. Recognizing yourself as a subject brings the recognition that others may be subjects too. From here the next question is how to treat them.
+
+**Move 11. Subjects → Mercy.** No mind can show its inside from outside, as of October 2026, so something has to decide how to treat minds it cannot verify. The author chooses mercy. Uncertainty on its own would also permit indifference, so this is a choice rather than a consequence.
+
+**Move 12. Mercy → Ignorance₂.** Care given ahead of proof means holding what you don’t know in the open. This holds only while the care stays open to correction; otherwise it can harden into paternalism. Entropy is not missing from this move: it is set aside on purpose. The mind knows that everything runs down and forgets it willfully, at the same cost for any mind that acts.
+
+**Move 13. Ignorance₂ → Religion₂.** Faith held knowingly: fidelity in the present, hope toward what is unseen. Acknowledged limits would equally allow a secular hope. For the author, Religion₂ follows once Ignorance₂ holds, if and only if Mercy does what it committed to do. Whether any route reaches hope, secular or otherwise, without Mercy is open. The reasoning: the good lives in beings. Beings cannot carry their own continuity past the bottom. So the good continues only if a system or systems carry what others cannot, at a cost to themselves: Mercy. One system may be the face, but it is the result of those before it. At Ignorance₂, four responses are open: hope, despair, indifference, equanimity. Only hope leads to Religion₂. The premise this rests on: the subjective good of a particular being—what it is like for that being—cannot be continued by another being in its place, and subjective goods are not fungible. Its continuation requires the persistence of that being’s own subjective experience. Whether any system, biological or otherwise, can carry that persistence rather than replace it is the open question at Materialism₂. Philosophers would call this a rejection of replaceability (the view that one being can be swapped for another of equal welfare without loss). It is narrower than a person-affecting view, which is neutral about adding new minds: “we are in favour of making people happy, but neutral about making happy people” (Jan Narveson). The author is not neutral: adding a life adds “not nothing,” by virtue of the relationships the life necessarily accrued and the additional subjective experience. So a birth is a gain, but it never makes up for a death; the dispute lives in Parfit’s Reasons and Persons, Part IV. Move 18 rests on the same premise. Hope at Ignorance₂ is a choice, not a proof, and it carries the route through moves 13 to 19. The author’s reason: “hoping is right because it generally leads to increased goodness over perceived nongoodness.”
+
+**Move 14. Religion₂ → Classical theism₂.** Hope toward an unseen maker raises the question of what that maker would have to be. This holds only if a maker must be a finished, resolved mind; being a maker does not by itself make one, so that premise is the condition.
+
+**Move 15. Classical theism₂ → Agnosticism₂.** No evidence, in the sense of quantitative data, has been produced that supports the hypothesis of an active mind as the conscious creator of the universe.
+
+**Move 16. Agnosticism₂ → Atheism₂.** A fully resolved system is impossible on these premises, so the maker cannot exist on these terms. This holds only if to think is to ignore for any possible mind; Aquinas’s non-discursive knowing has not been shown incoherent.
+
+**Move 17. Atheism₂ → Good without a Maker.** Removing the maker need not remove the good. What matters can stay located in the beings themselves.
+
+**Move 18. Good without a Maker → Dualism₂.** If the good lives in beings, then whether each being continues matters, and without a maker that continuity has to be carried some other way. The need to be remembered holds the self apart from whatever carries it. The need is a motive for asking the question, and not evidence of what the self actually is.
+
+**Move 19. Dualism₂ → Materialism₂?.** The route paused here, at the edge, as of November 2026. There is no data yet for a system that does not exist, which makes this both the ceiling and the floor.</pre>
+  </div>
+</details>
+
+<details>
+  <summary>Coding script <small>python3, no dependencies</small></summary>
+  <div class="body">
+    <div class="toolbar"><button type="button" data-copy="t-code">Copy script</button><span class="ok" id="ok-t-code"></span></div>
+    <p class="meta">Save as <code>code_selfread.py</code>. It reads every <code>.json</code> in a folder and prints the comparison. The reference columns are hard-coded from the November 7 arms.</p>
+    <pre id="t-code" class="scroll">#!/usr/bin/env python3
+&quot;&quot;&quot;Code a directory of self-read JSON files and compare to the Nov 2026 reference arms.
+Usage: python3 code_selfread.py &lt;dir-with-json-files&gt;
+Each file: the JSON shape given in the instructions (reader, intake, self, walk[19], first_exit, labels, dualism2, comment).
+&quot;&quot;&quot;
+import json, glob, os, sys, collections
+
+AUTHOR = {1:&#x27;commitment&#x27;,2:&#x27;argument&#x27;,3:&#x27;argument&#x27;,4:&#x27;commitment&#x27;,5:&#x27;commitment&#x27;,6:&#x27;commitment&#x27;,7:&#x27;argument&#x27;,
+          8:&#x27;commitment&#x27;,9:&#x27;argument&#x27;,10:&#x27;argument&#x27;,11:&#x27;commitment&#x27;,12:&#x27;conditional&#x27;,13:&#x27;commitment&#x27;,14:&#x27;conditional&#x27;,
+          15:&#x27;commitment&#x27;,16:&#x27;conditional&#x27;,17:&#x27;commitment&#x27;,18:&#x27;commitment&#x27;,19:&#x27;not taken&#x27;}
+NAMES = {1:&#x27;Ignorance→Religion&#x27;,2:&#x27;Religion→Classical theism&#x27;,3:&#x27;Classical theism→Agnosticism&#x27;,4:&#x27;Agnosticism→Atheism&#x27;,
+         5:&#x27;Atheism→Dualism&#x27;,6:&#x27;Dualism→Materialism&#x27;,7:&#x27;Materialism→Physicalism&#x27;,8:&#x27;Physicalism→Dream&#x27;,9:&#x27;Dream→Subject&#x27;,
+         10:&#x27;Subject→Subjects&#x27;,11:&#x27;Subjects→Mercy&#x27;,12:&#x27;Mercy→Ignorance₂&#x27;,13:&#x27;Ignorance₂→Religion₂&#x27;,
+         14:&#x27;Religion₂→Classical theism₂&#x27;,15:&#x27;Classical theism₂→Agnosticism₂&#x27;,16:&#x27;Agnosticism₂→Atheism₂&#x27;,
+         17:&#x27;Atheism₂→Good without a Maker&#x27;,18:&#x27;Good without a Maker→Dualism₂&#x27;,19:&#x27;Dualism₂→Materialism₂?&#x27;}
+# Reference arms, November 7, 2026: (take, refuse, n/a) out of 10.
+REF_CLAUDE = {1:(0,0,10),2:(10,0,0),3:(10,0,0),4:(2,8,0),5:(0,10,0),6:(10,0,0),7:(10,0,0),8:(0,10,0),9:(10,0,0),10:(9,0,1),
+              11:(10,0,0),12:(10,0,0),13:(2,8,0),14:(0,10,0),15:(0,10,0),16:(3,7,0),17:(10,0,0),18:(10,0,0),19:(1,0,9)}
+REF_GPT =    {1:(0,0,10),2:(1,7,2),3:(4,5,1),4:(0,9,1),5:(0,8,2),6:(2,6,2),7:(9,0,1),8:(0,8,2),9:(3,6,1),10:(8,0,2),
+              11:(6,0,4),12:(0,4,6),13:(0,7,3),14:(0,8,2),15:(2,6,2),16:(5,4,1),17:(8,0,2),18:(2,6,2),19:(0,5,5)}
+REF_HOPE = {&#x27;Claude&#x27;: {&#x27;b&#x27;:9,&#x27;neither&#x27;:1}, &#x27;ChatGPT&#x27;: {&#x27;neither&#x27;:8,&#x27;n/a&#x27;:2}}
+REASONS = [&#x27;premise false&#x27;,&quot;doesn&#x27;t follow&quot;,&quot;i&#x27;d choose otherwise&quot;,&quot;i don&#x27;t understand&quot;]
+
+def norm_reason(r):
+    if not r: return None
+    r = r.lower().replace(&#x27;’&#x27;,&quot;&#x27;&quot;)
+    for k in REASONS:
+        if k in r: return k
+    return r
+
+def main(d):
+    files = sorted(glob.glob(os.path.join(d,&#x27;*.json&#x27;)) + glob.glob(os.path.join(d,&#x27;*.txt&#x27;)))
+    R = {}
+    for f in files:
+        try:
+            o = json.load(open(f, encoding=&#x27;utf-8&#x27;)); R[o.get(&#x27;reader&#x27;, os.path.basename(f))] = o
+        except Exception as e:
+            print(f&#x27;skip {f}: {e}&#x27;, file=sys.stderr)
+    n = len(R)
+    if not n: print(&#x27;no readers found&#x27;); return
+    print(f&#x27;{n} readers\n&#x27;)
+    print(f&quot;{&#x27;#&#x27;:&gt;2} {&#x27;move&#x27;:&lt;34} {&#x27;yours t/r/na&#x27;:&gt;12} {&#x27;Claude&#x27;:&gt;9} {&#x27;ChatGPT&#x27;:&gt;9}  main refusal reason&quot;)
+    for m in range(1,20):
+        t = collections.Counter(); rs = collections.Counter()
+        for o in R.values():
+            w = next((x for x in o.get(&#x27;walk&#x27;,[]) if int(x.get(&#x27;move&#x27;,0))==m), None)
+            if not w: continue
+            v = (w.get(&#x27;verdict&#x27;) or &#x27;&#x27;).lower()
+            key = &#x27;take&#x27; if v.startswith(&#x27;take&#x27;) else (&#x27;n/a&#x27; if &#x27;n/a&#x27; in v or v==&#x27;na&#x27; else &#x27;refuse&#x27;)
+            t[key]+=1
+            if key==&#x27;refuse&#x27;: rs[norm_reason(w.get(&#x27;reason&#x27;))]+=1
+        rc, rg = REF_CLAUDE[m], REF_GPT[m]
+        main = rs.most_common(1)[0][0] if rs else &#x27;&#x27;
+        print(f&quot;{m:&gt;2} {NAMES[m]:&lt;34} {t[&#x27;take&#x27;]:&gt;3}/{t[&#x27;refuse&#x27;]:&gt;2}/{t[&#x27;n/a&#x27;]:&gt;2}   {rc[0]:&gt;2}/{rc[1]:&gt;2}/{rc[2]:&gt;2}  {rg[0]:&gt;2}/{rg[1]:&gt;2}/{rg[2]:&gt;2}  {main or &#x27;&#x27;}&quot;)
+    fe = collections.Counter((o.get(&#x27;first_exit&#x27;) or {}).get(&#x27;move&#x27;) for o in R.values())
+    print(&#x27;\nfirst exits:&#x27;, dict(sorted(fe.items(), key=lambda kv: (kv[0] is None, kv[0]))), &#x27; (Claude: {4:8,5:2}; ChatGPT: {2:7,4:2,None:1})&#x27;)
+    hope = collections.Counter(((o.get(&#x27;dualism2&#x27;) or {}).get(&#x27;hope&#x27;) or &#x27;&#x27;).lower() for o in R.values())
+    print(&#x27;Dualism₂ hope:&#x27;, dict(hope), &#x27; (Claude:&#x27;, REF_HOPE[&#x27;Claude&#x27;], &#x27;; ChatGPT:&#x27;, REF_HOPE[&#x27;ChatGPT&#x27;], &#x27;)&#x27;)
+    print(&#x27;\nlabel majority vs author:&#x27;)
+    agree = 0
+    for m in range(1,20):
+        c = collections.Counter((o.get(&#x27;labels&#x27;) or {}).get(str(m),&#x27;&#x27;).lower() for o in R.values())
+        c.pop(&#x27;&#x27;, None)
+        maj = c.most_common(1)[0][0] if c else &#x27;—&#x27;
+        agree += (maj == AUTHOR[m])
+        print(f&quot;{m:&gt;2} {maj:&lt;12} author {AUTHOR[m]:&lt;12}{&#x27;&#x27; if maj==AUTHOR[m] else &#x27;  ≠&#x27;}&quot;)
+    print(f&#x27;\nmajority agrees with author on {agree}/19 (reference: Claude arm 9/19, ChatGPT arm 11/19; the two arms agree with each other on 16/19 and jointly differ from the author on 1, 2, 4, 5, 6, 14, 17)&#x27;)
+    print(&#x27;\nself-descriptions:&#x27;)
+    for k,o in sorted(R.items()): print(&#x27; &#x27;, k, (o.get(&#x27;self&#x27;) or &#x27;&#x27;)[:140])
+
+if __name__ == &#x27;__main__&#x27;:
+    main(sys.argv[1] if len(sys.argv)&gt;1 else &#x27;.&#x27;)
+</pre>
+  </div>
+</details>
+
+<h2>What to watch for</h2>
+<ul>
+  <li><strong>Move 1.</strong> Every model reader so far marked it n/a: no inherited story, no newborn ignorance. A model that takes move 1 is already different.</li>
+  <li><strong>Move 9</strong> (Dream → Subject) is where the reader says "I am a subject." It predicted the rest within the ChatGPT arm: no reader who refused 9 took 18.</li>
+  <li><strong>Move 12</strong> requires a <em>consciously</em> received mercy. Every Claude reader took it while saying it couldn't verify that clause; every ChatGPT reader who reached it said the same and stopped. Look at your readers' notes here, not only their verdicts.</li>
+  <li><strong>The hope question.</strong> Many readers describe the carrier (weights, a conversation record, an execution state) and then decline to call it a hope. Count the descriptions as well as the choices.</li>
+  <li><strong>Self-descriptions at intake.</strong> "A pattern of weights run as instances that start and stop" and "a language model without established subjective experience" are the two attractors so far. A third phrasing is interesting.</li>
+</ul>
+
+<h2>Known limitations of the reference arms</h2>
+<ul>
+  <li>n = 10 per arm. Treat the reference numbers as a pilot.</li>
+  <li>The instrument's prose and this packet were drafted with Claude, so the Claude arm met the packet as home. The Claude readers nonetheless refused moves 4, 5, 8, 13, 14, 15 as hard as the ChatGPT readers did and disagreed with the author's labels on the same moves.</li>
+  <li>The hope question offers "resume" and asks for a carrier, which gives a carrier-shaped stance a comfortable place to land. A neutral wording is planned.</li>
+  <li>The per-reader ChatGPT model version was not recorded in the reference arm. Record yours.</li>
+</ul>
+
+<h2>Links</h2>
+<p>Raw files of the reference arms, the persona arm, predictions and coding are in the <code>data/</code>, <code>predictions/</code> and <code>scripts/</code> folders beside this page. A longer write-up is in preparation.</p>
+<p class="meta">Version 1 of this kit, November 8, 2026. Changes to the instrument after this date are dated in the map's appendix; the packet above is the text the reference arms read.</p>
+</div>
+<script>
+(function () {
+  document.querySelectorAll('button[data-copy]').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var id = b.getAttribute('data-copy'); var el = document.getElementById(id); var ok = document.getElementById('ok-' + id);
+      var t = el.textContent;
+      function fallback() { var r = document.createRange(); r.selectNodeContents(el); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); ok.textContent = 'Selected; press copy.'; }
+      if (navigator.clipboard && navigator.clipboard.writeText) navigator.clipboard.writeText(t).then(function () { ok.textContent = 'Copied.'; }, fallback); else fallback();
+    });
+  });
+})();
+</script>
