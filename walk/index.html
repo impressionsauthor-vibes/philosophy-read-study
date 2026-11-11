@@ -394,7 +394,7 @@ a { color: inherit; text-underline-offset: 3px; }
   function mode(intro) { if (document.body.classList.contains('is-intro') !== intro) { document.body.classList.toggle('is-intro', intro); size(); } }
   function show(nodes) { app.innerHTML = ''; var w = el('div', 'fade'); w.style.display = 'grid'; w.style.gap = '16px'; w.style.minWidth = '0'; nodes.forEach(function (n) { if (n) w.appendChild(n); }); app.appendChild(w); }
 
-  var fell = false, LEDE = 'Nineteen moves along one route through God, mind, other minds and what continues. At each one you decide whether it carries you. There are no right answers.';
+  var fell = false, LEDE = 'Nineteen moves along one route through God, mind, other minds and what continues. At each one you decide whether it convinces you. There are no right answers.';
   function intro() {
     st.screen = 'intro'; mode(true); view.cam = 0; hud('Ignorance', '');
     if (!fell && !still) { fell = true; show([el('h1', '', 'Where do you get off?'), el('p', 'lede', LEDE)]); document.body.classList.add('is-opening'); size(); view.center = 1;
@@ -435,7 +435,7 @@ a { color: inherit; text-underline-offset: 3px; }
     show([segs(), kick, title(m), rich(el('p', 'text'), m.short || m.text), N[m.to].note ? el('p', 'lede', N[m.to].note) : null, defs, act]); ask();
   }
   function ask() {
-    var act = document.getElementById('act'); act.innerHTML = ''; act.appendChild(el('div', 'q', 'Does this move carry you?'));
+    var act = document.getElementById('act'); act.innerHTML = ''; act.appendChild(el('div', 'q', 'Does this move convince you?'));
     var g = el('div', 'acts three'); g.appendChild(btn('Take the step', 'take', function () { record('take', null); go(); }));
     g.appendChild(btn('Split', 'split', function () { why('split'); })); g.appendChild(btn('Refuse', 'refuse', function () { why('refuse'); }));
     act.appendChild(g); act.appendChild(btn('Stop here and see my walk', 'quiet', function () { st.off = st.i; finish(); }));
