@@ -347,13 +347,13 @@ a { color: inherit; text-underline-offset: 3px; }
       tw = { from: 0, to: 0, p: 0, dur: 3000, fx: 'fall', fast: false, done: function () { document.body.classList.add('is-settling'); document.body.classList.remove('is-opening'); tw = { from: 0, to: 0, p: 0, dur: 900, fx: 'settle', fast: false, done: function () { document.body.classList.remove('is-settling'); view.center = 0; size(); chooser(); } }; } }; return; }
     fell = true; chooser();
   }
-  var STUDY = { endpoint: '', field: '' }, sent = false, sid = Math.random().toString(36).slice(2, 10);
+  var STUDY = { endpoint: 'https://docs.google.com/forms/d/e/1FAIpQLSfJzddkshdvyQqa08QvqQf5e_6Isi5aMVg2oJ0YnXandVP4-w/formResponse', field: 'entry.1314273606' }, sent = false, sid = Math.random().toString(36).slice(2, 10);
   function consent() {
     var box = el('div', 'consent'), sw = el('button', 'switch'), tx = el('div'), note = el('p', 'note');
     sw.type = 'button'; sw.id = 'share'; sw.setAttribute('role', 'switch'); sw.setAttribute('aria-label', 'Share my walk with the study'); sw.appendChild(el('span', 'knob'));
     function upd() { sw.setAttribute('aria-checked', String(st.share)); note.textContent = !st.share ? 'Off. Nothing is saved.' : STUDY.endpoint ? 'On. Your walk is saved when you finish or stop.' : 'On, but saving is not connected in this preview, so nothing is sent.'; }
     sw.addEventListener('click', function () { st.share = !st.share; upd(); }); upd();
-    tx.appendChild(el('strong', '', 'Share my walk with the study')); tx.appendChild(el('p', '', 'Optional. If this is on, your answer at each move, your reason, and how long each move took are saved with no name and nothing that identifies you. Your character’s look is not saved. You must be 18 or older.')); tx.appendChild(note);
+    tx.appendChild(el('strong', '', 'Share my walk with the study')); tx.appendChild(el('p', '', 'Optional. If this is on, your answer at each move, your reason, how long each move took, and when it was sent are saved with no name and nothing that identifies you. Your character’s look is not saved. You must be 18 or older.')); tx.appendChild(note);
     box.appendChild(sw); box.appendChild(tx); return box;
   }
   function share(done) {
