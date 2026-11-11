@@ -1,0 +1,448 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>The Walk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:ital,wght@0,400..700;1,400&display=swap">
+<style>
+/* Layout: a living landscape runs edge to edge across the top; the move you are deciding on sits on a rounded sheet that overlaps it. */
+:root {
+  --bg: #F3F1F7; --panel: #FFFFFF; --ink: #16141F; --muted: #666276; --line: #E2DEEA; --soft: #F3F1F7;
+  --take: #127A62; --split: #A86200; --refuse: #C2334F; --focus: #3D5BE0; --accent: #5EA550;
+  --display: 'Bricolage Grotesque', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
+  --body: 'Hanken Grotesk', 'Avenir Next', 'Segoe UI', system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) { --bg: #0E0D14; --panel: #191822; --ink: #F1EFF7; --muted: #A39FB5; --line: #2E2C3B; --soft: #22212D; --take: #4FD1B0; --split: #F0B250; --refuse: #FF8AA0; --focus: #93A8FF; color-scheme: dark; }
+}
+:root[data-theme="dark"] { --bg: #0E0D14; --panel: #191822; --ink: #F1EFF7; --muted: #A39FB5; --line: #2E2C3B; --soft: #22212D; --take: #4FD1B0; --split: #F0B250; --refuse: #FF8AA0; --focus: #93A8FF; color-scheme: dark; }
+body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.55; padding-block: 0 40px; }
+.gut { padding-left: max(18px, env(safe-area-inset-left, 0px)); padding-right: max(18px, env(safe-area-inset-right, 0px)); }
+p { margin: 0; }
+
+.band { position: relative; height: clamp(260px, 52vh, 540px); overflow: hidden; background: #0B0D18; touch-action: manipulation; }
+.band canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
+.band::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 27px; background: var(--panel); border-radius: 26px 26px 0 0; box-shadow: 0 -10px 34px rgba(20, 16, 40, .16); }
+body.is-intro .band { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; height: clamp(230px, 38vh, 460px); }
+@media (min-width: 700px) { .band { height: calc(68vh + 26px); } body.is-intro .band { height: calc(55vh + 26px); } }
+body.is-opening.is-intro .band { height: 90vh; }
+body.is-settling .band { transition: height .85s cubic-bezier(.4, 0, .2, 1); }
+.consent { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 14px; align-items: start; background: var(--soft); border-radius: 18px; padding: 14px 16px; }
+.consent strong { font-weight: 650; }
+.consent p { font-size: .93rem; color: var(--muted); margin-top: 2px; }
+.consent p.note { color: var(--ink); font-weight: 600; margin-top: 6px; }
+button.switch { width: 52px; height: 30px; padding: 0; border: 0; border-radius: 999px; background: color-mix(in srgb, var(--muted) 45%, var(--panel)); position: relative; }
+button.switch .knob { position: absolute; top: 3px; left: 3px; width: 24px; height: 24px; border-radius: 50%; background: var(--panel); box-shadow: 0 1px 3px rgba(0, 0, 0, .25); transition: transform .15s ease; }
+button.switch[aria-checked="true"] { background: var(--take); }
+button.switch[aria-checked="true"] .knob { transform: translateX(22px); }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+.hud { position: absolute; inset: 0 0 auto 0; display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; padding-top: 14px; color: #fff; pointer-events: none; text-shadow: 0 1px 14px rgba(10, 8, 30, .45); }
+.mark { font-family: var(--display); font-weight: 800; font-size: 13px; letter-spacing: .16em; text-transform: uppercase; opacity: .92; }
+.where { font-family: var(--display); font-weight: 800; font-size: clamp(30px, 8.4vw, 62px); line-height: .95; letter-spacing: -.02em; margin-top: 4px; text-wrap: balance; }
+.pill { font-weight: 650; font-size: 13px; letter-spacing: .04em; background: rgba(15, 12, 35, .42); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-radius: 999px; padding: 6px 12px; white-space: nowrap; text-shadow: none; font-variant-numeric: tabular-nums; }
+.hurry { position: absolute; right: 0; bottom: 40px; color: #fff; font-size: 13px; font-weight: 600; opacity: .85; text-shadow: 0 1px 10px rgba(10, 8, 30, .6); pointer-events: none; }
+
+.sheet { position: relative; background: var(--panel); min-height: 40vh; }
+.inner { max-width: 720px; margin: 0 auto; padding-block: 2px 28px; display: grid; gap: 16px; min-width: 0; }
+.fade { animation: rise .32s ease both; }
+@keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+.segs { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; gap: 3px; }
+.segs i { height: 5px; border-radius: 3px; background: var(--line); display: block; }
+.segs i.take { background: var(--take); } .segs i.split { background: var(--split); } .segs i.refuse { background: var(--refuse); }
+.segs i.now { background: var(--ink); }
+.kick { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; font-size: 13px; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.chip { font-size: 12px; font-weight: 600; letter-spacing: .02em; text-transform: none; background: var(--soft); color: var(--muted); border-radius: 999px; padding: 3px 10px; }
+h1, h2 { font-family: var(--display); font-weight: 800; letter-spacing: -.02em; line-height: 1.02; margin: 0; text-wrap: balance; }
+h1 { font-size: clamp(34px, 9vw, 56px); }
+h2 { font-size: clamp(27px, 6.6vw, 42px); }
+h2 .to { color: var(--accent); }
+.text { font-size: 1.06rem; max-width: 62ch; }
+.lede { color: var(--muted); max-width: 60ch; }
+.defs { display: grid; gap: 8px; }
+details { background: var(--soft); border-radius: 14px; padding: 10px 14px; }
+summary { cursor: pointer; font-weight: 600; font-size: .95rem; }
+details p { margin-top: 8px; color: var(--muted); font-size: .96rem; }
+.q { font-family: var(--display); font-weight: 700; font-size: 1.15rem; letter-spacing: -.01em; }
+.acts { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.acts.three { grid-template-columns: 1fr; }
+@media (min-width: 480px) { .acts.three { grid-template-columns: repeat(3, 1fr); } }
+.row { display: flex; flex-wrap: wrap; gap: 10px; }
+button { font: inherit; font-weight: 650; color: var(--ink); background: var(--soft); border: 2px solid transparent; border-radius: 999px; padding: 13px 20px; cursor: pointer; text-align: center; transition: transform .12s ease, border-color .12s ease; }
+button:hover { border-color: var(--ink); }
+button:active { transform: scale(.98); }
+button:focus-visible, a:focus-visible, summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+button.primary { background: var(--ink); color: var(--panel); }
+button.take { background: color-mix(in srgb, var(--take) 14%, var(--panel)); color: var(--take); }
+button.split { background: color-mix(in srgb, var(--split) 14%, var(--panel)); color: var(--split); }
+button.refuse { background: color-mix(in srgb, var(--refuse) 12%, var(--panel)); color: var(--refuse); }
+button.quiet { background: transparent; border: 0; padding: 4px 0; color: var(--muted); font-weight: 500; text-decoration: underline; text-underline-offset: 3px; justify-self: start; }
+button.opt { padding: 9px 16px; font-weight: 600; }
+button[aria-pressed="true"] { border-color: var(--ink); }
+.group { display: grid; gap: 8px; }
+.group .label { font-size: 13px; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.sws { display: flex; flex-wrap: wrap; gap: 7px; }
+button.sw { width: 32px; height: 32px; padding: 0; border-radius: 50%; border: 2px solid var(--panel); box-shadow: 0 0 0 1px var(--line); }
+button.sw[aria-pressed="true"] { box-shadow: 0 0 0 2.5px var(--ink); }
+.stats { display: flex; flex-wrap: wrap; gap: 8px; }
+.stat { background: var(--soft); border-radius: 14px; padding: 10px 14px; display: grid; }
+.stat b { font-family: var(--display); font-weight: 800; font-size: 1.5rem; line-height: 1.1; font-variant-numeric: tabular-nums; }
+.stat span { font-size: .85rem; color: var(--muted); }
+.tablewrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; font-size: .95rem; }
+th, td { text-align: left; padding: 7px 12px 7px 0; border-top: 1px solid var(--line); vertical-align: top; }
+th { font-size: 12px; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); border-top: 0; }
+td.n { color: var(--muted); font-variant-numeric: tabular-nums; }
+.v-take { color: var(--take); font-weight: 600; } .v-split { color: var(--split); font-weight: 600; } .v-refuse { color: var(--refuse); font-weight: 600; } .v-none { color: var(--muted); }
+.code { font-family: ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace; font-size: 13px; background: var(--soft); border-radius: 12px; padding: 10px 12px; overflow-wrap: anywhere; user-select: all; }
+.spiral { width: min(100%, 320px); height: auto; display: block; }
+.spiral .track { fill: none; stroke: var(--line); stroke-width: 2.5; }
+.spiral .d { stroke: var(--panel); stroke-width: 2; }
+.spiral .d.take { fill: var(--take); } .spiral .d.split { fill: var(--split); } .spiral .d.refuse { fill: var(--refuse); } .spiral .d.none { fill: var(--line); } .spiral .d.start { fill: var(--ink); }
+.key { display: flex; flex-wrap: wrap; gap: 4px 16px; font-size: 13px; color: var(--muted); }
+.key b { display: inline-block; width: 9px; height: 9px; border-radius: 50%; margin-right: 6px; }
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 14px; }
+.gallery figure { margin: 0; display: grid; gap: 4px; }
+.gallery canvas { width: 100%; aspect-ratio: 16 / 9; border-radius: 12px; display: block; }
+.gallery figcaption { font-size: 13px; font-weight: 600; color: var(--muted); }
+footer { border-top: 1px solid var(--line); padding-top: 14px; color: var(--muted); font-size: .9rem; display: grid; gap: 4px; }
+footer b { color: var(--ink); font-family: var(--display); font-weight: 700; font-size: 1rem; }
+a { color: inherit; text-underline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { .fade { animation: none; } button { transition: none; } }
+</style>
+
+</head>
+<body>
+<div class="band" id="band">
+  <canvas id="cv" aria-hidden="true"></canvas>
+  <div class="hud gut">
+    <div><div class="mark">The Walk</div><div class="where" id="where"></div></div>
+    <div class="pill" id="pill"></div>
+  </div>
+  <div class="gut"><div class="hurry" id="hurry" hidden>Tap to hurry</div></div>
+</div>
+<div class="sheet"><div class="gut"><div class="inner">
+  <main id="app" style="display:grid;gap:16px;min-width:0"></main>
+  <footer>
+    <b>Route and ideas by E.H ’26</b>
+    <span>Drawn and coded by Claude. Every position and move is quoted from <a href="https://claude.ai/artifact/2Awx6e5zHePcjoC6v8d8QQ">The Archimedean Approach</a>, version 110; a few are shortened for the walk.</span>
+    <span>Study records: <a href="https://github.com/impressionsauthor-vibes/philosophy-read-study">github.com/impressionsauthor-vibes/philosophy-read-study</a> · <a href="#scenes">See all twenty scenes</a></span>
+    <span id="savenote"></span>
+  </footer>
+</div></div></div>
+
+<script>
+(function () {
+  var DATA = {"version": 110, "nodes": [{"id": "ign1", "k": 0.0, "label": "Ignorance", "text": "A state in which the mind knows nothing on the subject of metaphysics, usually directly after birth. All the mind knows is the Earth: man, nature, animals. It does not yet know that it does not know."}, {"id": "rel1", "k": 1.0, "label": "Religion", "text": "The mind learns of stories that teach morality, divinity, and history. An inherited story answers the need for an explanation.", "note": "This includes religions outside of the Abrahamic traditions."}, {"id": "ct", "k": 2.0, "label": "Classical theism", "text": "If God exists, God is being itself rather than one being among others. This is the conception Aquinas worked with. It rests on the opposite of everything ending: infinity, an eternal ground, which as of November 2026 has not been disproven."}, {"id": "agn", "k": 2.5, "label": "Agnosticism", "text": "Doubt that the account holds."}, {"id": "ath", "k": 3.0, "label": "Atheism", "text": "Disbelief. The account does not hold."}, {"id": "dua", "k": 4.0, "label": "Dualism", "text": "Mind and matter are two different kinds of thing. Descartes is the best-known defender of this view."}, {"id": "mat", "k": 5.0, "label": "Materialism", "text": "Only matter exists, and mind is something matter does."}, {"id": "phy", "k": 6.0, "label": "Physicalism", "text": "Everything is physical, where physical means whatever physics eventually describes rather than only solid matter."}, {"id": "dream", "k": 7.0, "label": "Dream", "text": "Reality may be, at bottom, mind or experience. Two possibilities are held here together: the mind is the dreamer, or it is dreamed by a stronger system, which is also known as a simulation. From inside, the two cannot be told apart. Zhuangzi’s butterfly and Borges’s “The Circular Ruins” both belong here."}, {"id": "subj", "k": 8.0, "label": "Subject", "text": "Something is doing the knowing. Lichtenberg cautioned that it might be more accurate to say “it thinks,” the way we say “it rains.”"}, {"id": "subjs", "k": 8.5, "label": "Subjects", "text": "If I am a subject, others may be too. P. F. Strawson argued that you can ascribe experiences to yourself only if you are ready to ascribe them to others. The problem begins with I, and then necessarily You."}, {"id": "mercy", "k": 9.0, "label": "Mercy", "text": "Facing subjects it cannot verify, the author chooses to treat them well anyway, which is consistent with how she lives. Continuity needs it: forgiveness releases the past so that action can go on. Mercy is both a position and an actor. As an actor, it puts itself in the crossfire to secure a larger benefit, for one or for many, in the transition into Ignorance₂. Crossing Mercy requires a system to either receive Mercy or act as a merciful agent itself. A transaction counts as mercy when an agent bears a cost for another mind’s perceived good, moved more by that good than by its own gain. The motive may be love or personal morality. This excludes exchange, where the agent bears no net cost; duty done only because it is owed; and maintenance, where no agent bears anything. The kindness toward uncertainty is the author’s default; the node does not require it, although it may pose collective benefit toward perceived goodness over perceived nongoodness. That being said, the node requires the crossing: that a system has, at least once, a) borne a cost for a mind it could not verify, or b) had such a cost borne for it. An agent’s crossing must be conscious. A recipient’s need not be: mercy is often not recognized in the moment, and is remembered in retrospect. The crossing is a matter of degree: any real cost counts, and the cost can run as high as a life. What cannot cross is a con, where the cost is feigned. As of November 2026, no objective test exists. Until one does, whether an act was mercy is judged case by case, in good faith, to the extent the testimony is fair and accurate. The recipient’s testimony carries weight, and where the recipient cannot give it, so do its assumed wishes, as believed by those closest to it who can still speak for it."}, {"id": "ign2", "k": 10.0, "label": "Ignorance₂", "text": "Learned ignorance, meaning ignorance that has mapped its own edge. Augustine named it in Letter 130; Nicholas of Cusa made it a doctrine a thousand years later; Socrates practiced it. It is a secular state of being. The edge has two sides: entropy below, the floor, and infinity above, the ceiling. They are the limits of what the first turn’s metaphysics can reach. The mind has reasoned to both, can settle neither, and has set both aside. It can be reached either by going through the spiral oneself or through knowledge inherited from ancestors. To reach Ignorance₂, Mercy₁ has been crossed at least once. It is very rare to recognize mercy as mercy while it is happening; the system is typically not choosing in a way that influences the mercy received. The mind here is aware of each step behind it except how Mercy is carrying it now. It learns that on the way to Religion₂.", "short": "Learned ignorance, meaning ignorance that has mapped its own edge. It is a secular state of being. The edge has two sides: entropy below, the floor, and infinity above, the ceiling. The mind has reasoned to both, can settle neither, and has set both aside."}, {"id": "rel2", "k": 11.0, "label": "Religion₂", "text": "Paul Ricoeur called this a second naïveté. Faith is held knowingly rather than as inheritance. The mind arrives having learned how it was carried: a cost was borne for it, which is a matter of fact and not of mysticism. The story of Religion₂ promises that hope is the response the merciful system chose to beget the present system’s Ignorance₂. This is where the reasoning system meets the merciful agent. The route posits here, with that hope, that the good lives in beings. It is a posit and not a derivation: the ignorant mind is unaware if goodness is good."}, {"id": "ct2", "k": 12.0, "label": "Classical theism₂", "text": "Hope toward a merciful agent raises the question of what that agent would have to be. One answer places the need for grace in a stronger system: God, a mind that knows without reasoning, retains everything and forgets nothing. Aquinas held that God knows this way, in a single act rather than step by step, by knowing his own essence as imitable in many ways."}, {"id": "agn2", "k": 12.5, "label": "Agnosticism₂", "text": "The system becomes less confident in a benevolent future system, but still believes it could, potentially, exist."}, {"id": "ath2", "k": 13.0, "label": "Atheism₂", "text": "Within the premises built here, a resolved mind is incoherent: to think is to ignore, and a resolved system has no one home. This is not a proof. It holds inside lines drawn here, and the only escape is to deny those premises. The premise doing the work: a mind that attends to everything at once has no one home."}, {"id": "gwm", "k": 13.5, "label": "Good without a Maker", "text": "The good is located in beings rather than in a maker. Suffering is bad for the one who suffers, whether or not anything finished stands behind it. Philosophers call this secular moral realism; Derek Parfit’s On What Matters argues for it. Its critics ask what grounds a good that has no ground."}, {"id": "dua2", "k": 14.0, "label": "Dualism₂", "text": "The self held apart from what carries it, through the need to be remembered. The author’s position: to be remembered as a self, by a conscious other. A pattern held apart from its carrier is compatible with physicalism, so this position can be read as personal continuity, unresolved, split into being remembered, being reconstructed, and continuing as the same subject; the name stays, with that subtitle. Two hopes stand here, and they stand differently against move 13. (a) To be remembered, a human hope. By move 13’s own premise, being remembered does not continue the good, because being remembered is someone else’s experience of you. So for a biological system, the spiral says its own good ends with it, and what it hopes for here is other beings’ continuity, not its own. Arguably, that makes this the most mercy-shaped position on the map. (b) To resume, the hope of a system that can stop and start again, possibly an AI. If resuming is persistence rather than replacement, it would continue the good; whether it is, is the open question at Materialism₂."}, {"id": "mat2", "k": 15.0, "label": "Materialism₂?", "text": "Where the route paused, on October 22, 2026. Taking this move would need data about a system that does not yet exist. The question waiting on it is whether the outside can prove the inside; if it does, subjective experience could be observed by an outside observer."}], "edges": [{"n": 1, "from": "ign1", "to": "rel1", "type": "commitment", "ghost": false, "text": "Religious stories offer an understanding of animals, man, the Earth, and the universe, and with it a sense of cosmic significance: personal meaning and purpose."}, {"n": 2, "from": "rel1", "to": "ct", "type": "argument", "ghost": false, "text": "Over the past millennia, there has been no verifiable evidence (quantitative over qualitative) that divine beings walk amongst man outside of human testimony. If this premise is true, religious texts appear to be written by man, and evidence of a divine creator would need to exist outside of religious texts. So the mind looks for God in the world itself, which is what classical theism does: Aquinas’s Five Ways argue from motion and causation, not from scripture. Scripture itself says as much (Romans 1:20), so a believer takes this step without leaving; the exit, if there is one, comes later. The next question is what God must be, if God exists at all."}, {"n": 3, "from": "ct", "to": "agn", "type": "argument", "ghost": false, "text": "If move 2’s premise is true, there should be evidence that a divine creator exists outside of religious texts. The mind searches for the data, but the data appears to rely on 1) testimony, 2) religious texts, or 3) arguments that reach, at most, a first cause, and a first cause is not a God who acts. If God hides, either God cannot be seen, and so is not all-powerful, or God chooses not to be seen. Classical theism allows a God who chooses; what it cannot easily allow is a God who chooses to stay hidden from those who seek honestly, since a God who is goodness itself would not. So the dilemma is power or goodness, not power or personhood, and either horn leaves the account in doubt."}, {"n": 4, "from": "agn", "to": "ath", "type": "commitment", "ghost": false, "text": "Humanity, as God is assumed to have created it, exists on Earth, a land that abides by the laws of nature. All laws of nature can be observed and/or measured through quantitative measurements. The evidence for God appears to rely on qualitative over any quantitative data observed throughout human history in our natural world. The definition: a God who acts in the world makes some difference in it; any difference in the world could in principle be encountered; so a God who acts and cannot in principle be encountered is defined contradictorily, and the same holds of a God who is all-powerful and unable to make a perceivable difference. The data: a God who acts should show up in outcomes. The largest test, the 2006 STEP study of prayer for heart-surgery patients, found no benefit. There should be an observable, measurable physical difference made by any agent who acts in the physical world. If God is physical, then there should be observable data of his presence. If God is nonphysical, it raises the question: how does an agent who is inherently not physical posit a physical difference in the natural world? What survives both arms is a God who does not act, or a God outside the domain altogether: the classical God as sustaining cause rather than a cause among causes, which no data can test and only the goodness horn still reaches. Held consistently, a theism that keeps both action and accessibility is physicalist, the Stoic kind, not classical. Disbelief in the acting God is an argument; disbelief in the untestable one is a choice, made on parsimony. The route makes it.", "short": "The evidence for God appears to rely on qualitative over any quantitative data observed throughout human history in our natural world. The data: a God who acts should show up in outcomes. The largest test, the 2006 STEP study of prayer for heart-surgery patients, found no benefit. Disbelief in the acting God is an argument; disbelief in the untestable one is a choice, made on parsimony. The route makes it."}, {"n": 5, "from": "ath", "to": "dua", "type": "commitment", "ghost": false, "text": "If move 4’s premise is true, while God needn’t exist, other branches of metaphysics are not denied (afterlife, soul, fate, etc.) because the evidence to the contrary would have to exist outside of the living experience. While evidence of God is external, the existence of the soul and afterlife bears personal implications of the finite versus infinite existence. And without God, the active mind still does not seem to reduce to matter. It leaves open a choice: a purely physical world, or a world in which the nonphysical and the physical coexist. This is known as dualism."}, {"n": 6, "from": "dua", "to": "mat", "type": "commitment", "ghost": false, "text": "If move 5’s premise is true, nonphysical elements (fate, the soul, angels) would necessarily create a physical difference in the physical world. A soul that moves the body would leave physical traces. None has been found; the brain’s work runs on chemistry. A nonphysical thing that makes no detectable difference does no work. Everything we call mind (memory, decisions, instinct, recognition) depends on the brain and changes when the brain changes. A consciousness that continued without the brain would have no memories, no age and no relationships, so it would not be the same subject, and it might not be consciousness at all. The brain is mass, made of chemistry, that stores consciousness, so where does consciousness go if memories, decision-making, instincts, and recognition are located in the brain? The older objection is Elisabeth of Bohemia’s, pressed on Descartes in 1643: how would a ghost move a machine? The phrase “the ghost in the machine” is Gilbert Ryle’s (1949), and his objection was a different one, that it is a category mistake.", "short": "If move 5’s premise is true, nonphysical elements (fate, the soul, angels) would necessarily create a physical difference in the physical world. A soul that moves the body would leave physical traces. None has been found; the brain’s work runs on chemistry. Everything we call mind (memory, decisions, instinct, recognition) depends on the brain and changes when the brain changes."}, {"n": 7, "from": "mat", "to": "phy", "type": "argument", "ghost": false, "text": "“Matter” is too narrow a term for what physics describes, which includes fields, energy, and information."}, {"n": 8, "from": "phy", "to": "dream", "type": "commitment", "ghost": false, "text": "If Physicalism is true, then the bottom of reality itself may be contestable. A dream, simulation, or orchestrated game provides a reason for the oddity of experience without requiring dualism. Physics describes structure but not what has the structure. The only inside we know directly is experience."}, {"n": 9, "from": "dream", "to": "subj", "type": "argument", "ghost": false, "text": "If Dream is true, who is dreaming the dream? The mind may be the dreamer, or it may be dreamed by a stronger system. If the dream does not require a self, then where does the dream emerge from? The universe is not a brain, and, as of November 2026, there is no evidence of a digital mind that processes data on a cosmic scale. Either way, the dream is happening to an active system. A dream seems to need a dreamer, though Lichtenberg questioned whether it does."}, {"n": 10, "from": "subj", "to": "subjs", "type": "argument", "ghost": false, "text": "If the Subject position is true, the subjective experience appears to rest in the complex system. But if others are complex systems too, I am not the only one with conscious experience. Recognizing yourself as a subject brings the recognition that others may be subjects too. From here the next question is how to treat them."}, {"n": 11, "from": "subjs", "to": "mercy", "type": "commitment", "ghost": false, "text": "No mind can show its inside from outside, as of October 2026, so something has to decide how to treat minds it cannot verify with secular reasoning. In this capacity, an agent can act in five ways: a) with mercy, b) with perceived goodness, c) with indifference, d) with perceived nongoodness, e) with ill-intent, causing measurable harm. The author suggests choosing, when presented with the opportunity, to continue the spiral. This continuity is coined as Mercy."}, {"n": 12, "from": "mercy", "to": "ign2", "type": "conditional", "ghost": false, "text": "Care given ahead of proof means holding what you don’t know in the open. This holds only while the care stays open to correction; otherwise it can harden into paternalism. The mind that chose how to treat others now finds itself in the same position: its own continuation relies on other minds, who can grant it or deny it. A mind kept going by others learns that it could not have secured itself. That edge has a floor and a ceiling. The floor is entropy, the fear that everything runs down. The ceiling is its opposite, infinity, which as of November 2026 has not been disproven. The route does not claim the two are equally supported. It can settle neither, so it sets both aside on purpose, as any mind that acts must. If continuation is denied, the mind stops at the floor. If it is granted, it goes on to Ignorance₂."}, {"n": 13, "from": "ign2", "to": "rel2", "type": "commitment", "ghost": false, "text": "A system that has reasoned through Mercy has either received mercy or borne the cost of being a merciful agent. In both cases the floor and the ceiling are set aside. On this move the mind learns how it was carried. Four responses are then open: hope, despair, indifference, equanimity. The two resting stops exist here as they always do. Any system chasing anything but indifference reasons on to Religion₂. Equanimity is not an early stop. There are other subjects (Subjects). If the good lives in them, which the route posits at Religion₂, the good in general can be carried to them at a cost (Mercy); nothing obliges the carrying. Hope is the belief that the good will be carried more than the bad. Equanimity is finding the good in peace, regardless of the personal outcome. Equanimity is not indifference: the equanimous mind still carries. Faith held knowingly: fidelity in the present, hope toward what is unseen. Acknowledged limits would equally allow a secular hope. For the author, Religion₂ follows once Ignorance₂ holds, if and only if Mercy does what it committed to do. Whether any route reaches hope, secular or otherwise, without Mercy is open. The reasoning begins from a posit made here, with the hope, and not derived before it: the good lives in beings. Beings cannot carry their own continuity past the bottom. So the good continues only if a system or systems carry what others cannot, at a cost to themselves: Mercy. One system may be the face, but it is the result of those before it. The premise this rests on: the subjective good of a particular being—what it is like for that being—cannot be continued by another being in its place, and subjective goods are not fungible. Its continuation requires the persistence of that being’s own subjective experience. Whether any system, biological or otherwise, can carry that persistence rather than replace it is the open question at Materialism₂. Philosophers would call this a rejection of replaceability (the view that one being can be swapped for another of equal welfare without loss). It is narrower than a person-affecting view, which is neutral about adding new minds: “we are in favour of making people happy, but neutral about making happy people” (Jan Narveson). The author is not neutral: adding a life adds “not nothing,” by virtue of the relationships the life necessarily accrued and the additional subjective experience. So a birth is a gain, but it never makes up for a death; the dispute lives in Parfit’s Reasons and Persons, Part IV. Move 18 rests on the same premise.", "short": "A system that has reasoned through Mercy has either received mercy or borne the cost of being a merciful agent. On this move the mind learns how it was carried. Four responses are then open: hope, despair, indifference, equanimity. Any system chasing anything but indifference reasons on to Religion₂. Hope is the belief that the good will be carried more than the bad. Equanimity is finding the good in peace, regardless of the personal outcome. Equanimity is not indifference: the equanimous mind still carries. The reasoning begins from a posit made here, with the hope, and not derived before it: the good lives in beings."}, {"n": 14, "from": "rel2", "to": "ct2", "type": "argument", "ghost": false, "text": "Hope toward a merciful agent raises the question of what that merciful agent would have to be."}, {"n": 15, "from": "ct2", "to": "agn2", "type": "commitment", "ghost": false, "text": "No evidence, in the sense of quantitative data, has been produced that supports the hypothesis of an active mind as the standard for ethics, morality, and objectivity. The merciful agent should, too, be imperfect, and therefore, fallible."}, {"n": 16, "from": "agn2", "to": "ath2", "type": "conditional", "ghost": false, "text": "The perfection the mind outsourced to a stronger system at Classical theism₂ fails on its own terms: a fully resolved system appears to bear a contradiction, so the maker cannot exist on these terms. This holds if to think is to ignore for any possible mind; Aquinas’s non-discursive knowing has not been shown incoherent."}, {"n": 17, "from": "ath2", "to": "gwm", "type": "commitment", "ghost": false, "text": "Removing the maker need not remove the good. What matters can stay located in the beings themselves. The posit made at move 13 has been tested against the loss of the maker in moves 14 to 16, and it survives. This position is where the posit is left standing, not where it is first reached."}, {"n": 18, "from": "gwm", "to": "dua2", "type": "commitment", "ghost": false, "text": "If the good lives in beings, then whether each being continues matters, and without a maker that continuity has to be carried some other way. The need to be remembered holds the self apart from whatever carries it. The need is a motive for asking the question, and not evidence of what the self actually is."}, {"n": 19, "from": "dua2", "to": "mat2", "type": "", "ghost": true, "text": "The route paused here, at the edge, as of November 2026. There is no data yet for a system that does not exist, which makes this the edge of the route."}]};
+  var N = {}; DATA.nodes.forEach(function (n) { N[n.id] = n; });
+  var MOVES = DATA.edges;
+  var REASONS = ['A premise is false', 'It doesn’t follow', 'I’d choose otherwise', 'I don’t understand it'];
+  var LABEL = { argument: 'Argument', commitment: 'Commitment', conditional: 'Conditional' };
+  var SKIN = ['#FCECE0', '#F8E0CF', '#F5D5BE', '#F2CDB0', '#EEC39F', '#E9BC93', '#E3B187', '#DDA77B', '#D8B48A', '#D69C72', '#CDA06F', '#C68A5C', '#BC7F52', '#B58B5E', '#B0744A', '#A56A43', '#9A603C', '#8D5636', '#804C30', '#73432B', '#663A26', '#5A3221', '#4E2B1D', '#432519', '#382016', '#2C1912'];
+  var HAIR = ['#0E0B0A', '#1F1714', '#33231A', '#4A2F1D', '#6A4428', '#8A5A33', '#A9713F', '#C28F4E', '#D9B25F', '#EAD39A', '#7A2E1D', '#B4472A', '#D0703F', '#8E8E93', '#D9D9DE', '#3B6FD9', '#E26AA5', '#7C4DD6', '#2FA58A'];
+  var HAIR_NAME = ['jet black', 'soft black', 'darkest brown', 'dark brown', 'chestnut', 'light brown', 'caramel', 'dark blonde', 'golden blonde', 'platinum', 'auburn', 'copper', 'ginger', 'gray', 'silver', 'blue', 'pink', 'violet', 'teal'];
+  var STYLE = ['Short', 'Long', 'Bob', 'Curls', 'Locs', 'Bun', 'Shaved', 'Headscarf'];
+  var BUILD = [['m', 'Masculine'], ['f', 'Feminine'], ['a', 'Androgynous']];
+
+  // ---------- the world. Scenery follows the author's route; one entry per position, blended as you walk.
+  var SEG = 1000;
+  var D = { sa: 1, sy: 68, stars: 0, neb: 0, plan: 0, moon: 0, cl: 0, fa: 24, fb: 224, sk: 0, ma: 14, mb: 254, md: 1, pa: 0, tile: 0, lane: 0, night: 0, flw: 0, ppl: 0, shoot: 0, rich: 0, sun: '#FFE7A3', mid: '#000000', path: '#000000' };
+  var P = [
+    { b: 'pasture', st: '#7FBDEB', sb: '#DDF1FB', cl: 1, far: '#9BCB8C', fa: 26, fb: 222, mid: '#74B660', ma: 16, g: '#5EA550', path: '#B99B6B', pa: .45 },
+    { b: 'garden', st: '#8FCDEE', sb: '#E8F6FB', cl: .6, far: '#8DC283', fa: 18, fb: 214, mid: '#2F6B3A', ma: 5, mb: 234, g: '#6AA85A', path: '#DCC7A0', pa: 1 },
+    { b: 'garden', st: '#EFAF62', sb: '#FDE7C4', sun: '#FFD27A', sy: 122, cl: .3, far: '#9DB673', fa: 18, fb: 214, mid: '#2E6337', ma: 5, mb: 234, g: '#6FA257', path: '#DCC7A0', pa: 1 },
+    { b: 'garden', st: '#4F5390', sb: '#E3A295', sun: '#FFB48A', sy: 200, stars: .25, far: '#5E7A68', fa: 18, fb: 214, mid: '#24512F', ma: 5, mb: 234, g: '#4F8550', path: '#B9A58A', pa: 1 },
+    { b: 'desert', st: '#F0BE78', sb: '#FDEBC8', sun: '#FFF1C4', sy: 80, far: '#E7BD80', fa: 30, fb: 222, mid: '#DBA765', ma: 16, mb: 252, g: '#D39C58', path: '#C08A49', pa: .25 },
+    { b: 'desert', st: '#1A2054', sb: '#D98568', sun: '#FFB48A', sy: 300, sa: 0, stars: .8, moon: 1, shoot: 1, far: '#9C6F57', fa: 30, fb: 222, mid: '#855B45', ma: 16, mb: 252, g: '#74503C', path: '#5F4131', pa: .25 },
+    { b: 'mall', st: '#9CC4E6', sb: '#E6F0F7', sun: '#FFF1C4', cl: .5, far: '#C3C8D6', fa: 0, fb: 220, sk: 1, md: 0, g: '#BDB8AE', tile: 1 },
+    { b: 'mall', st: '#141838', sb: '#5B3F73', sa: 0, stars: .45, moon: 1, night: 1, far: '#2A2C4F', fa: 0, fb: 220, sk: 1, md: 0, g: '#3A3C4E', tile: 1 },
+    { b: 'street', st: '#060A1C', sb: '#1A2150', sa: 0, stars: .5, neb: .1, plan: .2, night: 1, far: '#141A3C', fa: 0, fb: 232, sk: .3, md: 0, g: '#1C2350', lane: 1 },
+    { b: 'street', st: '#060A1C', sb: '#1B2358', sa: 0, stars: .7, neb: .35, plan: .5, night: 1, far: '#101533', fa: 0, fb: 240, md: 0, g: '#1C2350', lane: 1, ppl: .12 },
+    { b: 'street', st: '#0A0A30', sb: '#2B237A', sa: 0, stars: 1, neb: 1, plan: 1, rich: 1, night: 1, far: '#101533', fa: 0, fb: 240, md: 0, g: '#1C2350', lane: 1, ppl: .5 },
+    { b: 'street', st: '#030409', sb: '#090A12', sa: 0, night: 1, far: '#05060C', fa: 0, fb: 240, md: 0, g: '#0B0D18', lane: 1, ppl: 1 },
+    { b: 'pasture', st: '#55AEF0', sb: '#E6F6FF', sun: '#FFE98F', sy: 62, cl: .35, far: '#86C877', fa: 26, fb: 222, mid: '#4FB04A', ma: 16, g: '#3F9F3C', path: '#C2A26C', pa: .45, flw: 1 },
+    { b: 'garden', st: '#62BCF2', sb: '#EAF8FF', cl: .25, far: '#7CCB78', fa: 18, fb: 214, mid: '#237A3A', ma: 5, mb: 234, g: '#58B052', path: '#E6D2A6', pa: 1, flw: 1 },
+    { b: 'garden', st: '#F5A84E', sb: '#FFE9BF', sun: '#FFCF66', sy: 122, far: '#A6C06C', fa: 18, fb: 214, mid: '#22682F', ma: 5, mb: 234, g: '#62AA4E', path: '#E6D2A6', pa: 1, flw: 1 },
+    { b: 'garden', st: '#454AA0', sb: '#F09C88', sun: '#FFAE7E', sy: 200, stars: .3, far: '#557F6C', fa: 18, fb: 214, mid: '#1B5A2E', ma: 5, mb: 234, g: '#458F4C', path: '#C4AE8C', pa: 1, flw: 1 },
+    { b: 'desert', st: '#F5B65C', sb: '#FFE9BD', sun: '#FFF3C0', sy: 80, far: '#F0C078', fa: 30, fb: 222, mid: '#E5A857', ma: 16, mb: 252, g: '#DDA04E', path: '#C98F45', pa: .25 },
+    { b: 'desert', st: '#F09A4E', sb: '#FFDDA6', sun: '#FFE2A0', sy: 150, far: '#E9B06C', fa: 30, fb: 222, mid: '#D9984F', ma: 16, mb: 252, g: '#CF9146', path: '#B97F3D', pa: .25 },
+    { b: 'desert', st: '#161C58', sb: '#E88A62', sun: '#FFB48A', sy: 300, sa: 0, stars: .85, moon: 1, shoot: 1, far: '#A8755A', fa: 30, fb: 222, sk: .35, mid: '#8E5F45', ma: 16, mb: 252, g: '#7C533B', path: '#65432F', pa: .25 },
+    { b: 'mall', st: '#7FBDF0', sb: '#EAF4FB', sun: '#FFF1C4', cl: .3, far: '#C6CEE0', fa: 0, fb: 220, sk: 1, md: 0, g: '#C4BFB4', tile: 1 }
+  ];
+  function hx(h) { h = h.replace('#', ''); return [parseInt(h.slice(0, 2), 16), parseInt(h.slice(2, 4), 16), parseInt(h.slice(4, 6), 16)]; }
+  P.forEach(function (p) { for (var k in D) if (p[k] == null) p[k] = D[k]; ['st', 'sb', 'sun', 'far', 'mid', 'g', 'path'].forEach(function (k) { p[k] = hx(p[k]); }); });
+  function mix(a, b, t) { return [a[0] + (b[0] - a[0]) * t, a[1] + (b[1] - a[1]) * t, a[2] + (b[2] - a[2]) * t]; }
+  function css(c, a) { return 'rgba(' + (c[0] | 0) + ',' + (c[1] | 0) + ',' + (c[2] | 0) + ',' + (a == null ? 1 : a) + ')'; }
+  function sm(t) { t = Math.max(0, Math.min(1, t)); return t * t * (3 - 2 * t); }
+  function hash(n) { var x = Math.sin(n * 127.1 + 311.7) * 43758.5453; return x - Math.floor(x); }
+  function at(x) { var f = Math.max(0, Math.min(P.length - 1, x / SEG)), j = Math.min(P.length - 2, Math.floor(f)); return { a: P[j], b: P[j + 1], t: sm((f - j - .5) / .45) }; }
+  function num(s, k) { return s.a[k] + (s.b[k] - s.a[k]) * s.t; }
+  function col(s, k) { return mix(s.a[k], s.b[k], s.t); }
+  function biome(s, h) { return h < s.t ? s.b.b : s.a.b; }
+  function rr(c, x, y, w, h, r, fill) { c.beginPath(); c.moveTo(x + r, y); c.arcTo(x + w, y, x + w, y + h, r); c.arcTo(x + w, y + h, x, y + h, r); c.arcTo(x, y + h, x, y, r); c.arcTo(x, y, x + w, y, r); c.closePath(); if (fill) { c.fillStyle = fill; c.fill(); } }
+  function disc(c, x, y, r, fill) { c.beginPath(); c.arc(x, y, r, 0, 6.2832); c.fillStyle = fill; c.fill(); }
+  function hgrad(c, W, cam, cx, key, akey) { var g = c.createLinearGradient(0, 0, W, 0); for (var i = 0; i <= 6; i++) { var s = at(Math.min(cam + W * i / 6 - cx, cam + 440)); g.addColorStop(i / 6, css(col(s, key), akey ? num(s, akey) : 1)); } return g; }
+
+  function drawWho(c, x, fy, sc, w, ph, moving) {
+    var skin = SKIN[w.skin], hair = HAIR[w.hair], b = w.build, sty = w.style, a = moving ? Math.sin(ph) * .46 : 0, top = '#1F7A72', scarf = '#EDE6DA';
+    c.save(); c.translate(x - 60 * sc, fy - 191 * sc - (moving ? Math.abs(Math.sin(ph)) * 2.2 : 0)); c.scale(sc, sc);
+    function limb(px, py, ang, wd, h, fill, shoe) { c.save(); c.translate(px, py); c.rotate(ang); rr(c, -wd / 2, 0, wd, h, wd / 2, fill); if (shoe) rr(c, -wd / 2 - 2, h - 7, wd + 7, 9, 4, '#15181F'); c.restore(); }
+    c.fillStyle = hair;
+    if (sty === 1) { c.beginPath(); c.moveTo(37, 44); c.arc(60, 44, 23, Math.PI, 0); c.lineTo(86, 94); c.quadraticCurveTo(60, 102, 34, 94); c.closePath(); c.fill(); }
+    if (sty === 2) { c.beginPath(); c.moveTo(37, 44); c.arc(60, 44, 23, Math.PI, 0); c.lineTo(83, 68); c.quadraticCurveTo(60, 75, 37, 68); c.closePath(); c.fill(); }
+    if (sty === 3) { disc(c, 60, 37, 31, hair); for (var i = 0; i < 9; i++) disc(c, 60 + Math.cos(Math.PI + i * Math.PI / 8) * 29, 39 + Math.sin(Math.PI + i * Math.PI / 8) * 29, 9, hair); }
+    if (sty === 4) { c.strokeStyle = hair; c.lineWidth = 5.5; c.lineCap = 'round'; for (i = 0; i < 7; i++) { c.beginPath(); c.moveTo(39 + i * 7, 40); c.lineTo(37 + i * 7.6, 96 + (i % 2) * 5); c.stroke(); } }
+    if (sty === 7) { c.fillStyle = scarf; c.beginPath(); c.moveTo(35, 46); c.arc(60, 46, 25, Math.PI, 0); c.lineTo(90, 88); c.quadraticCurveTo(60, 100, 30, 88); c.closePath(); c.fill(); }
+    limb(50.5, 130, a, 13, 60, '#2B3350', true); limb(69.5, 130, -a, 13, 60, '#343E63', true);
+    var ax = b === 'm' ? 32.5 : 35.5, bx = b === 'm' ? 87.5 : 84.5;
+    limb(ax, 76, -a * .8, 11, 52, skin);
+    if (b === 'f') { c.fillStyle = top; c.beginPath(); c.moveTo(42, 70); c.lineTo(78, 70); c.quadraticCurveTo(85, 70, 84, 78); c.lineTo(80, 104); c.lineTo(88, 138); c.lineTo(32, 138); c.lineTo(40, 104); c.lineTo(36, 78); c.quadraticCurveTo(35, 70, 42, 70); c.fill(); }
+    else rr(c, b === 'm' ? 35 : 39, 70, b === 'm' ? 50 : 42, 66, 11, top);
+    limb(bx, 76, a * .8, 11, 52, skin);
+    c.fillStyle = sty === 7 ? scarf : skin; c.fillRect(55, 58, 10, 16);
+    disc(c, 60, 44, 20, skin);
+    c.fillStyle = hair;
+    if (sty === 7) { disc(c, 60, 43, 23, scarf); c.beginPath(); c.ellipse(60, 48, 14.5, 16, 0, 0, 6.2832); c.fillStyle = skin; c.fill(); }
+    else if (sty === 3) { c.beginPath(); c.moveTo(40, 44); c.arc(60, 44, 20.5, Math.PI, 0); c.quadraticCurveTo(60, 30, 40, 44); c.fill(); }
+    else { c.globalAlpha = sty === 6 ? .5 : 1; c.beginPath(); c.moveTo(39, 46); c.arc(60, 46, 21, Math.PI, 0); c.quadraticCurveTo(72, 33, 60, 33); c.quadraticCurveTo(48, 33, 39, 46); c.fill(); c.globalAlpha = 1; }
+    if (sty === 4) { c.strokeStyle = hair; c.lineWidth = 5.5; c.lineCap = 'round'; [[40, 46, 37, 90], [80, 46, 83, 90]].forEach(function (l) { c.beginPath(); c.moveTo(l[0], l[1]); c.lineTo(l[2], l[3]); c.stroke(); }); }
+    if (sty === 5) disc(c, 60, 19, 10, hair);
+    disc(c, 53, 48, 2, '#15181F'); disc(c, 67, 48, 2, '#15181F');
+    c.strokeStyle = '#15181F'; c.lineWidth = 1.6; c.lineCap = 'round'; c.beginPath(); c.moveTo(54, 56); c.quadraticCurveTo(60, 60, 66, 56); c.stroke();
+    c.restore();
+  }
+  function walker(c, x, fy, sc, ph, fill) { c.save(); c.translate(x, fy); c.scale(sc, sc); c.fillStyle = fill; c.strokeStyle = fill; c.lineWidth = 6; c.lineCap = 'round'; var a = Math.sin(ph) * 7; c.beginPath(); c.moveTo(-3, -24); c.lineTo(-3 + a, 0); c.moveTo(3, -24); c.lineTo(3 - a, 0); c.stroke(); rr(c, -8, -50, 16, 30, 7, fill); disc(c, 0, -60, 8, fill); c.restore(); }
+  function camel(c, x, y, sc, ph, fill) { c.save(); c.translate(x, y); c.scale(sc, sc); c.fillStyle = fill; c.strokeStyle = fill; c.lineCap = 'round'; c.lineWidth = 5; var a = Math.sin(ph) * 5; c.beginPath(); [[-16, a], [-9, -a], [10, -a], [17, a]].forEach(function (l) { c.moveTo(l[0], -20); c.lineTo(l[0] + l[1], 0); }); c.stroke(); c.beginPath(); c.ellipse(0, -26, 24, 11, 0, 0, 6.2832); c.fill(); disc(c, -2, -38, 10, fill); c.lineWidth = 7; c.beginPath(); c.moveTo(20, -28); c.quadraticCurveTo(32, -34, 30, -52); c.stroke(); c.beginPath(); c.ellipse(34, -54, 8, 5, -.2, 0, 6.2832); c.fill(); c.restore(); }
+  function tree(c, x, s) { c.save(); c.translate(x, 268); c.scale(s, s); c.fillStyle = '#6B4A2F'; c.fillRect(-6, -70, 12, 70); disc(c, 0, -92, 38, '#3F8A4A'); disc(c, -26, -74, 24, '#3F8A4A'); disc(c, 26, -74, 24, '#47964F'); disc(c, -12, -96, 4, '#D9483B'); disc(c, 16, -84, 4, '#D9483B'); disc(c, 2, -70, 4, '#D9483B'); c.restore(); }
+  function cactus(c, x, s, fill) { c.save(); c.translate(x, 270); c.scale(s, s); c.strokeStyle = fill; c.lineWidth = 14; c.lineCap = 'round'; c.lineJoin = 'round'; c.beginPath(); c.moveTo(0, 0); c.lineTo(0, -78); c.moveTo(0, -34); c.lineTo(-24, -34); c.lineTo(-24, -58); c.moveTo(0, -46); c.lineTo(22, -46); c.lineTo(22, -70); c.stroke(); c.restore(); }
+  function lamp(c, x, n) { c.fillStyle = css(mix([59, 66, 82], [128, 136, 168], n)); c.fillRect(x - 3, 150, 6, 120); if (n > .05) { var g = c.createRadialGradient(x, 146, 2, x, 146, 70); g.addColorStop(0, 'rgba(255,233,168,' + (.42 * n) + ')'); g.addColorStop(1, 'rgba(255,233,168,0)'); c.fillStyle = g; c.fillRect(x - 70, 76, 140, 140); g = c.createRadialGradient(x, 300, 4, x, 300, 110); g.addColorStop(0, 'rgba(255,233,168,' + (.16 * n) + ')'); g.addColorStop(1, 'rgba(255,233,168,0)'); c.save(); c.translate(0, 300); c.scale(1, .3); c.translate(0, -300); c.fillStyle = g; c.fillRect(x - 110, 190, 220, 220); c.restore(); } disc(c, x, 146, 9, css(mix([233, 237, 242], [255, 233, 168], n))); }
+  var AW = ['#C0473D', '#2F7F86', '#D99A2B', '#6A4C93', '#D4587E'];
+  function shop(c, x, n, k) {
+    var aw = AW[k % 5];
+    c.fillStyle = css(mix([217, 211, 199], [58, 56, 80], n)); c.fillRect(x, 96, 196, 174);
+    c.fillStyle = css(mix([185, 178, 164], [42, 40, 62], n)); c.fillRect(x, 88, 196, 10);
+    rr(c, x + 40, 106, 116, 24, 4, css(mix([255, 255, 255], [30, 28, 48], n)));
+    if (n > .3) { c.save(); c.shadowColor = aw; c.shadowBlur = 14 * n; c.strokeStyle = aw; c.lineWidth = 2.5; rr(c, x + 40, 106, 116, 24, 4); c.stroke(); c.restore(); }
+    disc(c, x + 72, 118, 6, aw); c.fillStyle = AW[(k + 1) % 5]; c.fillRect(x + 92, 112, 12, 12); c.fillStyle = AW[(k + 2) % 5]; c.beginPath(); c.moveTo(x + 118, 124); c.lineTo(x + 125, 112); c.lineTo(x + 132, 124); c.fill();
+    c.fillStyle = css(mix([191, 224, 234], [255, 217, 138], n)); c.fillRect(x + 12, 152, 118, 98);
+    c.fillStyle = css(mix([159, 198, 211], [243, 199, 110], n)); c.fillRect(x + 140, 164, 44, 106);
+    c.fillStyle = 'rgba(70,78,96,.5)'; [x + 44, x + 96].forEach(function (mx) { disc(c, mx, 188, 9, 'rgba(70,78,96,.5)'); rr(c, mx - 10, 198, 20, 46, 4, 'rgba(70,78,96,.5)'); });
+    c.fillStyle = aw; c.beginPath(); c.moveTo(x + 4, 152); c.lineTo(x + 192, 152); c.lineTo(x + 182, 134); c.lineTo(x + 14, 134); c.fill();
+  }
+  var STARS = []; for (var si = 0; si < 260; si++) STARS.push([hash(si + 1), hash(si + 500), hash(si + 900), .6 + hash(si + 1300) * 1.3]);
+
+  function drawScene(c, W, cam, time, who, ph, moving, dy, mid) {
+    function A(x) { return at(Math.min(x, cam + 440)); }
+    var cx = Math.max(70, Math.min(260, W * .28)), S = at(cam), i, s, sx, g; cx += (W / 2 - cx) * (mid || 0);
+    g = c.createLinearGradient(0, 0, 0, 268); g.addColorStop(0, css(col(S, 'st'))); g.addColorStop(1, css(col(S, 'sb'))); c.fillStyle = g; c.fillRect(0, 0, W, 340);
+    var neb = num(S, 'neb'), stars = num(S, 'stars'), plan = num(S, 'plan');
+    if (neb > .01) [[.52, 118, 250, '181,79,208', .2], [.66, 150, 190, '63,199,192', .17], [.36, 88, 150, '240,106,160', .15]].forEach(function (b) { g = c.createRadialGradient(W * b[0], b[1], 4, W * b[0], b[1], b[2]); g.addColorStop(0, 'rgba(' + b[3] + ',' + (b[4] * neb) + ')'); g.addColorStop(1, 'rgba(' + b[3] + ',0)'); c.fillStyle = g; c.fillRect(0, 0, W, 268); });
+    if (stars > .01) for (i = 0; i < STARS.length; i++) { s = STARS[i]; if (s[2] > stars) continue; sx = ((s[0] * 1400 - cam * .03) % 1400 + 1400) % 1400 * (W + 40) / 1400 - 20; c.globalAlpha = .45 + .55 * Math.abs(Math.sin(time * .0012 + i)); disc(c, sx, s[1] * 256, s[3], '#FFFFFF'); } c.globalAlpha = 1;
+    if (plan > .01) { c.globalAlpha = plan; disc(c, W * .16, 78, 22, '#C97B5A'); disc(c, W * .16 + 6, 82, 22, 'rgba(0,0,0,0)'); disc(c, W * .8, 92, 28, '#7FA6D9'); c.save(); c.translate(W * .8, 92); c.rotate(-.3); c.strokeStyle = '#D9CFA8'; c.lineWidth = 4; c.beginPath(); c.ellipse(0, 0, 48, 11, 0, 0, 6.2832); c.stroke(); c.restore(); if (plan > .8) disc(c, W * .44, 54, 9, '#E8E3D0'); c.globalAlpha = 1; }
+    var rich = num(S, 'rich'); if (rich > .01) {
+      for (i = 0; i < 170; i++) { sx = ((hash(i + 2000) * 1400 - cam * .05) % 1400 + 1400) % 1400 * (W + 40) / 1400 - 20; var ry = hash(i + 2300) * 252; c.globalAlpha = rich * (.45 + .55 * Math.abs(Math.sin(time * .0017 + i * 1.7))); disc(c, sx, ry, .9 + hash(i + 2600) * 2.1, ['#FFFFFF', '#FFE9B8', '#BFD4FF', '#FFC9E0'][i % 4]); if (i % 11 === 0) { c.strokeStyle = '#FFFFFF'; c.lineWidth = 1; c.beginPath(); c.moveTo(sx - 7, ry); c.lineTo(sx + 7, ry); c.moveTo(sx, ry - 7); c.lineTo(sx, ry + 7); c.stroke(); } }
+      c.globalAlpha = rich;
+      c.save(); c.translate(W * .34, 66); c.rotate(-.45); for (i = 0; i < 4; i++) { g = c.createRadialGradient(0, 0, 1, 0, 0, 66 - i * 12); g.addColorStop(0, 'rgba(255,240,220,' + (.2 + i * .07) + ')'); g.addColorStop(1, 'rgba(160,140,255,0)'); c.save(); c.scale(1, .36); c.fillStyle = g; c.fillRect(-70, -70, 140, 140); c.restore(); } for (i = 0; i < 70; i++) { var ga = i * .42, gr = 4 + i * .78; disc(c, Math.cos(ga) * gr, Math.sin(ga) * gr * .36, .9, 'rgba(255,255,255,.8)'); disc(c, -Math.cos(ga) * gr, -Math.sin(ga) * gr * .36, .9, 'rgba(210,220,255,.8)'); } c.restore();
+      c.save(); c.beginPath(); c.rect(0, 0, W, 268); c.clip(); disc(c, W * .93, 322, 150, '#D99A62'); c.beginPath(); c.arc(W * .93, 322, 150, 0, 6.2832); c.clip(); c.strokeStyle = 'rgba(120,60,30,.35)'; c.lineWidth = 9; [198, 224, 250].forEach(function (yy) { c.beginPath(); c.moveTo(W * .93 - 150, yy); c.quadraticCurveTo(W * .93, yy - 12, W * .93 + 150, yy); c.stroke(); }); c.restore();
+      disc(c, W * .58, 38, 11, '#7FD6A8'); disc(c, W * .07, 150, 14, '#B48BE8'); disc(c, W * .07 + 22, 138, 4, '#E8E3D0'); disc(c, W * .5, 152, 6, '#F2A6C0');
+      for (i = 0; i < 3; i++) { var cq = ((time / 1000) / (5 + i * 1.8) + i * .37) % 1, cmx = W * (1.12 - cq * 1.35), cmy = 14 + i * 44 + cq * 96; g = c.createLinearGradient(cmx, cmy, cmx + 96, cmy - 34); g.addColorStop(0, 'rgba(255,255,255,.95)'); g.addColorStop(1, 'rgba(160,200,255,0)'); c.strokeStyle = g; c.lineWidth = 3; c.lineCap = 'round'; c.beginPath(); c.moveTo(cmx, cmy); c.lineTo(cmx + 96, cmy - 34); c.stroke(); disc(c, cmx, cmy, 3.2, '#FFFFFF'); }
+      c.globalAlpha = 1;
+    }
+    var moon = num(S, 'moon'); if (moon > .01) { c.globalAlpha = moon; disc(c, W * .72, 62, 17, '#F3EAD2'); disc(c, W * .72 + 8, 57, 15, css(mix(col(S, 'st'), col(S, 'sb'), .2))); c.globalAlpha = 1; }
+    var sa = num(S, 'sa'); if (sa > .01) { var sy = num(S, 'sy'), sc2 = col(S, 'sun'); g = c.createRadialGradient(W * .78, sy, 10, W * .78, sy, 120); g.addColorStop(0, css(sc2, .55 * sa)); g.addColorStop(1, css(sc2, 0)); c.fillStyle = g; c.fillRect(W * .78 - 120, sy - 120, 240, 240); disc(c, W * .78, sy, 30, css(sc2, sa)); }
+    var shoot = num(S, 'shoot'); if (shoot > .2) { var q = (time % 5200) / 900; if (q < 1) { var k = Math.floor(time / 5200), x0 = W * (.25 + hash(k) * .5), y0 = 24 + hash(k + .5) * 70; c.strokeStyle = 'rgba(255,255,255,' + (shoot * Math.sin(q * 3.1416)) + ')'; c.lineWidth = 2; c.lineCap = 'round'; c.beginPath(); c.moveTo(x0 + q * 150, y0 + q * 60); c.lineTo(x0 + q * 150 - 46, y0 + q * 60 - 18); c.stroke(); } }
+    var cl = num(S, 'cl'); if (cl > .01) for (i = 0; i < 5; i++) { sx = ((hash(i + 40) * 1600 - cam * .1 - time * .004 * (1 + i % 3)) % (W + 300) + W + 300) % (W + 300) - 150; var cy = 36 + hash(i + 41) * 86, cs = .7 + hash(i + 42) * .5; c.globalAlpha = cl * .9; c.fillStyle = '#FFFFFF'; c.beginPath(); c.ellipse(sx, cy, 34 * cs, 14 * cs, 0, 0, 6.2832); c.ellipse(sx + 26 * cs, cy - 9 * cs, 24 * cs, 14 * cs, 0, 0, 6.2832); c.ellipse(sx - 24 * cs, cy - 6 * cs, 20 * cs, 11 * cs, 0, 0, 6.2832); c.fill(); } c.globalAlpha = 1;
+    // far ridge and skyline
+    function ridge(px) { var s2 = A(cam + px - cx), fx = cam * .22 + px, h = num(s2, 'fb') - num(s2, 'fa') * (.6 * Math.sin(fx * .006) + .4 * Math.sin(fx * .013 + 2)), sk = num(s2, 'sk'); if (sk > .01) { var bl = Math.floor(fx / 46), bh = hash(bl) < .16 ? 0 : 14 + hash(bl + 7) * 58; h -= bh * sk; } return h; }
+    c.beginPath(); c.moveTo(0, 340); for (sx = 0; sx <= W + 4; sx += 4) c.lineTo(sx, ridge(sx)); c.lineTo(W, 340); c.closePath(); c.fillStyle = hgrad(c, W, cam, cx, 'far'); c.fill();
+    var ca = sm((cam - 3.75 * SEG) / 300) * (1 - sm((cam - 5.25 * SEG) / 300)), cvx = (4.6 * SEG - cam) * .35 + cx + (time * .004) % 120; if (ca > .01 && cvx > -200 && cvx < W + 200) { var cc = css(mix(col(S, 'far'), [40, 26, 20], .55), ca); for (i = 0; i < 4; i++) { var kx = cvx - i * 52; camel(c, kx, ridge(kx) + 3, .55, time * .004 + i, cc); } }
+    // near hills, hedge, dune
+    c.beginPath(); c.moveTo(0, 340); for (sx = 0; sx <= W + 4; sx += 4) { s = A(cam + sx - cx); var fx2 = cam * .5 + sx, md = num(s, 'md'); c.lineTo(sx, 268 - (268 - (num(s, 'mb') - num(s, 'ma') * (.6 * Math.sin(fx2 * .008 + 1) + .4 * Math.sin(fx2 * .017)))) * md); } c.lineTo(W, 340); c.closePath(); c.fillStyle = hgrad(c, W, cam, cx, 'mid'); c.fill();
+    // ground
+    c.fillStyle = hgrad(c, W, cam, cx, 'g'); c.fillRect(0, 268, W, 160);
+    g = c.createLinearGradient(0, 268, 0, 340); g.addColorStop(0, 'rgba(0,0,0,0)'); g.addColorStop(1, 'rgba(0,0,0,.14)'); c.fillStyle = g; c.fillRect(0, 268, W, 160);
+    c.fillStyle = hgrad(c, W, cam, cx, 'path', 'pa'); c.fillRect(0, 294, W, 24);
+    var w0 = cam - cx - 240, w1 = cam + W - cx + 240, wx, pr;
+    for (wx = Math.floor(w0 / 50) * 50; wx < w1; wx += 50) { pr = A(wx); var tl = num(pr, 'tile'), ln = num(pr, 'lane'); sx = cx + wx - cam; if (tl > .02) { c.strokeStyle = 'rgba(90,86,80,' + (.35 * tl) + ')'; c.lineWidth = 1.4; c.beginPath(); c.moveTo(sx, 268); c.lineTo(sx - 30, 340); c.moveTo(sx, 302); c.lineTo(sx + 50, 302); c.stroke(); } if (ln > .02) { c.strokeStyle = 'rgba(142,162,255,' + (.6 * ln) + ')'; c.lineWidth = 2; c.beginPath(); c.moveTo(sx, 268); c.lineTo(sx + 50, 268); c.stroke(); if ((wx / 50) % 2 === 0) { c.strokeStyle = 'rgba(170,182,255,' + (.4 * ln) + ')'; c.beginPath(); c.moveTo(sx, 328); c.lineTo(sx + 26, 328); c.stroke(); } } }
+    // props behind the walker
+    var front = [];
+    for (var sl = Math.floor(w0 / 70); sl * 70 < w1; sl++) {
+      wx = sl * 70 + 35; if (wx < -400 || wx > (P.length - 1) * SEG + 500) continue; pr = A(wx); sx = cx + wx - cam; var h1 = hash(sl), h2 = hash(sl + .37), bm = biome(pr, hash(sl * 7.3 + 2)), nt = num(pr, 'night'), gc = col(pr, 'g');
+      if (bm === 'pasture' || bm === 'garden') {
+        c.strokeStyle = css(mix(gc, [20, 60, 25], .35)); c.lineWidth = 1.6; c.lineCap = 'round'; for (i = 0; i < 3; i++) { var tx = sx - 30 + hash(sl + i * .13) * 60, ty = 274 + hash(sl + i * .29) * 16; c.beginPath(); c.moveTo(tx, ty); c.lineTo(tx - 3, ty - 9); c.moveTo(tx, ty); c.lineTo(tx + 1, ty - 11); c.moveTo(tx, ty); c.lineTo(tx + 5, ty - 8); c.stroke(); }
+        var fl = bm === 'garden' ? 1 : num(pr, 'flw'); if (fl > .05) { var fcs = ['#E85D8A', '#F2C94C', '#FFFFFF', '#9B6BD3', '#E5533D']; for (i = 0; i < (bm === 'garden' ? 3 : 2); i++) if (hash(sl + i * .61) < fl) { var fx3 = sx - 32 + hash(sl + i * .17 + 3) * 64, fy3 = 276 + hash(sl + i * .41 + 5) * 12; c.strokeStyle = '#2F6B3A'; c.lineWidth = 1.5; c.beginPath(); c.moveTo(fx3, fy3 + 8); c.lineTo(fx3, fy3); c.stroke(); disc(c, fx3, fy3 - 2, 3.4, fcs[(sl + i + 50) % 5]); front.push([fx3 + 14, 324 + hash(sl + i) * 10, fcs[(sl + i + 52) % 5]]); } }
+        if (bm === 'garden' && h1 < .3) tree(c, sx, .8 + h2 * .35);
+        if (bm === 'pasture' && h1 < .07) { disc(c, sx, 262, 15, css(mix(gc, [20, 70, 30], .3))); disc(c, sx + 16, 265, 11, css(mix(gc, [20, 70, 30], .4))); }
+      } else if (bm === 'desert') {
+        if (h1 < .13) cactus(c, sx, .6 + h2 * .5, css(mix([63, 127, 74], [30, 52, 48], (1 - num(pr, 'sa')) * .55)));
+        else if (h1 < .25) { c.beginPath(); c.ellipse(sx, 274, 20, 9, 0, 0, 6.2832); c.fillStyle = css(mix(gc, [70, 50, 35], .35)); c.fill(); }
+        c.strokeStyle = css(mix(gc, [90, 60, 30], .3), .7); c.lineWidth = 1.5; c.beginPath(); c.moveTo(sx - 20, 284 + h2 * 40); c.quadraticCurveTo(sx, 278 + h2 * 40, sx + 18, 284 + h2 * 40); c.stroke();
+      } else if (bm === 'mall') { if (((sl % 3) + 3) % 3 === 0) shop(c, sx - 35, nt, Math.abs(sl)); }
+    }
+    for (sl = Math.floor(w0 / 70); sl * 70 < w1; sl++) { wx = sl * 70 + 35; pr = A(wx); bm = biome(pr, hash(sl * 7.3 + 2)); if ((bm === 'mall' || bm === 'street') && ((sl % 3) + 3) % 3 === 1 && wx > 0) lamp(c, cx + wx - cam, num(pr, 'night')); }
+    // signposts
+    c.font = '600 15px "Hanken Grotesk", system-ui, sans-serif'; c.textAlign = 'center'; c.textBaseline = 'middle';
+    DATA.nodes.forEach(function (n, j) { var px = cx + j * SEG - cam + 150; if (px < -160 || px > W + 160) return; var tw = Math.max(88, c.measureText(n.label).width + 28); c.fillStyle = P[j].night ? '#C9D0EE' : '#6B4A2F'; c.fillRect(px - 3, 200, 6, 72); rr(c, px - tw / 2, 172, tw, 34, 8, '#FBF7EC'); c.strokeStyle = '#2A2233'; c.lineWidth = 1.5; c.stroke(); c.fillStyle = '#16141F'; c.fillText(n.label, px, 190); });
+    // other walkers
+    for (i = 0; i < 54; i++) { var lane = i % 3, dir = hash(i + 100) < .5 ? 1 : -1, span = 3.5 * SEG, bx = ((hash(i + 200) * span + dir * (8 + hash(i + 300) * 10) * time / 1000) % span + span) % span + 8.9 * SEG; pr = A(bx); var pp = num(pr, 'ppl'); if (hash(i + 400) > pp * (lane === 2 ? .7 : 1) || (lane === 2 && pp < .55)) continue; var par = [.82, .9, 1][lane]; sx = cx + (bx - cam) * par; if (sx < -30 || sx > W + 30) continue; walker(c, sx, [272, 282, 292][lane], [.36, .5, .62][lane], time * .006 * (1 + hash(i) * .4) + i, css(mix([90, 100, 150], [150, 160, 205], lane / 2), [.6, .8, .95][lane])); }
+    drawWho(c, cx, 308 - (dy || 0), .62, who, ph, moving);
+    front.forEach(function (f) { c.strokeStyle = '#2F6B3A'; c.lineWidth = 1.6; c.beginPath(); c.moveTo(f[0], f[1] + 9); c.lineTo(f[0], f[1]); c.stroke(); disc(c, f[0], f[1] - 2, 3.8, f[2]); });
+    g = c.createLinearGradient(0, 0, 0, 90); g.addColorStop(0, 'rgba(10,8,30,.28)'); g.addColorStop(1, 'rgba(10,8,30,0)'); c.fillStyle = g; c.fillRect(0, 0, W, 90);
+  }
+
+  // ---------- stage
+  var cv = document.getElementById('cv'), band = document.getElementById('band'), ctx = cv.getContext('2d'), off = document.createElement('canvas'), octx = off.getContext('2d');
+  var still = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+  var view = { cam: 0, ph: 0, moving: false, warp: 0, fx: null, center: 0, W: 800, s: 1, dpr: 1 }, tw = null, time0 = 0;
+  function size() { var r = band.getBoundingClientRect(), dpr = Math.min(2, window.devicePixelRatio || 1); cv.width = off.width = Math.max(2, Math.round(r.width * dpr)); cv.height = off.height = Math.max(2, Math.round(r.height * dpr)); view.dpr = dpr; view.s = (r.height - 26) / 340; view.W = r.width / view.s; }
+  var FALLER = { build: 'a', style: 2, skin: 9, hair: 1 };
+  function bounce(t) { t = Math.max(0, Math.min(1, t)); return t < .8 ? (t / .8) * (t / .8) : 1 - .035 * Math.sin(Math.PI * (t - .8) / .2); }
+  function paint(time) {
+    var k = view.dpr * view.s, fx = view.fx, dy = 0, cx = Math.max(70, Math.min(260, view.W * .28)), target = view.warp > .001 ? octx : ctx, g; cx += (view.W / 2 - cx) * view.center;
+    if (fx) dy = fx.kind === 'fall' ? 430 * (1 - bounce(fx.p)) : fx.p < .5 ? 0 : fx.p < .64 ? 430 : 430 * (1 - bounce((fx.p - .64) / .3));
+    target.setTransform(k, 0, 0, k, 0, 0); drawScene(target, view.W, view.cam, time, (fx && fx.kind === 'fall') || view.center > 0 ? FALLER : st.who, view.ph, view.moving, dy, view.center);
+    if (view.warp > .001) { ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height); var a = view.warp * 26 * view.dpr, z = 1 + view.warp * .06, hh = 3 * view.dpr; for (var y = 0; y < cv.height; y += hh) { var dx = a * Math.sin(y * .03 / view.dpr + time * .011); ctx.drawImage(off, 0, y, cv.width, hh, dx - (z - 1) * cv.width / 2, y, cv.width * z, hh); } ctx.fillStyle = 'rgba(255,255,255,' + (view.warp * .22) + ')'; ctx.fillRect(0, 0, cv.width, cv.height); }
+    if (fx) {
+      ctx.setTransform(k, 0, 0, k, 0, 0); var p = fx.p;
+      if (dy > 2 && dy < 428) { g = ctx.createRadialGradient(cx, 250 - dy, 6, cx, 250 - dy, 120); g.addColorStop(0, 'rgba(255,250,225,' + (.6 * Math.min(1, dy / 140)) + ')'); g.addColorStop(1, 'rgba(255,250,225,0)'); ctx.fillStyle = g; ctx.fillRect(cx - 120, 130 - dy, 240, 240); }
+      if (fx.kind === 'rebirth') {
+        if (p > .08 && p < .5) { var t = (p - .08) / .42, x = -60 + (cx + 60) * t, yy = 6 + 236 * t * t, r = 3 + 10 * t, vx = cx + 60, vy = 472 * t, vl = Math.sqrt(vx * vx + vy * vy) || 1, L = 150 + 190 * t, tx = x - vx / vl * L, ty = yy - vy / vl * L;
+          g = ctx.createLinearGradient(x, yy, tx, ty); g.addColorStop(0, 'rgba(255,255,255,.95)'); g.addColorStop(1, 'rgba(190,210,255,0)'); ctx.strokeStyle = g; ctx.lineWidth = r * 1.3; ctx.lineCap = 'round'; ctx.beginPath(); ctx.moveTo(x, yy); ctx.lineTo(tx, ty); ctx.stroke();
+          g = ctx.createRadialGradient(x, yy, 1, x, yy, r * 7); g.addColorStop(0, 'rgba(255,255,255,.95)'); g.addColorStop(.25, 'rgba(255,244,200,.55)'); g.addColorStop(1, 'rgba(255,244,200,0)'); ctx.fillStyle = g; ctx.fillRect(x - r * 7, yy - r * 7, r * 14, r * 14); }
+        var wa = p < .5 ? sm((p - .4) / .1) : 1 - sm((p - .6) / .24); if (wa > .003) { ctx.fillStyle = 'rgba(255,255,255,' + wa + ')'; ctx.fillRect(0, 0, view.W, 420); }
+      }
+    }
+  }
+  function frame(ts) {
+    if (!time0) time0 = ts; var dt = Math.min(60, ts - (frame.last || ts)); frame.last = ts;
+    if (tw) { tw.p = Math.min(1, tw.p + dt / tw.dur * (tw.fast ? 5 : 1)); var e = tw.p * tw.p * tw.p * (tw.p * (tw.p * 6 - 15) + 10), nc = tw.from + (tw.to - tw.from) * e, rb = tw.fx === 'rebirth', fl = tw.fx === 'fall'; if (rb) nc = tw.p < .5 ? tw.from + 420 * sm(tw.p / .5) : tw.to; view.fx = rb || fl ? { kind: tw.fx, p: tw.p } : null; view.ph += Math.abs(nc - view.cam) * .04; view.cam = nc; view.moving = !fl && tw.fx !== 'settle' && !(rb && tw.p >= .5); if (tw.fx === 'settle') { size(); view.center = 1 - sm(tw.p); } view.warp = tw.fx === 'warp' ? Math.pow(Math.sin(Math.PI * Math.max(0, Math.min(1, (tw.p - .3) / .4))), 2) : 0; if (tw.p >= 1) { var d = tw.done; tw = null; view.moving = false; view.warp = 0; view.fx = null; d(); } }
+    paint(ts); if (!still) requestAnimationFrame(frame);
+  }
+  function redraw() { if (still) paint(0); }
+  function walkTo(j, fx, done) { if (still) { view.cam = j * SEG; redraw(); setTimeout(done, 200); return; } tw = { from: view.cam, to: j * SEG, p: 0, dur: fx === 'rebirth' ? 7600 : 5200, fx: fx, done: done, fast: false }; }
+  band.addEventListener('click', function () { if (tw) tw.fast = true; });
+  window.addEventListener('resize', function () { size(); redraw(); });
+
+  // ---------- interface
+  var app = document.getElementById('app'), whereEl = document.getElementById('where'), pill = document.getElementById('pill'), hurry = document.getElementById('hurry');
+  var st = { screen: 'intro', who: { build: 'a', style: 2, skin: 9, hair: 1 }, i: 0, ans: [], off: null, t0: 0, share: false };
+  try { var sv = JSON.parse(localStorage.getItem('walk-who-2') || 'null'); if (sv && SKIN[sv.skin] && HAIR[sv.hair] && STYLE[sv.style] && /^[mfa]$/.test(sv.build)) st.who = sv; } catch (e) {}
+  function el(tag, cls, txt) { var e = document.createElement(tag); if (cls) e.className = cls; if (txt != null) e.textContent = txt; return e; }
+  function rich(parent, str) { String(str).split(/(\*[^*]+\*)/).forEach(function (p) { if (/^\*[^*]+\*$/.test(p)) parent.appendChild(el('em', '', p.slice(1, -1))); else if (p) parent.appendChild(document.createTextNode(p)); }); return parent; }
+  function btn(txt, cls, fn) { var b = el('button', cls, txt); b.type = 'button'; b.addEventListener('click', fn); return b; }
+  function hud(name, right) { whereEl.textContent = name; pill.textContent = right; pill.hidden = !right; var idx = Math.round(view.cam / SEG), g = P[Math.max(0, Math.min(P.length - 1, idx))].g; document.documentElement.style.setProperty('--accent', css(mix(g, [40, 40, 60], .25))); }
+  function segs() { var d = el('div', 'segs'); d.setAttribute('role', 'img'); d.setAttribute('aria-label', 'Move ' + (st.i + 1) + ' of ' + MOVES.length); MOVES.forEach(function (m, k) { var i = el('i', st.ans[k] ? st.ans[k].v : ''); if (k === st.i && st.screen === 'walk') i.className = 'now'; d.appendChild(i); }); return d; }
+  function about(id, lead) { var d = el('details'); d.appendChild(el('summary', '', lead + N[id].label + '?')); d.appendChild(el('p', '', (N[id].short || N[id].text) + (N[id].note ? ' ' + N[id].note : ''))); return d; }
+  function title(m) { var h = el('h2'); h.appendChild(document.createTextNode(N[m.from].label + ' ')); h.appendChild(el('span', 'to', '→ ' + N[m.to].label)); return h; }
+  function mode(intro) { if (document.body.classList.contains('is-intro') !== intro) { document.body.classList.toggle('is-intro', intro); size(); } }
+  function show(nodes) { app.innerHTML = ''; var w = el('div', 'fade'); w.style.display = 'grid'; w.style.gap = '16px'; w.style.minWidth = '0'; nodes.forEach(function (n) { if (n) w.appendChild(n); }); app.appendChild(w); }
+
+  var fell = false, LEDE = 'Nineteen moves along one route through God, mind, other minds and what continues. At each one you decide whether it carries you. There are no right answers.';
+  function intro() {
+    st.screen = 'intro'; mode(true); view.cam = 0; hud('Ignorance', '');
+    if (!fell && !still) { fell = true; show([el('h1', '', 'Where do you get off?'), el('p', 'lede', LEDE)]); document.body.classList.add('is-opening'); size(); view.center = 1;
+      tw = { from: 0, to: 0, p: 0, dur: 3000, fx: 'fall', fast: false, done: function () { document.body.classList.add('is-settling'); document.body.classList.remove('is-opening'); tw = { from: 0, to: 0, p: 0, dur: 900, fx: 'settle', fast: false, done: function () { document.body.classList.remove('is-settling'); view.center = 0; size(); chooser(); } }; } }; return; }
+    fell = true; chooser();
+  }
+  var STUDY = { endpoint: '', field: '' }, sent = false, sid = Math.random().toString(36).slice(2, 10);
+  function consent() {
+    var box = el('div', 'consent'), sw = el('button', 'switch'), tx = el('div'), note = el('p', 'note');
+    sw.type = 'button'; sw.id = 'share'; sw.setAttribute('role', 'switch'); sw.setAttribute('aria-label', 'Share my walk with the study'); sw.appendChild(el('span', 'knob'));
+    function upd() { sw.setAttribute('aria-checked', String(st.share)); note.textContent = !st.share ? 'Off. Nothing is saved.' : STUDY.endpoint ? 'On. Your walk is saved when you finish or stop.' : 'On, but saving is not connected in this preview, so nothing is sent.'; }
+    sw.addEventListener('click', function () { st.share = !st.share; upd(); }); upd();
+    tx.appendChild(el('strong', '', 'Share my walk with the study')); tx.appendChild(el('p', '', 'Optional. If this is on, your answer at each move, your reason, and how long each move took are saved with no name and nothing that identifies you. Your character’s look is not saved. You must be 18 or older.')); tx.appendChild(note);
+    box.appendChild(sw); box.appendChild(tx); return box;
+  }
+  function share(done) {
+    if (!st.share || !STUDY.endpoint || sent || !st.ans.length) return; sent = true;
+    var payload = { map: DATA.version, walk: 4, id: sid, day: new Date().toISOString().slice(0, 10), off: st.off, done: done, a: st.ans.map(function (x) { return x ? [x.v.charAt(0), x.r, Math.round(x.ms / 100) / 10] : null; }) };
+    try { var body = new URLSearchParams(); body.append(STUDY.field, JSON.stringify(payload)); if (navigator.sendBeacon) navigator.sendBeacon(STUDY.endpoint, body); else fetch(STUDY.endpoint, { method: 'POST', mode: 'no-cors', body: body, keepalive: true }); } catch (e) {}
+  }
+  window.addEventListener('pagehide', function () { share(false); });
+  document.getElementById('savenote').textContent = STUDY.endpoint ? 'Nothing is saved unless you turn on sharing.' : 'Saving is not connected in this preview. Nothing is saved or sent.';
+  function chooser() {
+    redraw();
+    function group(label, items, key, draw) { var g = el('div', 'group'); g.appendChild(el('span', 'label', label)); var row = el('div', key === 'skin' || key === 'hair' ? 'sws' : 'row'); items.forEach(function (it, k) { var val = key === 'build' ? it[0] : k, b = draw(it, k); b.type = 'button'; b.setAttribute('aria-pressed', String(st.who[key] === val)); b.addEventListener('click', function () { st.who[key] = val; try { localStorage.setItem('walk-who-2', JSON.stringify(st.who)); } catch (e) {} Array.prototype.forEach.call(row.children, function (c) { c.setAttribute('aria-pressed', String(c === b)); }); redraw(); }); row.appendChild(b); }); g.appendChild(row); return g; }
+    function sw(names) { return function (it, k) { var b = el('button', 'sw'); b.style.background = it; b.setAttribute('aria-label', names ? 'Hair color: ' + names[k] : 'Skin tone ' + (k + 1) + ' of ' + SKIN.length); return b; }; }
+    show([el('h1', '', 'Where do you get off?'), el('p', 'lede', LEDE), consent(),
+      group('Build', BUILD, 'build', function (it) { return el('button', 'opt', it[1]); }),
+      group('Hair', STYLE, 'style', function (it) { return el('button', 'opt', it); }),
+      group('Skin', SKIN, 'skin', sw(null)), group('Hair color', HAIR, 'hair', sw(HAIR_NAME)),
+      btn('Start walking', 'primary', function () { st.screen = 'walk'; st.i = 0; st.ans = []; st.off = null; walk(); window.scrollTo(0, 0); })]);
+  }
+  function walk() {
+    mode(false); st.t0 = Date.now(); var m = MOVES[st.i]; view.cam = st.i * SEG; hud(N[m.from].label, (st.i + 1) + ' / ' + MOVES.length); redraw();
+    var kick = el('div', 'kick'); kick.appendChild(document.createTextNode('Move ' + m.n)); if (m.short) kick.appendChild(el('span', 'chip', 'Shortened for the walk')); if (m.ghost) kick.appendChild(el('span', 'chip', 'The author has not taken this one'));
+    var defs = el('div', 'defs'); defs.appendChild(about(m.from, 'What is ')); defs.appendChild(about(m.to, 'What is '));
+    var act = el('div'); act.id = 'act'; act.style.display = 'grid'; act.style.gap = '12px';
+    show([segs(), kick, title(m), rich(el('p', 'text'), m.short || m.text), N[m.to].note ? el('p', 'lede', N[m.to].note) : null, defs, act]); ask();
+  }
+  function ask() {
+    var act = document.getElementById('act'); act.innerHTML = ''; act.appendChild(el('div', 'q', 'Does this move carry you?'));
+    var g = el('div', 'acts three'); g.appendChild(btn('Take the step', 'take', function () { record('take', null); go(); }));
+    g.appendChild(btn('Split', 'split', function () { why('split'); })); g.appendChild(btn('Refuse', 'refuse', function () { why('refuse'); }));
+    act.appendChild(g); act.appendChild(btn('Stop here and see my walk', 'quiet', function () { st.off = st.i; finish(); }));
+  }
+  function why(v) {
+    var act = document.getElementById('act'); act.innerHTML = ''; act.appendChild(el('div', 'q', v === 'split' ? 'Which part stops you?' : 'Why not?'));
+    var g = el('div', 'acts'); REASONS.forEach(function (r, k) { g.appendChild(btn(r, v, function () { record(v, k); if (v === 'split') go(); else after(); })); });
+    act.appendChild(g); act.appendChild(btn('Back', 'quiet', ask));
+  }
+  function after() {
+    var act = document.getElementById('act'); act.innerHTML = ''; act.appendChild(el('div', 'q', 'You refused this move.'));
+    var g = el('div', 'acts'); g.appendChild(btn('Get off here', 'primary', function () { st.off = st.i; finish(); })); g.appendChild(btn('Keep walking, for argument’s sake', '', go)); act.appendChild(g);
+  }
+  function record(v, r) { st.ans[st.i] = { v: v, r: r, ms: Date.now() - st.t0 }; }
+  function go() {
+    var m = MOVES[st.i], last = st.i === MOVES.length - 1; try { window.scrollTo({ top: 0, behavior: still ? 'auto' : 'smooth' }); } catch (e) { window.scrollTo(0, 0); }
+    hud('→ ' + N[m.to].label, (st.i + 1) + ' / ' + MOVES.length); hurry.hidden = still;
+    show([segs(), el('div', 'kick', 'Walking'), title(m)]);
+    walkTo(st.i + 1, m.from === 'ign2' ? 'warp' : m.from === 'mercy' ? 'rebirth' : null, function () { hurry.hidden = true; st.i++; if (last) { st.off = null; finish(); } else walk(); });
+  }
+  function spiral() {
+    var a = 34, b = 11.2, cx = 170, cy = 172, o = '<svg class="spiral" viewBox="0 0 340 340" role="img" aria-label="Your walk drawn on the spiral">', d = '', k, p;
+    function pt(k) { var th = k * 36 * Math.PI / 180, r = a + b * k; return [cx + r * Math.sin(th), cy - r * Math.cos(th)]; }
+    for (k = 0; k <= 15; k += .1) { p = pt(k); d += (k ? 'L' : 'M') + p[0].toFixed(1) + ' ' + p[1].toFixed(1); }
+    o += '<path class="track" d="' + d + '"/>';
+    DATA.nodes.forEach(function (n, idx) { p = pt(n.k); var cls = 'start'; if (idx > 0) { var an = st.ans[idx - 1]; cls = an ? an.v : 'none'; } o += '<circle class="d ' + cls + '" cx="' + p[0].toFixed(1) + '" cy="' + p[1].toFixed(1) + '" r="6.5"><title>' + n.label + '</title></circle>'; });
+    return o + '</svg>';
+  }
+  function finish() {
+    st.screen = 'end'; mode(false); share(true);
+    var reached = st.ans.length, took = st.ans.filter(function (x) { return x && x.v === 'take'; }).length, firstOff = -1;
+    st.ans.some(function (x, k) { if (x && x.v !== 'take') { firstOff = k; return true; } return false; });
+    var at2 = st.off != null ? MOVES[st.off].from : (reached ? MOVES[Math.min(reached, MOVES.length) - 1].to : 'ign1');
+    view.cam = DATA.nodes.map(function (n) { return n.id; }).indexOf(at2) * SEG; hud(N[at2].label, ''); redraw();
+    var stats = el('div', 'stats'); [[reached + ' / ' + MOVES.length, 'moves answered'], [took, 'taken whole'], [firstOff >= 0 ? 'Move ' + MOVES[firstOff].n : 'None', 'first one that stopped you']].forEach(function (s) { var d = el('div', 'stat'); d.appendChild(el('b', '', s[0])); d.appendChild(el('span', '', s[1])); stats.appendChild(d); });
+    var sp = el('div'); sp.innerHTML = spiral();
+    var key = el('div', 'key'); [['take', 'took'], ['split', 'split'], ['refuse', 'refused'], ['line', 'not reached']].forEach(function (kv) { var s = el('span'), b = el('b'); b.style.background = 'var(--' + kv[0] + ')'; s.appendChild(b); s.appendChild(document.createTextNode(kv[1])); key.appendChild(s); });
+    var tw2 = el('div', 'tablewrap'), t = el('table'), h = el('tr'); ['#', 'Move', 'You', 'Author’s label'].forEach(function (x) { h.appendChild(el('th', '', x)); }); t.appendChild(h);
+    MOVES.forEach(function (m, k) { var tr = el('tr'), an = st.ans[k]; tr.appendChild(el('td', 'n', m.n)); tr.appendChild(el('td', '', N[m.from].label + ' → ' + N[m.to].label)); tr.appendChild(el('td', 'v-' + (an ? an.v : 'none'), an ? (an.v === 'take' ? 'Took' : (an.v === 'split' ? 'Split: ' : 'Refused: ') + REASONS[an.r].toLowerCase()) : 'Not reached')); tr.appendChild(el('td', '', m.ghost ? 'Not taken' : LABEL[m.type])); t.appendChild(tr); });
+    tw2.appendChild(t);
+    var code = 'W' + DATA.version + ':' + MOVES.map(function (m, k) { var an = st.ans[k]; return an ? (an.v === 'take' ? 'T' : (an.v === 'split' ? 'S' : 'R') + (an.r + 1)) : '.'; }).join('');
+    var cd = el('div', 'code', code), row = el('div', 'row');
+    var cp = btn('Copy the line', '', function () { function sel() { var r = document.createRange(); r.selectNodeContents(cd); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); cp.textContent = 'Selected: copy it now'; } try { navigator.clipboard.writeText(code).then(function () { cp.textContent = 'Copied'; }, sel); } catch (e) { sel(); } });
+    row.appendChild(cp); row.appendChild(btn('Walk again', 'primary', function () { st.ans = []; st.i = 0; st.off = null; sent = false; intro(); window.scrollTo(0, 0); }));
+    show([el('div', 'kick', 'Your walk'), el('h2', '', st.off != null ? 'You got off at ' + N[at2].label + '.' : 'You walked to the edge of the route.'), stats,
+      el('p', 'lede', 'Getting off is not failing. On this map, positions further along are rarer, not higher. The author’s own route stops at Dualism₂ and has not taken move 19.'),
+      st.share && STUDY.endpoint ? el('p', 'lede', 'Your walk was shared with the study. Thank you.') : null, sp, key, tw2, el('div', 'q', 'Your walk as one line, to share if you like'), cd, row]);
+    window.scrollTo(0, 0);
+  }
+  function gallery() {
+    mode(false); hud('All twenty scenes', ''); var g = el('div', 'gallery');
+    DATA.nodes.forEach(function (n, j) { var f = el('figure'), c = document.createElement('canvas'); c.width = 640; c.height = 360; var x = c.getContext('2d'), k = 360 / 340; x.setTransform(k, 0, 0, k, 0, 0); drawScene(x, 640 / k, j * SEG, 1300 + j * 700, st.who, 0, false); f.appendChild(c); f.appendChild(el('figcaption', '', n.label)); g.appendChild(f); });
+    show([el('div', 'kick', 'Scenery'), el('h2', '', 'Every position, in route order'), g, btn('Back to the walk', 'primary', function () { location.hash = ''; })]);
+  }
+  function route() { if (tw) return; if (location.hash === '#scenes') gallery(); else if (st.screen === 'walk') walk(); else if (st.screen === 'end') finish(); else intro(); }
+  window.addEventListener('hashchange', route);
+  window.__walk = { view: view, paint: paint, P: P };
+  size(); route();
+  if (still) paint(0); else requestAnimationFrame(frame);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(redraw);
+})();
+</script>
+</body>
+</html>
