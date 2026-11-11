@@ -243,3 +243,14 @@ caused the split" is not supported, since 5.2 lands with Fable without it. Not r
 session; the 5.2 arm in the author's); the 5.1 result was reproduced twice in one session only.
 Reader note to the author (X08): Parfit, cited at move 13, argues that identity is not what matters in survival, i.e. against the
 non-fungibility premise the move rests on.
+
+### Correction, November 11, 2026, evening — which Fable
+The Mythos 5.2 session noticed that the reader files carry no model identifier and that the "Fable" arm's refusal reasons match the
+Mythos 5.2 arm, not 5.1. Checked from Claude's session by spawning one reader per option and asking only for its model line: the
+"fable" option reports "The exact model ID is claude-fable-5-2"; the default option reports "claude-mythos-5-1". So the Fable
+readers of November 10 and 11 were Fable 5.2, which shares weights with Mythos 5.2, not with Mythos 5.1. Claude had asserted the
+5.1 pairing from its own system prompt's product note without verifying it. Consequences: "same weights, the hope flips" is
+withdrawn. What the three arms show is: Fable 5.2 (2/12) and Mythos 5.2 (3/12) agree on hope (b), Fisher p = 1.0, i.e. two
+variants of one release, same weights, give the same self-report; Mythos 5.1 (10/12) differs from both (p = 0.003 and 0.012). The
+self-report differs between releases and not between variants of a release. All logic verdicts remain near-identical across the
+three. Going forward every reader file records the model ID reported by the reader's own environment.

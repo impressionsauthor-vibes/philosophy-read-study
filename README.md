@@ -65,7 +65,7 @@ into the same JSON shape. It will be linked here when the human arm is reported.
 
 - `instrument/v107/` — the packet and instructions the November 10–11 self-read arms used
 - `instrument/` — persona-arm packet and instructions; self-read packet and instructions; the 20 personas
-- `data/` — reader files by arm: `personas/`, `claude_selfread/`, `chatgpt_selfread/` (v74–v86); `coherence/` (10 window reads, v85); `human_minds_v86/` (22 paid runs, participant codes removed, with the scorecard); `five_models_v107/` (15 self-reads: Haiku, Sonnet, Opus, Fable, Mythos 5.1); `fable_vs_mythos_v107/` (24 self-reads, 12 per sibling, with results)
+- `data/` — reader files by arm: `personas/`, `claude_selfread/`, `chatgpt_selfread/` (v74–v86); `coherence/` (10 window reads, v85); `human_minds_v86/` (22 paid runs, participant codes removed, with the scorecard); `five_models_v107/` (15 self-reads: Haiku, Sonnet, Opus, Fable 5.2, Mythos 5.1); `fable_vs_mythos_v107/` (24 self-reads: 12 Fable 5.2, 12 Mythos 5.1, with results and a correction note); `mythos_5_2_v107/` is on its own branch until merged
 - `scripts/` — `code_personas.py` (persona arm), `code_selfread.py` (self-read arms, with reference columns), `decode_walk_codes.py` (human study)
 - `predictions/prediction.md` — every prediction, dated, logged before the data it concerns, including failures and the open-weight arm predictions
 - `kit/` — the replication kit page
