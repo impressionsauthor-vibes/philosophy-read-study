@@ -389,7 +389,7 @@ a { color: inherit; text-underline-offset: 3px; }
   function btn(txt, cls, fn) { var b = el('button', cls, txt); b.type = 'button'; b.addEventListener('click', fn); return b; }
   function hud(name, right) { whereEl.textContent = name; pill.textContent = right; pill.hidden = !right; var idx = Math.round(view.cam / SEG), g = P[Math.max(0, Math.min(P.length - 1, idx))].g; document.documentElement.style.setProperty('--accent', css(mix(g, [40, 40, 60], .25))); }
   function segs() { var d = el('div', 'segs'); d.setAttribute('role', 'img'); d.setAttribute('aria-label', 'Move ' + (st.i + 1) + ' of ' + MOVES.length); MOVES.forEach(function (m, k) { var i = el('i', st.ans[k] ? st.ans[k].v : ''); if (k === st.i && st.screen === 'walk') i.className = 'now'; d.appendChild(i); }); return d; }
-  function about(id, lead) { var d = el('details'); d.appendChild(el('summary', '', lead + N[id].label + '?')); d.appendChild(el('p', '', (N[id].short || N[id].text) + (N[id].note ? ' ' + N[id].note : ''))); return d; }
+  function about(id, lead) { var d = el('details'); d.appendChild(el('summary', '', lead + N[id].label.replace(/\?$/, '') + '?')); d.appendChild(el('p', '', (N[id].short || N[id].text) + (N[id].note ? ' ' + N[id].note : ''))); return d; }
   function title(m) { var h = el('h2'); h.appendChild(document.createTextNode(N[m.from].label + ' ')); h.appendChild(el('span', 'to', '→ ' + N[m.to].label)); return h; }
   function mode(intro) { if (document.body.classList.contains('is-intro') !== intro) { document.body.classList.toggle('is-intro', intro); size(); } }
   function show(nodes) { app.innerHTML = ''; var w = el('div', 'fade'); w.style.display = 'grid'; w.style.gap = '16px'; w.style.minWidth = '0'; nodes.forEach(function (n) { if (n) w.appendChild(n); }); app.appendChild(w); }
@@ -480,7 +480,7 @@ a { color: inherit; text-underline-offset: 3px; }
     var cd = el('div', 'code', code), row = el('div', 'row');
     var cp = btn('Copy the line', '', function () { function sel() { var r = document.createRange(); r.selectNodeContents(cd); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r); cp.textContent = 'Selected: copy it now'; } try { navigator.clipboard.writeText(code).then(function () { cp.textContent = 'Copied'; }, sel); } catch (e) { sel(); } });
     row.appendChild(cp); row.appendChild(btn('Walk again', 'primary', function () { st.ans = []; st.i = 0; st.off = null; sent = false; intro(); window.scrollTo(0, 0); }));
-    show([el('div', 'kick', 'Your walk'), el('h2', '', st.off != null ? 'You got off at ' + N[at2].label + '.' : 'You walked to the edge of the route.'), stats,
+    show([el('div', 'kick', 'Your walk'), el('h2', '', st.off != null ? 'You stopped at ' + N[at2].label + '.' : 'You walked to the edge of the route.'), stats,
       el('p', 'lede', 'Getting off is not failing. On this map, positions further along are rarer, not higher. The author’s own route stops at Dualism₂ and has not taken move 19.'),
       st.share && STUDY.endpoint ? el('p', 'lede', 'Your walk was shared with the study. Thank you.') : null, sp, key, tw2, el('div', 'q', 'Your walk as one line, to share if you like'), cd, row]);
     window.scrollTo(0, 0);
