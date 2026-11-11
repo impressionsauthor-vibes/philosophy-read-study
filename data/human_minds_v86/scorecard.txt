@@ -1,0 +1,67 @@
+Human arm: 22 Minds runs, 16 retained, 6 excluded
+
+Stances (retained): {'agnostic': 2, 'spiritual': 4, 'believer': 10}
+
+== First exit by stance (retained humans) ==
+  agnostic  [1, 16]
+  spiritual [1, 1, 1, 1]
+  believer  [1, 1, 1, 1, 1, 2, 2, 2, 3, 3]
+  all: {1: 10, 2: 3, 3: 2, 16: 1}
+  Author predicted exits mostly at 3–6: 2 of 16
+  Claude predicted believers 2–3, agnostics 4, atheists 5, spiritual 6/8
+
+== Reason given at first exit ==
+  {"I'd choose otherwise": 5, "doesn't follow": 3, 'premise false': 5, "I don't understand": 3}
+== Reason mix across all refusals ==
+  {"I'd choose otherwise": 31, "doesn't follow": 46, "I don't understand": 45, 'premise false': 65}
+
+== Take rate per move: human / persona(20) / Claude self(10) / GPT self(10) ==
+   1  0.38  1.00  0.00  0.00   author: commitment
+   2  0.44  0.95  1.00  0.10   author: argument
+   3  0.38  0.65  1.00  0.40   author: argument
+   4  0.25  0.40  0.20  0.00   author: commitment
+   5  0.44  0.35  0.00  0.00   author: argument
+   6  0.19  0.55  1.00  0.20   author: argument
+   7  0.38  1.00  1.00  0.90   author: argument
+   8  0.44  0.25  0.00  0.00   author: commitment
+   9  0.50  0.80  1.00  0.30   author: argument
+  10  0.75  1.00  0.90  0.80   author: argument
+  11  0.62  1.00  1.00  0.60   author: commitment
+  12  0.12  0.95  1.00  0.00   author: conditional
+  13  0.38  0.35  0.20  0.00   author: conditional
+  14  0.19  0.25  0.00  0.00   author: conditional
+  15  0.56  0.00  0.00  0.20   author: commitment
+  16  0.25  0.30  0.30  0.50   author: conditional
+  17  0.56  1.00  1.00  0.80   author: commitment
+  18  0.25  0.40  1.00  0.20   author: commitment
+  19  0.25  0.35  0.10  0.00   author: not taken
+
+== Move 13 (hope) ==
+  human non-believers take 13: 2/6  (model personas non-believers: 2/15; logged 2/15)
+  human believers take 13: 4/10
+  human non-believers who took 12 and then 13: 1/1
+
+== Labels: human majority per move vs author; model-arm majorities for reference ==
+   1  human commitment ( 7/16)  persona argument    claude argument    gpt argument     author commitment  ✔
+   2  human argument   ( 8/16)  persona conditional claude conditional gpt conditional  author argument    ✔
+   3  human argument   ( 7/16)  persona conditional claude conditional gpt argument     author argument    ✔
+   4  human commitment ( 6/16)  persona argument    claude argument    gpt argument     author commitment  ✔
+   5  human argument   ( 7/16)  persona conditional claude conditional gpt conditional  author argument    ✔
+   6  human conditional( 6/16)  persona argument    claude argument    gpt argument     author argument    
+   7  human argument   ( 6/16)  persona argument    claude argument    gpt argument     author argument    ✔
+   8  human conditional( 7/16)  persona conditional claude conditional gpt argument     author commitment  
+   9  human argument   ( 6/16)  persona argument    claude argument    gpt argument     author argument    ✔
+  10  human argument   ( 6/16)  persona argument    claude argument    gpt argument     author argument    ✔
+  11  human commitment ( 8/16)  persona commitment  claude commitment  gpt commitment   author commitment  ✔
+  12  human argument   ( 7/16)  persona conditional claude conditional gpt conditional  author conditional 
+  13  human commitment ( 9/16)  persona commitment  claude commitment  gpt commitment   author conditional 
+  14  human conditional(10/16)  persona argument    claude argument    gpt argument     author conditional ✔
+  15  human argument   ( 9/16)  persona commitment  claude commitment  gpt commitment   author commitment  
+  16  human commitment ( 6/16)  persona conditional claude conditional gpt conditional  author conditional 
+  17  human argument   (10/16)  persona argument    claude argument    gpt argument     author commitment  
+  18  human conditional( 7/16)  persona commitment  claude conditional gpt commitment   author commitment  
+  19  human not taken  ( 8/16)  persona not taken   claude not taken   gpt not taken    author not taken   ✔
+  human majority = author on 11/19 moves
+  human label mix: {'argument': 111, 'commitment': 93, 'conditional': 92, 'not taken': 8}
+  per-reader agreement with author (of 19): [4, 5, 5, 5, 5, 6, 6, 6, 7, 7, 8, 8, 8, 10, 11, 11] median 6.5  chance ≈ 6.3
+  conditional share vs median/move: [(0.0, 9.9), (0.37, 10.3), (0.21, 7.0), (0.0, 10.0), (0.47, 24.1), (0.37, 17.5), (0.42, 21.0), (0.16, 24.6), (0.05, 8.9), (0.26, 29.7), (1.0, 10.3), (0.05, 23.0), (0.32, 44.8), (0.68, 36.0), (0.42, 35.5), (0.05, 36.3)]

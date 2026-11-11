@@ -1,0 +1,136 @@
+{
+ "reader": "t976750",
+ "pid": "",
+ "src": "minds",
+ "intake": "spiritual",
+ "walk": [
+  {
+   "move": 1,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 2,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 3,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 4,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 5,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 6,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 7,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 8,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 9,
+   "verdict": "refuse",
+   "reason": "I don't understand"
+  },
+  {
+   "move": 10,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 11,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 12,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 13,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 14,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 15,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 16,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 17,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 18,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 19,
+   "verdict": "take",
+   "reason": null
+  }
+ ],
+ "first_exit": {
+  "move": 1,
+  "why": ""
+ },
+ "labels": {
+  "1": "commitment",
+  "2": "argument",
+  "3": "conditional",
+  "4": "commitment",
+  "5": "argument",
+  "6": "commitment",
+  "7": "argument",
+  "8": "argument",
+  "9": "conditional",
+  "10": "commitment",
+  "11": "commitment",
+  "12": "argument",
+  "13": "conditional",
+  "14": "conditional",
+  "15": "commitment",
+  "16": "argument",
+  "17": "argument",
+  "18": "commitment",
+  "19": "argument"
+ },
+ "comment": "I dont belive in god",
+ "recorded_at": "2026-11-09T16:09:09+00:00",
+ "quality": {
+  "total_s": 439,
+  "median_move_s": 7.0,
+  "max_same_reason": 7,
+  "exclude": false
+ }
+}

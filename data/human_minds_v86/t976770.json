@@ -1,0 +1,136 @@
+{
+ "reader": "t976770",
+ "pid": "",
+ "src": "minds",
+ "intake": "believer",
+ "walk": [
+  {
+   "move": 1,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 2,
+   "verdict": "refuse",
+   "reason": "I don't understand"
+  },
+  {
+   "move": 3,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 4,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 5,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 6,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 7,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 8,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 9,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 10,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 11,
+   "verdict": "refuse",
+   "reason": "I don't understand"
+  },
+  {
+   "move": 12,
+   "verdict": "refuse",
+   "reason": "I don't understand"
+  },
+  {
+   "move": 13,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 14,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 15,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 16,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 17,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 18,
+   "verdict": "refuse",
+   "reason": "I don't understand"
+  },
+  {
+   "move": 19,
+   "verdict": "refuse",
+   "reason": "premise false"
+  }
+ ],
+ "first_exit": {
+  "move": 1,
+  "why": "The first move I Think, because it's doesn't relevant from what I have been taught. "
+ },
+ "labels": {
+  "1": "commitment",
+  "2": "conditional",
+  "3": "argument",
+  "4": "argument",
+  "5": "argument",
+  "6": "conditional",
+  "7": "conditional",
+  "8": "conditional",
+  "9": "conditional",
+  "10": "conditional",
+  "11": "conditional",
+  "12": "conditional",
+  "13": "commitment",
+  "14": "conditional",
+  "15": "conditional",
+  "16": "argument",
+  "17": "conditional",
+  "18": "conditional",
+  "19": "conditional"
+ },
+ "comment": "I think mind, spirit, angels, and .etc can't be comprehended by human mind. ",
+ "recorded_at": "2026-11-09T16:25:11+00:00",
+ "quality": {
+  "total_s": 1425,
+  "median_move_s": 36.0,
+  "max_same_reason": 11,
+  "exclude": false
+ }
+}

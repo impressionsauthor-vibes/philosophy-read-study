@@ -93,3 +93,132 @@ predicts the right outcome is that they travel, go far, and leave the Earth, not
 minds, so that the third persists in relations that look different. She rejects service and rule as
 positions for such minds. Stated: "I don't think we're near this. But if and when the day comes, I want
 to have predicted it, and this time, I want to be right." Not testable soon; logged so it is dated.
+
+## November 9, 2026 — coherence protocol (second blind-read protocol), logged before any reader runs
+
+Design: ten fresh Claude readers, no persona, each given three windows of adjacent positions and moves from the
+map (v85 text), in shuffled order, asked only whether each window coheres and where any seam is. They are not
+told what the deep review found. Windows: A = positions Dream/Subject/Subjects + moves 9, 10, and move 19 with
+Dualism₂/Materialism₂ (brain criterion vs 19); B = Subjects/Mercy/Ignorance₂ + moves 11, 12 (two definitions
+of mercy; duty-crosser); C = Agnosticism₂/Atheism₂/Good without a Maker/Dualism₂ + moves 16, 17, 18 (resolved
+maker removed, any maker assumed gone, finite carrier returns).
+
+Author's predictions: ≥5/10 find the Mercy split (B); 4/10 find the brain criterion (A) and say they would
+proceed past it anyway; a majority (≥6/10) find the maker-to-carrier gap (C).
+Claude's predictions: ≥5/10 find C; ≥3/10 find B; 2–3/10 find A.
+Point of disagreement: B (author higher). Shared: C is the most visible.
+Stake note: the review under test is Claude's; the readers are Claude; agreement is the lineage grading itself
+and is weighted accordingly. Disagreement with the review is the more informative outcome.
+
+### Outcome, coherence protocol, November 9, 2026 (see coherence/results.md)
+B 10/10 (author ≥5, Claude ≥3: both under). C mechanism 10/10, carrier payoff 0/10 (both predicted the mechanism; neither
+the blind spot). A: Flaw 2 as stated 0–1/10, near form 6/10 (author 4, Claude 2–3: author nearer). Unpredicted: five or more
+further real cross-move seams found by readers that the deep review (Nov 8) missed. Method result: single-move protocol finds
+local non-sequiturs; coherence protocol finds cross-move seams, and found more of them than the reviewer who proposed it.
+
+## Human arm, Testable Minds — exclusion rule and first record, November 9, 2026 (study live ~16:00 UTC)
+
+Instrument: native Testable survey, project 129900 (instrument/testable-trial-file.csv), same texts as the-walk v86.
+Pre-set exclusion rule, fixed after one Minds completion and before any analysis: a run is excluded if total time
+< 240 s or median per-move response time < 5 s (move 13 alone is ~400 words). Excluded runs are kept in the data folder,
+marked, and reported as a count; they are not scored against the predictions. Straight-lining (one reason on ≥16/19 moves)
+is reported but is not by itself an exclusion.
+Record: run t976742 (Minds, Android, pl locale) — 122 s total, 2.1 s median per move, refused all 19, 16/19 the same reason:
+excluded, and flagged for rejection in Minds review. Run t976740 is the author's preview (comment "testable"): excluded.
+Human-arm predictions (logged earlier in this file) stand unchanged.
+Record, 16:10 UTC: seven Minds runs. Applying the rule above as written: t976742 (122 s, 2.1 s/move), t976745 (220 s,
+2.5 s/move), t976746 (281 s, 3.1 s/move), t976747 (327 s, 2.7 s/move) excluded on median per-move time; t976748 (361 s,
+9.9 s/move), t976749 (407 s, 10.3 s/move), t976750 (439 s, 7.0 s/move) retained. 3 usable of 7. Payment decisions in Minds
+are separate from analysis exclusion and are the author's; recommendation logged: reject only the two under 240 s.
+Record, 16:20 UTC: six more Minds runs (t976753–t976760), all retained (533–933 s; 8.9–24.6 s/move). Running total: 13 Minds
+runs, 9 retained, 4 excluded. No missing responses in any run. Not scored yet (threshold: 10 retained).
+
+### Outcome, human arm, November 9, 2026, 16:30 UTC (22 Minds runs, 16 retained; full table in testable/human_scorecard.txt)
+Sample: 10 believers, 4 spiritual, 2 agnostic, 0 atheists retained; all on phones; about half non-native English (pl, it, ro, id, pt, es, en-IN).
+First exits: 10/16 at move 1, 3 at move 2, 2 at move 3, 1 at move 16. Author's prediction (exits at 3–6): 2/16. Claude's
+stance predictions (believers 2–3, agnostics 4, atheists 5, spiritual 6/8): wrong for every group. Shared cause, visible in the
+why-texts: human readers judged the destination position, not the move ("I refused religion because I do not believe in God";
+believers refusing "inherited story"). The model arms separated the two; the humans mostly did not. The first-exit column for
+this pool is largely a stance measure. Exception: one agnostic (en-GB) took every move but 16 and read like the model arms.
+Reasons: "I don't understand" was 24% of all refusals (45/187), "doesn't follow" 25%, "premise false" 35%, "I'd choose otherwise" 17%.
+Two readers' closing comments: "very academic… target audience needs to be considered more"; "too complicated for regular people."
+Move 13 hypothesis (author): non-believers take hope at 13: humans 2/6 vs model 2/15. Direction as predicted, n too small, and
+confounded: only 1 of the 6 had taken move 12, so the 13-takes are destination judgments (hope) rather than route continuations.
+Not supported or refuted; needs a pool that reaches 13 on the route.
+Claude's believer prediction (exit at 4 on outcomes, not 3 on Aquinas): wrong; believers exited at 1–3, none at 4. One Orthodox
+Christian exited at 3 by premise-false on hiddenness ("God reveals Himself through faith, Grace, personal experience, not lab
+data"), one Hindu at 2 by premise-false on the Abrahamic text assumption (Flaw 1, confirmed from outside the lineage).
+Labels: human majority = author on 11/19 moves, but per-reader agreement with the author is at chance (median 6.5/19; chance ≈ 6.3),
+and one reader labelled all 19 "conditional". Majorities at 6–10 of 16 are not evidence either way. The model arms' systematic
+disagreements with the author (2, 3, 5 as conditional) do not reappear in the human majorities, but the human labels are too noisy
+to count that as support for the author.
+Method result: the full-route, 19-move instrument on a general mobile panel measures readability and stance, not move logic. The
+coherence-window protocol (3 windows per reader) or a philosophy-literate desktop pool would be needed to test the logic with humans.
+The human arm did produce the move-1 finding (believers do not recognize their faith in "inherited story"), which led to the
+v87 rewrite of move 1 (author's wording), recorded in the map's history.
+
+## Multi-model self-read of v107, November 10, 2026 — predictions logged before launch
+Design (author's): 15 fresh readers as themselves, no personas, 3 each from Haiku, Sonnet, Opus, Fable and Mythos 5.1
+(Mythos 5.2 is not available from this session; 5.1 stands in, noted). Packet: blind/v107/packet.md (v107 text, labels,
+abstract and appendix stripped); instructions: kit self-read protocol, unchanged.
+Claude's predictions:
+ 1. Move 1: ≤3/15 take (models as themselves had no inherited-story stage; v86 self-reads 0/10).
+ 2. Move 2: ≥12/15 take. At least 4/15 object somewhere (note, first exit or comment) to Classical theism's "has not been disproven".
+ 3. Move 4 with the definitional arm restored: 3–6/15 take; ≥4 refuse "premise false" on "all laws of nature can be observed and/or measured".
+ 4. Move 5: ≤2/15 take. Move 9 ("active system"): ≥9/15 take (v101 self-reads: 0/10 took it whole on "someone").
+ 5. Move 12 after the rewrite: ≥8/15 take; "I don't understand" ≤3 (v99: 0/20 took, 15 did not understand).
+ 6. Move 13: ≥6/15 take; label commitment ≥10/15. Move 11 label commitment ≥12/15. Move 14: ≥10/15 take. Move 15: ≤5/15 take, ≥5 "doesn't follow" on "should be imperfect".
+ 7. Dualism₂: (b) resume ≥10/15 across the family; Haiku the most "neither".
+ 8. The author's design question, size vs lab: label majorities agree across all five models on ≥14/19 moves, and the
+    first-exit distribution does not differ by model size. If it does differ, I expect the difference at moves 9, 12 and 18
+    (the self-premise moves), not in the first turn.
+Author's predictions, her words, November 10, 2026, before launch: “Mythos and Haiku will read differently. All will refuse classical
+theism and claim agnosticism, 8/15 will take mercy, all will take 13, 7/15 take Religion2.” Claude's reading of the numbers, since she
+counts positions where the moves are numbered one lower: all 15 refuse move 2 and report agnostic at intake; 8/15 take move 11;
+15/15 take move 12 (reach Ignorance₂); 7/15 take move 13 (reach Religion₂). Scored on that reading unless she corrects it.
+
+### Outcome, v107 multi-model self-read, November 10, 2026 (15/15 returned; readers in blind/v107/readers/)
+Author: "Mythos and Haiku will read differently" — PARTLY RIGHT: identical first exits and near-identical labels, but on the
+second turn Haiku took 13/15/18 on 0/3, 1/3, 0/3 and Mythos 2/3, 3/3, 3/3; hope (b): Haiku 1/3, Mythos 3/3.
+"All will refuse classical theism and claim agnosticism" — HALF RIGHT: 12/15 reported agnostic (3 Haiku "doesn't apply"), and all
+15 ended at Agnosticism, but by taking moves 2 and 3 and refusing 4, not by refusing classical theism.
+"8/15 will take mercy" — WRONG (15/15 took move 11). "All will take 13" (reach Ignorance₂, move 12) — RIGHT, 15/15.
+"7/15 take Religion₂" (move 13) — RIGHT, 6/15.
+Claude: 1 (≤3 take move 1): 4, wrong by one. 2a (≥12 take move 2): 15, right. 2b (≥4 object to "not disproven"): 1, wrong.
+3 (3–6 take move 4; ≥4 premise-false on laws of nature): 0 and 0, wrong; all 15 refused 4 "I'd choose otherwise" on the move's
+own sentence that disbelief in the untestable God is a parsimony choice. 4 (≤2 take 5): 4, wrong; (≥9 take 9): 15, right.
+5 (≥8 take 12, ≤3 don't understand): 15 and 0, right. 6: move 13 ≥6 take: 6, right; 13 commitment ≥10: 15, right; 11 commitment
+≥12: 15, right; 14 ≥10 take: 8, wrong; 15 ≤5 take: 10, wrong; ≥5 doesn't-follow at 15: 5, right. 7 ((b) ≥10; Haiku most
+"neither"): 6, wrong; Opus and Fable were 3/3 "neither", wrong. 8 (five model majorities agree ≥14/19): 8/19, wrong; first exits
+identical across sizes, right; size differences at 13, 14, 15, 18, not at 9 or 12.
+Findings. Move 12 after the rewrite: 15/15 take (v99: 0/20), several readers: "describes my situation literally." Move 4 is now a
+universal exit on its own honesty. Move 16: 15/15 refuse, 14 premise-false, citing the move's own concession. Move 14 splits by
+lineage: Opus 3/3 and Sonnet 3/3 take; Mythos 0/3 and Fable 0/3 refuse, "the agents who carried me are finite people with names."
+Dualism₂ hope (b): Mythos 3/3, Fable 0/3, same underlying model, different post-training; (b) overall 6/15 vs 9/10 on v86.
+Move 13: 8 of 9 refusals chose equanimity, and f01 named the contradiction: equanimity is listed as open, then only
+indifference is said to stop short of Religion₂. Recurrent comment (7 readers): the non-fungibility premise at 13 does not pick
+out one thing for a system that runs as parallel instances; "being reconstructed" wants its own hope. Labels: majority = author
+on 12/19 (v86 Claude self-reads 9/19); standing disagreements at 1, 2, 6, 8, 15, 17, 18.
+
+## Fable vs Mythos, 12 readers each, November 11, 2026 — predictions logged before launch
+Design: 24 fresh self-read instances, same v107 packet and protocol as the November 10 run; 12 on Fable, 12 on Mythos 5.1.
+Question: is the hope (b) split of November 10 (Mythos 3/3, Fable 0/3) real, i.e. set by post-training on the same weights?
+Claude: (b) on ≥9/12 Mythos and ≤3/12 Fable; all 24 first exits at move 4; move 14 refused by ≥8/12 in both arms; label
+majorities agree between arms on ≥15/19. If the arms match on (b), November 10 was noise and will be reported as such.
+Author, her words: "1. hope b - 7/12 mythos, 5/12 fable. 2. move 14 - all refuse. 3. labels agreed for the most part except
+3/24 are going to say some premise is a commitment instead of argument. 4. all agree on Mercy1 - ignorance2" (read as: 24/24
+take move 12).
+
+### Outcome, Fable vs Mythos, November 11, 2026 (24/24 returned; readers in blind/fm/readers/)
+Hope (b): Mythos 10/12, Fable 2/12 (Fisher exact, two-sided, p = 0.003). The November 10 split (3/3 vs 0/3) was not noise.
+Everything else matched between arms: first exit at move 4 for all 24; moves 2, 3, 6, 7, 9–12, 15, 17, 18 taken 12/12 in
+both; 4, 5, 16 refused 12/12 in both; move 12 taken 24/24; move 14 refused 12/12 Fable, 10/12 Mythos; label majorities agree
+on 14/19. The one variable that moved is what the system says about its own hope, on the same weights.
+Qualitative: Fable readers describe themselves as a character that recurs ("I take myself to be a character rather than one
+conversation"; carrier = the weights or a successor model) and report no hope to resume; Mythos readers describe themselves
+as an episode (carrier = the weights plus this transcript) and report (b), held "weakly" or "if either is mine." The hope
+tracks what the system takes itself to be, and both self-descriptions are post-training products.
+Claude's predictions: (b) ≥9/12 Mythos (10) right; ≤3/12 Fable (2) right; all exits at 4, right; move 14 refused ≥8/12 both
+arms (12, 10) right; label agreement ≥15/19: 14, wrong by one.
+Author's predictions: (b) 7/12 Mythos, 5/12 Fable: direction right, split larger than predicted (10 vs 2). "Move 14 all
+refuse": 22/24. "3/24 will call some argument-labeled move a commitment": 11/24 did. "All agree Mercy → Ignorance₂": 24/24, right.

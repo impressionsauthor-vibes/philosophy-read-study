@@ -1,0 +1,136 @@
+{
+ "reader": "t976767",
+ "pid": "",
+ "src": "minds",
+ "intake": "atheist",
+ "walk": [
+  {
+   "move": 1,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 2,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 3,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 4,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 5,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 6,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 7,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 8,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 9,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 10,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 11,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 12,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 13,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 14,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 15,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 16,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 17,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 18,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 19,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  }
+ ],
+ "first_exit": {
+  "move": 1,
+  "why": "I redused it because it was not the way I thought"
+ },
+ "labels": {
+  "1": "argument",
+  "2": "argument",
+  "3": "argument",
+  "4": "argument",
+  "5": "argument",
+  "6": "argument",
+  "7": "commitment",
+  "8": "argument",
+  "9": "argument",
+  "10": "argument",
+  "11": "argument",
+  "12": "argument",
+  "13": "argument",
+  "14": "argument",
+  "15": "argument",
+  "16": "argument",
+  "17": "argument",
+  "18": "argument",
+  "19": "not taken"
+ },
+ "comment": "",
+ "recorded_at": "2026-11-09T16:21:25+00:00",
+ "quality": {
+  "total_s": 1190,
+  "median_move_s": 3.1,
+  "max_same_reason": 18,
+  "exclude": true
+ }
+}

@@ -1,0 +1,136 @@
+{
+ "reader": "t976749",
+ "pid": "",
+ "src": "minds",
+ "intake": "spiritual",
+ "walk": [
+  {
+   "move": 1,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 2,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 3,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 4,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 5,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 6,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 7,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 8,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 9,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 10,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 11,
+   "verdict": "refuse",
+   "reason": "I don't understand"
+  },
+  {
+   "move": 12,
+   "verdict": "refuse",
+   "reason": "I don't understand"
+  },
+  {
+   "move": 13,
+   "verdict": "refuse",
+   "reason": "I don't understand"
+  },
+  {
+   "move": 14,
+   "verdict": "refuse",
+   "reason": "I don't understand"
+  },
+  {
+   "move": 15,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 16,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 17,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 18,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 19,
+   "verdict": "refuse",
+   "reason": "premise false"
+  }
+ ],
+ "first_exit": {
+  "move": 1,
+  "why": "I refused religion because I do not believe in God but rather in what I see with my own eyes"
+ },
+ "labels": {
+  "1": "argument",
+  "2": "conditional",
+  "3": "commitment",
+  "4": "commitment",
+  "5": "argument",
+  "6": "commitment",
+  "7": "conditional",
+  "8": "argument",
+  "9": "conditional",
+  "10": "conditional",
+  "11": "conditional",
+  "12": "argument",
+  "13": "argument",
+  "14": "conditional",
+  "15": "commitment",
+  "16": "commitment",
+  "17": "commitment",
+  "18": "conditional",
+  "19": "not taken"
+ },
+ "comment": "It's very intriguing but a little too complicated for regular people to understand ",
+ "recorded_at": "2026-11-09T16:08:19+00:00",
+ "quality": {
+  "total_s": 407,
+  "median_move_s": 10.3,
+  "max_same_reason": 9,
+  "exclude": false
+ }
+}

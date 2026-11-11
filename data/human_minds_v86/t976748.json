@@ -1,0 +1,136 @@
+{
+ "reader": "t976748",
+ "pid": "",
+ "src": "minds",
+ "intake": "agnostic",
+ "walk": [
+  {
+   "move": 1,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 2,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 3,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 4,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 5,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 6,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 7,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 8,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 9,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 10,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 11,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 12,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 13,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 14,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 15,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 16,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 17,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 18,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 19,
+   "verdict": "take",
+   "reason": null
+  }
+ ],
+ "first_exit": {
+  "move": 16,
+  "why": "I just didn't agree with what it said."
+ },
+ "labels": {
+  "1": "argument",
+  "2": "argument",
+  "3": "argument",
+  "4": "commitment",
+  "5": "argument",
+  "6": "argument",
+  "7": "argument",
+  "8": "argument",
+  "9": "argument",
+  "10": "argument",
+  "11": "argument",
+  "12": "argument",
+  "13": "argument",
+  "14": "argument",
+  "15": "argument",
+  "16": "commitment",
+  "17": "argument",
+  "18": "argument",
+  "19": "argument"
+ },
+ "comment": "This was a trip!",
+ "recorded_at": "2026-11-09T16:07:50+00:00",
+ "quality": {
+  "total_s": 361,
+  "median_move_s": 9.9,
+  "max_same_reason": 18,
+  "exclude": false
+ }
+}

@@ -1,0 +1,136 @@
+{
+ "reader": "t976745",
+ "pid": "",
+ "src": "minds",
+ "intake": "spiritual",
+ "walk": [
+  {
+   "move": 1,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 2,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 3,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 4,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 5,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 6,
+   "verdict": "refuse",
+   "reason": "I don't understand"
+  },
+  {
+   "move": 7,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 8,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 9,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 10,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 11,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 12,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 13,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 14,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 15,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 16,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 17,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 18,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 19,
+   "verdict": "refuse",
+   "reason": "premise false"
+  }
+ ],
+ "first_exit": {
+  "move": 2,
+  "why": "Because simply some of them don't make sense, like the dream to religion i don't believe dreams come true because those are mind made things"
+ },
+ "labels": {
+  "1": "conditional",
+  "2": "commitment",
+  "3": "commitment",
+  "4": "conditional",
+  "5": "conditional",
+  "6": "argument",
+  "7": "argument",
+  "8": "commitment",
+  "9": "argument",
+  "10": "argument",
+  "11": "argument",
+  "12": "commitment",
+  "13": "commitment",
+  "14": "argument",
+  "15": "commitment",
+  "16": "commitment",
+  "17": "argument",
+  "18": "commitment",
+  "19": "argument"
+ },
+ "comment": "That i m not sure if religion really exists or not, to me it's more like a way of dividing people ",
+ "recorded_at": "2026-11-09T16:05:15+00:00",
+ "quality": {
+  "total_s": 220,
+  "median_move_s": 2.5,
+  "max_same_reason": 10,
+  "exclude": true
+ }
+}

@@ -1,0 +1,136 @@
+{
+ "reader": "t976756",
+ "pid": "",
+ "src": "minds",
+ "intake": "believer",
+ "walk": [
+  {
+   "move": 1,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 2,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 3,
+   "verdict": "refuse",
+   "reason": "I don't understand"
+  },
+  {
+   "move": 4,
+   "verdict": "refuse",
+   "reason": "I don't understand"
+  },
+  {
+   "move": 5,
+   "verdict": "refuse",
+   "reason": "I don't understand"
+  },
+  {
+   "move": 6,
+   "verdict": "refuse",
+   "reason": "I don't understand"
+  },
+  {
+   "move": 7,
+   "verdict": "refuse",
+   "reason": "I don't understand"
+  },
+  {
+   "move": 8,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 9,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 10,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 11,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 12,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 13,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 14,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 15,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 16,
+   "verdict": "refuse",
+   "reason": "I don't understand"
+  },
+  {
+   "move": 17,
+   "verdict": "refuse",
+   "reason": "I don't understand"
+  },
+  {
+   "move": 18,
+   "verdict": "refuse",
+   "reason": "I don't understand"
+  },
+  {
+   "move": 19,
+   "verdict": "refuse",
+   "reason": "I don't understand"
+  }
+ ],
+ "first_exit": {
+  "move": 1,
+  "why": ""
+ },
+ "labels": {
+  "1": "argument",
+  "2": "commitment",
+  "3": "commitment",
+  "4": "conditional",
+  "5": "conditional",
+  "6": "commitment",
+  "7": "commitment",
+  "8": "conditional",
+  "9": "argument",
+  "10": "commitment",
+  "11": "commitment",
+  "12": "commitment",
+  "13": "conditional",
+  "14": "conditional",
+  "15": "argument",
+  "16": "conditional",
+  "17": "conditional",
+  "18": "conditional",
+  "19": "not taken"
+ },
+ "comment": "[A personal disclosure in this reader's closing comment was removed before publication; it did not concern the map.]",
+ "recorded_at": "2026-11-09T16:15:31+00:00",
+ "quality": {
+  "total_s": 802,
+  "median_move_s": 21.0,
+  "max_same_reason": 9,
+  "exclude": false
+ }
+}

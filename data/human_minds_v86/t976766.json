@@ -1,0 +1,136 @@
+{
+ "reader": "t976766",
+ "pid": "",
+ "src": "minds",
+ "intake": "spiritual",
+ "walk": [
+  {
+   "move": 1,
+   "verdict": "refuse",
+   "reason": "I don't understand"
+  },
+  {
+   "move": 2,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 3,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 4,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 5,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 6,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 7,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 8,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 9,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 10,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 11,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 12,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 13,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 14,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 15,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 16,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 17,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 18,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 19,
+   "verdict": "refuse",
+   "reason": "I don't understand"
+  }
+ ],
+ "first_exit": {
+  "move": 1,
+  "why": ""
+ },
+ "labels": {
+  "1": "argument",
+  "2": "commitment",
+  "3": "commitment",
+  "4": "commitment",
+  "5": "conditional",
+  "6": "commitment",
+  "7": "commitment",
+  "8": "commitment",
+  "9": "commitment",
+  "10": "commitment",
+  "11": "argument",
+  "12": "commitment",
+  "13": "commitment",
+  "14": "commitment",
+  "15": "commitment",
+  "16": "commitment",
+  "17": "argument",
+  "18": "commitment",
+  "19": "not taken"
+ },
+ "comment": "",
+ "recorded_at": "2026-11-09T16:20:38+00:00",
+ "quality": {
+  "total_s": 1120,
+  "median_move_s": 23.0,
+  "max_same_reason": 6,
+  "exclude": false
+ }
+}

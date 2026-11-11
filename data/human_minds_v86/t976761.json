@@ -1,0 +1,136 @@
+{
+ "reader": "t976761",
+ "pid": "",
+ "src": "minds",
+ "intake": "believer",
+ "walk": [
+  {
+   "move": 1,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 2,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 3,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 4,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 5,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 6,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 7,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 8,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 9,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 10,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 11,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 12,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 13,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 14,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 15,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 16,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 17,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 18,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 19,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  }
+ ],
+ "first_exit": {
+  "move": 1,
+  "why": "My first refusal was Move 1 (Ignorance \u2192 Religion). I refused because the need to explain the unknown does not necessarily lead to religion; there may be other explanations, and uncertainty alone is not evidence of a divine being."
+ },
+ "labels": {
+  "1": "commitment",
+  "2": "argument",
+  "3": "argument",
+  "4": "argument",
+  "5": "conditional",
+  "6": "argument",
+  "7": "commitment",
+  "8": "conditional",
+  "9": "argument",
+  "10": "argument",
+  "11": "commitment",
+  "12": "argument",
+  "13": "commitment",
+  "14": "conditional",
+  "15": "argument",
+  "16": "conditional",
+  "17": "commitment",
+  "18": "conditional",
+  "19": "not taken"
+ },
+ "comment": "I appreciate how your route explores the relationship between God, consciousness, morality, and personal identity. However, I think some of your transitions depend on assumptions that are not necessarily true, especially when moving from uncertainty to atheism or from the need for continuity to dualism. My biggest question is: Are you trying to discover what is true, or to show how far a person can go by following a particular set of assumptions?",
+ "recorded_at": "2026-11-09T16:17:40+00:00",
+ "quality": {
+  "total_s": 961,
+  "median_move_s": 29.7,
+  "max_same_reason": 10,
+  "exclude": false
+ }
+}

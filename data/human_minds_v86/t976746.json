@@ -1,0 +1,136 @@
+{
+ "reader": "t976746",
+ "pid": "",
+ "src": "minds",
+ "intake": "believer",
+ "walk": [
+  {
+   "move": 1,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 2,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 3,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 4,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 5,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 6,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 7,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 8,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 9,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 10,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 11,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 12,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 13,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 14,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 15,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 16,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 17,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 18,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 19,
+   "verdict": "refuse",
+   "reason": "premise false"
+  }
+ ],
+ "first_exit": {
+  "move": 1,
+  "why": "Ignorance because i think so that's why I chose refused "
+ },
+ "labels": {
+  "1": "argument",
+  "2": "commitment",
+  "3": "conditional",
+  "4": "conditional",
+  "5": "conditional",
+  "6": "conditional",
+  "7": "conditional",
+  "8": "conditional",
+  "9": "commitment",
+  "10": "commitment",
+  "11": "commitment",
+  "12": "conditional",
+  "13": "commitment",
+  "14": "conditional",
+  "15": "commitment",
+  "16": "commitment",
+  "17": "conditional",
+  "18": "argument",
+  "19": "argument"
+ },
+ "comment": "Commitment ",
+ "recorded_at": "2026-11-09T16:06:34+00:00",
+ "quality": {
+  "total_s": 281,
+  "median_move_s": 3.1,
+  "max_same_reason": 8,
+  "exclude": true
+ }
+}

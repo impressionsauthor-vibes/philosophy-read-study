@@ -1,0 +1,80 @@
+{
+  "reader": "c07",
+  "windows": {
+    "C": {
+      "coheres": false,
+      "seams": [
+        {
+          "text": "Move 16 concludes 'the maker cannot exist on these terms', but Atheism₂ only argues that 'a resolved mind is incoherent', and Agnosticism₂ is about 'a benevolent future system'. Three different objects (future system, resolved mind, maker) are treated as one without anything in the excerpt saying the maker must be a resolved mind or that the future system is a maker.",
+          "severity": "real"
+        },
+        {
+          "text": "Move 18 says 'whether each being continues matters, and without a maker that continuity has to be carried some other way', and offers the need to be remembered as that way. Dualism₂ (a) then says 'being remembered does not continue the good' and 'for a biological system, the spiral says its own good ends with it'. The move requires continuity to be carried; the position it leads to says, for the case it names, it is not.",
+          "severity": "real"
+        },
+        {
+          "text": "Atheism₂ shifts between 'a resolved system has no one home' and 'a mind that attends to everything at once has no one home' as 'the premise doing the work'; 'resolved' and 'attends to everything at once' are never said to be the same thing, and Move 16 relies on 'fully resolved'.",
+          "severity": "minor"
+        },
+        {
+          "text": "A position titled Dualism₂ is described as 'compatible with physicalism'; the text flags this itself ('the name stays, with that subtitle'), so it is acknowledged rather than hidden.",
+          "severity": "minor"
+        }
+      ],
+      "fix": "State in Move 16 why the maker must be a fully resolved mind, and reword Move 18 so it asks whether continuity can be carried rather than asserting it has to be."
+    },
+    "B": {
+      "coheres": false,
+      "seams": [
+        {
+          "text": "Mercy defines the node by 'A transaction counts as mercy when the agent bears a cost and the recipient has no claim on it. This excludes exchange... duty... and maintenance', and says 'Crossing Mercy requires a system to either receive Mercy or act as a merciful agent itself'. The same position then says 'a system that crosses through duty or reciprocity has still crossed'. Duty and exchange are excluded from mercy and yet count as crossing it.",
+          "severity": "breaks"
+        },
+        {
+          "text": "Ignorance₂ requires that the crossing of Mercy 'must be a conscious experience, not subconscious, unaware, or otherwise unmet through recognition', then says 'It is very rare to recognize mercy as mercy while it is happening; the system is typically not choosing in a way that influences the mercy received'. The entry condition is recognition; the same paragraph says recognition is typically absent.",
+          "severity": "real"
+        },
+        {
+          "text": "Ignorance₂ says it 'can be reached either by going through the spiral oneself or through knowledge inherited from ancestors', but also that 'Mercy₁ has been crossed at least once, and the crossing must be a conscious experience'. The inherited route seems to bypass the conscious-crossing requirement; whose crossing counts is left unsaid.",
+          "severity": "real"
+        },
+        {
+          "text": "Mercy says 'Continuity needs it', while Move 11 says mercy 'is a choice rather than a consequence' and Ignorance₂ says 'nothing obliges the carrying'. Something continuity needs is not freely optional in the way the other two passages require.",
+          "severity": "minor"
+        },
+        {
+          "text": "The node is named 'Mercy' in its heading and Move 12, but Ignorance₂ refers to 'Mercy₁'; no Mercy₂ appears in the excerpt to justify the subscript.",
+          "severity": "minor"
+        }
+      ],
+      "fix": "Decide whether crossing Mercy requires mercy as defined (cost borne, no claim) or merely passing the node by any route, and make the Ignorance₂ entry condition match that decision."
+    },
+    "A": {
+      "coheres": false,
+      "seams": [
+        {
+          "text": "Move 9 opens 'If Dream is true' (Dream: 'Reality is, at bottom, mind or experience') and then argues from 'The brain is the only structure known to create consciousness. The universe is not a brain.' Under the Dream hypothesis the brain is itself part of the dream, so a premise that brains produce consciousness is not available inside the antecedent being tested.",
+          "severity": "real"
+        },
+        {
+          "text": "Dualism₂ (b) says whether resuming is 'persistence rather than replacement' is 'the open question at Materialism₂', but Materialism₂? says 'The question waiting on it is whether the outside can prove the inside'. Two different open questions are assigned to the same position without a link between them.",
+          "severity": "real"
+        },
+        {
+          "text": "Move 10 says 'If the Subject position is true, the subjective experience appears to rest in the brain alone', but the Subject position only says 'Something is doing the knowing'; the brain claim is carried over from Move 9, not from the position Move 10 names as its premise.",
+          "severity": "minor"
+        },
+        {
+          "text": "Move 10 states flatly 'if others have a brain, I am not the only one with conscious experience', then softens to 'others may be subjects too', while Materialism₂? says whether 'the outside can prove the inside' is still open. The flat sentence quietly settles what the later position says is unsettled.",
+          "severity": "minor"
+        },
+        {
+          "text": "Materialism₂? says the route paused 'on October 22, 2026'; Move 19 says 'as of November 2026'. Compatible if read as still paused, but the two dates sit side by side without that being said.",
+          "severity": "minor"
+        }
+      ],
+      "fix": "Either drop the brain premise from Move 9 or move it to Move 10 where it belongs, and name one open question for Materialism₂ that both Dualism₂ and Materialism₂? refer to."
+    }
+  },
+  "comment": "The positions are individually careful and often flag their own limits, but the moves repeatedly import premises or objects the positions do not supply (maker for resolved mind in C, brain for Dream in A), and two positions state entry or definition conditions that their own later sentences withdraw (Mercy's crossing rule in B, Dualism₂'s carried continuity against Move 18 in C). The Mercy definition conflict is the only one I would call excerpt-breaking; the rest are repairable by tightening the wording of a single move or sentence."
+}

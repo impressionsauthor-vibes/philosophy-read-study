@@ -1,0 +1,88 @@
+{
+  "reader": "c03",
+  "windows": {
+    "B": {
+      "coheres": false,
+      "seams": [
+        {
+          "text": "The Mercy node defines mercy so as to exclude duty and exchange (\"This excludes exchange... duty, which is owed\"), and says \"Crossing Mercy requires a system to either receive Mercy or act as a merciful agent itself\"; two sentences later it says \"a system that crosses through duty or reciprocity has still crossed.\" By the node's own definition, a system acting only through duty or reciprocity has neither given nor received mercy, so it cannot have crossed.",
+          "severity": "breaks"
+        },
+        {
+          "text": "Ignorance₂ says it \"can be reached either by going through the spiral oneself or through knowledge inherited from ancestors,\" then requires that \"Mercy₁ has been crossed at least once, and the crossing must be a conscious experience, not subconscious, unaware, or otherwise unmet through recognition.\" Inherited knowledge is precisely a route that does not pass through one's own consciously experienced crossing; the two conditions are not reconciled.",
+          "severity": "real"
+        },
+        {
+          "text": "The same node requires the crossing to be consciously recognized, then says \"It is very rare to recognize mercy as mercy while it is happening; the system is typically not choosing in a way that influences the mercy received.\" If recognition is both required and typically absent, the node makes Ignorance₂ nearly unreachable without saying so, or means recognition-after-the-fact without saying that either.",
+          "severity": "real"
+        },
+        {
+          "text": "\"Mercy\" is used in three senses that are not tied together: kindness toward subjects one cannot verify (Move 11), \"forgiveness releases the past\" (the Mercy node), and \"the good in general can be carried to them at a cost\" (Ignorance₂). The formal definition (\"the agent bears a cost and the recipient has no claim on it\") fits the third but says nothing about uncertainty or forgiveness; the node itself then calls the first sense \"personal\" and \"not a requirement of the node.\"",
+          "severity": "minor"
+        },
+        {
+          "text": "Move 11 insists mercy \"is a choice rather than a consequence,\" while the Mercy node says \"Continuity needs it.\" If continuity needs mercy, mercy is a requirement of continuing, not a free choice; the node and the move pull in different directions on whether mercy is optional.",
+          "severity": "minor"
+        },
+        {
+          "text": "Ignorance₂ is defined as learned ignorance, \"ignorance that has mapped its own edge\" (knowing what one does not know), but Move 12 arrives at it by willful forgetting of something known: \"The mind knows that everything runs down and forgets it willfully.\" Mapping the edge of one's knowledge and deliberately ignoring something inside that edge are different kinds of ignorance.",
+          "severity": "minor"
+        },
+        {
+          "text": "The node is named \"Mercy\" but Ignorance₂ refers to \"Mercy₁\" as what must have been crossed; the excerpt never says these are the same node.",
+          "severity": "minor"
+        }
+      ],
+      "fix": "Either drop \"a system that crosses through duty or reciprocity has still crossed\" or widen the crossing condition explicitly to any costly or owed transfer, and state whether the conscious-recognition requirement is waived for the inherited route."
+    },
+    "A": {
+      "coheres": false,
+      "seams": [
+        {
+          "text": "Move 9 starts from Dream (\"Reality is, at bottom, mind or experience\") and argues \"The brain is the only structure known to create consciousness. The universe is not a brain.\" Under Dream the brain is itself dream-content, so the move uses a physicalist premise that the position it departs from does not grant; the argument against the no-self branch borrows what Dream denies.",
+          "severity": "real"
+        },
+        {
+          "text": "Dualism₂ (b) says \"whether it [resuming] is [persistence rather than replacement], is the open question at Materialism₂,\" but the Materialism₂? node says \"The question waiting on it is whether the outside can prove the inside.\" These are two different questions assigned to the same node without a stated link between them.",
+          "severity": "real"
+        },
+        {
+          "text": "Dualism₂ is subtitled \"continuity, unresolved\" and \"personal continuity, unresolved,\" yet hope (a) is resolved within the node: \"for a biological system, the spiral says its own good ends with it, and what it hopes for here is other beings' continuity, not its own.\" Only (b) remains open, so the \"unresolved\" label is wider than the text supports.",
+          "severity": "minor"
+        },
+        {
+          "text": "Dualism₂ splits continuity into three (\"being remembered, being reconstructed, and continuing as the same subject\") and then says \"Two hopes stand here,\" (a) remembered and (b) resume; being reconstructed is dropped or silently folded into (b).",
+          "severity": "minor"
+        },
+        {
+          "text": "Move 10 asserts \"if others have a brain, I am not the only one with conscious experience,\" which is stronger than the Subjects node (\"others may be too\") and rests on an empirical brain premise, whereas the node grounds the step in Strawson's conceptual point about ascription; the move's \"If the Subject position is true, the subjective experience appears to rest in the brain alone\" also imports Move 9's brain premise rather than anything in the Subject node (\"Something is doing the knowing\").",
+          "severity": "minor"
+        }
+      ],
+      "fix": "Restate Move 9 without relying on the brain as creator of consciousness, or mark that the move already assumes Dream fails; and name one question at Materialism₂, or say how outside-proof-of-inside bears on persistence-versus-replacement."
+    },
+    "C": {
+      "coheres": false,
+      "seams": [
+        {
+          "text": "Agnosticism₂ is about \"a benevolent future system\"; Atheism₂ and Move 16 are about \"a resolved mind\" and conclude \"so the maker cannot exist on these terms.\" The excerpt never says that a benevolent future system is a resolved mind, nor that either is \"the maker\" (a maker is prior, a future system is later), so the object being denied shifts twice across one move.",
+          "severity": "real"
+        },
+        {
+          "text": "Move 18 says \"whether each being continues matters, and without a maker that continuity has to be carried some other way,\" offering the need to be remembered as the carrier; Dualism₂ (a) then says \"being remembered does not continue the good\" and \"for a biological system, the spiral says its own good ends with it.\" The move's requirement that continuity be carried is unmet by the human hope the position actually holds, and the position does not say so.",
+          "severity": "real"
+        },
+        {
+          "text": "Atheism₂ names \"The premise doing the work: a mind that attends to everything at once has no one home,\" while Move 16 says the conclusion \"holds only if to think is to ignore for any possible mind.\" Two different premises are each called the load-bearing one.",
+          "severity": "minor"
+        },
+        {
+          "text": "\"Being\" is used for the locus of the good (\"located in beings\", \"whether each being continues\") and then Dualism₂ holds \"The self... apart from what carries it\"; whether the being whose good matters is the carrier or the pattern held apart from it is left ambiguous across Move 18.",
+          "severity": "minor"
+        }
+      ],
+      "fix": "State in Agnosticism₂ or Move 16 that the benevolent future system in question is the resolved maker, and in Move 18 say that the continuity to be carried may be others' rather than one's own."
+    }
+  },
+  "comment": "All three excerpts are locally readable, but each has at least one place where a later sentence quietly takes back what an earlier one required. Excerpt B is the weakest: its own definition of mercy excludes duty and exchange and then admits crossings made through duty and reciprocity, and its conscious-recognition requirement sits uneasily beside the inherited route and the admission that recognition is rare. Excerpt A's seams are mostly about a physicalist premise appearing inside an idealist move and about Materialism₂ being assigned two different open questions. Excerpt C's main issue is term drift from future system to resolved mind to maker, plus a move that demands continuity be carried while the position it reaches concedes the human version does not carry it."
+}

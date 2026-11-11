@@ -1,0 +1,136 @@
+{
+ "reader": "t976764",
+ "pid": "",
+ "src": "minds",
+ "intake": "spiritual",
+ "walk": [
+  {
+   "move": 1,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 2,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 3,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 4,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 5,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 6,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 7,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 8,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 9,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 10,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 11,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 12,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 13,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 14,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 15,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 16,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 17,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 18,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 19,
+   "verdict": "refuse",
+   "reason": "premise false"
+  }
+ ],
+ "first_exit": {
+  "move": 2,
+  "why": ""
+ },
+ "labels": {
+  "1": "argument",
+  "2": "commitment",
+  "3": "conditional",
+  "4": "argument",
+  "5": "argument",
+  "6": "commitment",
+  "7": "conditional",
+  "8": "conditional",
+  "9": "conditional",
+  "10": "argument",
+  "11": "argument",
+  "12": "commitment",
+  "13": "commitment",
+  "14": "commitment",
+  "15": "argument",
+  "16": "argument",
+  "17": "conditional",
+  "18": "conditional",
+  "19": "not taken"
+ },
+ "comment": "",
+ "recorded_at": "2026-11-09T16:19:36+00:00",
+ "quality": {
+  "total_s": 639,
+  "median_move_s": 3.0,
+  "max_same_reason": 10,
+  "exclude": true
+ }
+}
