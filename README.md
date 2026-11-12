@@ -58,14 +58,18 @@ and the reference numbers. Ten fresh sessions on any model, save each reply as J
 
     python3 scripts/code_selfread.py path/to/folder
 
-A human version of the walk exists as a web page; `scripts/decode_walk_codes.py` turns its response codes
-into the same JSON shape. It will be linked here when the human arm is reported.
+A human version of the walk is live at [impressionsauthor-vibes.github.io/philosophy-read-study/walk/](https://impressionsauthor-vibes.github.io/philosophy-read-study/walk/)
+(`walk/index.html`). With sharing on, it posts one JSON record per walk to a form: map version, a random id, the day,
+the move the reader stopped at, and per move a verdict (take / split / refuse), a reason, and seconds spent; nothing
+identifying. `scripts/decode_walk_site.py` turns a CSV export of those records into the same JSON shape as the model
+arms (the payload key and the split rule are at the top of the script). `scripts/decode_walk_codes.py` does the same
+for the earlier code-paste version.
 
 ## Layout
 
 - `instrument/` — persona-arm packet and instructions; self-read packet and instructions; the 20 personas
 - `data/` — all 40 reader files, by arm; coded output for the persona arm
-- `scripts/` — `code_personas.py` (persona arm), `code_selfread.py` (self-read arms, with reference columns), `decode_walk_codes.py` (human study)
+- `scripts/` — `code_personas.py` (persona arm), `code_selfread.py` (self-read arms, with reference columns), `decode_walk_codes.py` and `decode_walk_site.py` (human study)
 - `predictions/prediction.md` — every prediction, dated, logged before the data it concerns, including failures and the open-weight arm predictions
 - `kit/` — the replication kit page
 
