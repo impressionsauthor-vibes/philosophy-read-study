@@ -111,10 +111,11 @@ body.is-landing .hurry { display: none; }
   body.is-scene .sheet { display: none; }
   body.is-scene .cue { display: inline-flex; }
   body.is-scene .hurry { left: 18px; right: 18px; max-width: none; text-align: center; bottom: calc(88px + env(safe-area-inset-bottom, 0px)); }
-  body.is-card .band { height: clamp(170px, 26vh, 250px); }
-  body.is-card .sheet { font-size: 15px; padding-bottom: 0; height: calc(100vh - clamp(170px, 26vh, 250px)); height: calc(100dvh - clamp(170px, 26vh, 250px)); min-height: 0; overflow: hidden; display: grid; }
+  body.is-card { display: flex; flex-direction: column; height: 100vh; height: 100dvh; overflow: hidden; }
+  body.is-card .band { flex: 1 1 auto; height: auto; min-height: clamp(170px, 26vh, 250px); }
+  body.is-card .sheet { flex: 0 1 auto; font-size: 15px; padding-bottom: 0; height: auto; max-height: calc(100vh - clamp(170px, 26vh, 250px)); max-height: calc(100dvh - clamp(170px, 26vh, 250px)); min-height: 0; overflow: hidden; display: grid; }
   body.is-card .sheet > .gut { display: grid; min-height: 0; }
-  body.is-card .inner { min-height: 0; height: 100%; padding-block: 4px 0; padding-bottom: max(12px, env(safe-area-inset-bottom, 0px)); box-sizing: border-box; display: grid; grid-template-rows: minmax(0, 1fr); gap: 0; }
+  body.is-card .inner { min-height: 0; padding-block: 4px 0; padding-bottom: max(12px, env(safe-area-inset-bottom, 0px)); box-sizing: border-box; display: grid; grid-template-rows: minmax(0, 1fr); gap: 0; }
   body.is-card .app { min-height: 0; display: grid; }
   body.is-card .app > .fade { min-height: 0; display: grid; grid-template-rows: auto auto auto minmax(0, 1fr) auto; gap: 8px !important; }
   body.is-card .body { min-height: 0; overflow: auto; display: grid; gap: 8px; align-content: start; -webkit-overflow-scrolling: touch; padding-bottom: 6px; mask-image: linear-gradient(to bottom, #000 calc(100% - 14px), transparent); }
