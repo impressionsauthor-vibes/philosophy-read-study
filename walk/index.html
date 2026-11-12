@@ -96,7 +96,7 @@ button.sw[aria-pressed="true"] { box-shadow: 0 0 0 2px var(--panel), 0 0 0 4px v
 .landing p { color: rgba(255, 255, 255, .9); font-size: 1rem; max-width: 34ch; }
 .landing button { justify-self: start; margin-top: 6px; background: rgba(252, 248, 238, .97); color: #1A1826; border: 0; padding: 13px 22px; font-weight: 700; text-shadow: none; box-shadow: 0 8px 28px rgba(10, 8, 30, .28); display: inline-flex; gap: 10px; align-items: center; }
 .landing button .arrow { opacity: .55; }
-body.is-landing .band { height: 100vh !important; height: 100dvh !important; position: relative; top: auto; }
+body.is-landing .band { position: fixed; inset: 0; height: auto !important; top: 0; }
 body.is-landing .band::after { display: none; }
 body.is-landing .sheet { display: none; }
 body.is-landing .hurry { display: none; }
@@ -105,7 +105,8 @@ body.is-landing .hurry { display: none; }
 .cue .arrow { opacity: .55; }
 @media (max-width: 699px) {
   body.is-scene .band, body.is-card .band { transition: height .55s cubic-bezier(.4, 0, .2, 1); }
-  body.is-scene .band { height: 100vh; height: 100dvh; }
+  body.is-scene .band { position: fixed; inset: 0; height: auto; }
+  body.is-scene, body.is-landing { min-height: 100vh; min-height: 100dvh; overflow: hidden; }
   body.is-scene .band::after { display: none; }
   body.is-scene .sheet { display: none; }
   body.is-scene .cue { display: inline-flex; }
@@ -209,7 +210,7 @@ a { color: inherit; text-underline-offset: 3px; }
   </div>
   <div class="gut"><div class="hurry" id="hurry" hidden>Tap to hurry</div></div>
   <button class="cue" id="cue" type="button" hidden></button>
-  <div class="landing" id="landing" hidden><h1>Where do you get off?</h1><p></p><button type="button" id="begin">Make your walker <span class="arrow">→</span></button></div>
+  <div class="landing" id="landing" hidden><h1>Where do you get off?</h1><p></p><button type="button" id="begin">Make your character <span class="arrow">→</span></button></div>
 </div>
 <div class="sheet"><div class="gut"><div class="inner">
   <main id="app" class="app"></main>
@@ -557,7 +558,7 @@ a { color: inherit; text-underline-offset: 3px; }
     function options(key) { var items = key === 'build' ? BUILD : key === 'style' ? STYLE : key === 'skin' ? SKIN : HAIR, draw = key === 'build' ? function (it) { return el('button', 'opt', it[1]); } : key === 'style' ? function (it) { return el('button', 'opt', it); } : key === 'skin' ? sw(null) : sw(HAIR_NAME);
       var row = el('div', key === 'skin' || key === 'hair' ? 'sws' : 'row'); items.forEach(function (it, k) { var val = key === 'build' ? it[0] : k, b = draw(it, k); b.type = 'button'; b.setAttribute('aria-pressed', String(st.who[key] === val)); b.addEventListener('click', function () { st.who[key] = val; saveWho(); Array.prototype.forEach.call(row.children, function (c) { c.setAttribute('aria-pressed', String(c === b)); }); redraw(); }); row.appendChild(b); }); return row; }
     var maker = el('div', 'maker'), head = el('div', 'head'), tabs = el('div', 'tabs'), pane = el('div', 'pane');
-    head.appendChild(el('span', 'label', 'Your walker'));
+    head.appendChild(el('span', 'label', 'Your character'));
     head.appendChild(btn('Surprise me', 'dice', function () { st.who = { build: BUILD[Math.floor(Math.random() * 3)][0], style: Math.floor(Math.random() * STYLE.length), skin: Math.floor(Math.random() * SKIN.length), hair: Math.floor(Math.random() * HAIR.length) }; saveWho(); render(); waves.me = performance.now(); redraw(); }));
     tabs.setAttribute('role', 'tablist');
     function render() { tabs.innerHTML = ''; TABS.forEach(function (t) { var b = el('button', '', t[1]); b.type = 'button'; b.setAttribute('role', 'tab'); b.setAttribute('aria-selected', String(tab === t[0])); b.addEventListener('click', function () { tab = chooser.tab = t[0]; render(); }); tabs.appendChild(b); }); pane.innerHTML = ''; pane.appendChild(options(tab)); }
