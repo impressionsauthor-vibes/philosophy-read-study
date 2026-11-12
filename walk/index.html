@@ -28,7 +28,7 @@ p { margin: 0; }
 .band.is-drag { cursor: grabbing; }
 .band canvas { position: absolute; inset: 0; width: 100%; height: 100%; display: block; }
 .band::after { content: ""; position: absolute; left: 0; right: 0; bottom: -1px; height: 27px; background: var(--panel); border-radius: 26px 26px 0 0; box-shadow: 0 -10px 34px rgba(20, 16, 40, .16); }
-body.is-intro .band { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; height: clamp(230px, 38vh, 460px); }
+body.is-intro .band { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; height: clamp(250px, 44vh, 460px); }
 @media (min-width: 700px) { .band { height: calc(68vh + 26px); } body.is-intro .band { height: calc(55vh + 26px); } }
 body.is-opening.is-intro .band { height: 90vh; }
 body.is-settling .band { transition: height .85s cubic-bezier(.4, 0, .2, 1); }
@@ -85,9 +85,32 @@ button.opt { padding: 9px 16px; font-weight: 600; }
 button[aria-pressed="true"] { border-color: var(--ink); }
 .group { display: grid; gap: 8px; }
 .group .label { font-size: 13px; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
-.sws { display: flex; flex-wrap: wrap; gap: 7px; }
-button.sw { width: 32px; height: 32px; padding: 0; border-radius: 50%; border: 2px solid var(--panel); box-shadow: 0 0 0 1px var(--line); }
-button.sw[aria-pressed="true"] { box-shadow: 0 0 0 2.5px var(--ink); }
+.sws { display: grid; grid-template-columns: repeat(auto-fill, minmax(36px, 1fr)); gap: 8px; }
+button.sw { width: 36px; height: 36px; padding: 0; border-radius: 50%; border: 2px solid var(--panel); box-shadow: 0 0 0 1px var(--line); }
+button.sw[aria-pressed="true"] { box-shadow: 0 0 0 2px var(--panel), 0 0 0 4px var(--ink); }
+/* The character maker: one card, four tabs, the walker on the stage above or beside it. */
+.maker { background: var(--soft); border-radius: 22px; padding: 14px 16px 16px; display: grid; gap: 12px; }
+.maker .head { display: flex; justify-content: space-between; align-items: center; gap: 10px; }
+.maker .label { font-size: 13px; font-weight: 650; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+body.is-intro h1 { font-size: clamp(28px, 7.4vw, 40px); }
+body.is-intro .lede { font-size: .98rem; }
+button.dice { padding: 7px 13px; font-size: 14px; background: var(--panel); }
+.tabs { display: flex; gap: 4px; background: var(--panel); border-radius: 999px; padding: 4px; }
+.tabs button { flex: 1; min-width: 0; border-radius: 999px; padding: 8px 6px; font-size: 14px; font-weight: 650; background: transparent; color: var(--muted); border: 0; }
+.tabs button[aria-selected="true"] { background: var(--ink); color: var(--panel); }
+.pane { min-height: 92px; display: grid; align-content: start; }
+.pane .row { gap: 8px; }
+.pane .row button.opt { padding: 9px 15px; background: var(--panel); }
+.pane .row button.opt[aria-pressed="true"] { background: var(--ink); color: var(--panel); border-color: var(--ink); }
+.intro-foot { color: var(--muted); font-size: .93rem; }
+@media (min-width: 960px) {
+  body.is-intro { display: grid; grid-template-columns: minmax(0, 1fr) 480px; min-height: 100vh; }
+  body.is-intro .band { position: relative; top: auto; height: 100vh !important; }
+  body.is-intro .band::after { display: none; }
+  body.is-intro .sheet { min-height: 100vh; border-left: 1px solid var(--line); }
+  body.is-intro .inner { max-width: none; padding-block: 34px 28px; }
+  body.is-intro h1 { font-size: 38px; }
+}
 .stats { display: flex; flex-wrap: wrap; gap: 8px; }
 .stat { background: var(--soft); border-radius: 14px; padding: 10px 14px; display: grid; }
 .stat b { font-family: var(--display); font-weight: 800; font-size: 1.5rem; line-height: 1.1; font-variant-numeric: tabular-nums; }
@@ -382,14 +405,14 @@ a { color: inherit; text-underline-offset: 3px; }
   // ---------- stage
   var cv = document.getElementById('cv'), band = document.getElementById('band'), ctx = cv.getContext('2d'), off = document.createElement('canvas'), octx = off.getContext('2d');
   var still = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
-  var view = { cam: 0, ph: 0, moving: false, warp: 0, fx: null, center: 0, W: 800, s: 1, dpr: 1, peek: 0 }, tw = null, time0 = 0, dragging = null;
+  var view = { cam: 0, ph: 0, moving: false, warp: 0, fx: null, center: 0, zoom: 1, W: 800, s: 1, dpr: 1, peek: 0 }, tw = null, time0 = 0, dragging = null;
   function size() { var r = band.getBoundingClientRect(), dpr = Math.min(2, window.devicePixelRatio || 1); cv.width = off.width = Math.max(2, Math.round(r.width * dpr)); cv.height = off.height = Math.max(2, Math.round(r.height * dpr)); view.dpr = dpr; view.s = (r.height - 26) / 340; view.W = r.width / view.s; }
   var FALLER = { build: 'a', style: 2, skin: 9, hair: 1 };
   function bounce(t) { t = Math.max(0, Math.min(1, t)); return t < .8 ? (t / .8) * (t / .8) : 1 - .035 * Math.sin(Math.PI * (t - .8) / .2); }
   function paint(time) {
     var k = view.dpr * view.s, fx = view.fx, dy = 0, cx = view.W < 460 ? Math.max(48, view.W * .18) : Math.max(70, Math.min(260, view.W * .28)), target = view.warp > .001 ? octx : ctx, g; cx += (view.W / 2 - cx) * view.center;
     if (fx) dy = fx.kind === 'fall' ? 430 * (1 - bounce(fx.p)) : fx.p < .5 ? 0 : fx.p < .64 ? 430 : 430 * (1 - bounce((fx.p - .64) / .3));
-    target.setTransform(k, 0, 0, k, 0, 0); drawScene(target, view.W, view.cam + view.peek, time, (fx && fx.kind === 'fall') || view.center > 0 ? FALLER : st.who, view.ph, view.moving, dy, view.center, true);
+    target.setTransform(k, 0, 0, k, 0, 0); if (view.zoom > 1.001) { target.translate(cx, 300); target.scale(view.zoom, view.zoom); target.translate(-cx, -300); } drawScene(target, view.W, view.cam + view.peek, time, (fx && fx.kind === 'fall') ? FALLER : st.who, view.ph, view.moving, dy, view.center, true);
     if (view.warp > .001) { ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height); var a = view.warp * 26 * view.dpr, z = 1 + view.warp * .06, hh = 3 * view.dpr; for (var y = 0; y < cv.height; y += hh) { var dx = a * Math.sin(y * .03 / view.dpr + time * .011); ctx.drawImage(off, 0, y, cv.width, hh, dx - (z - 1) * cv.width / 2, y, cv.width * z, hh); } ctx.fillStyle = 'rgba(255,255,255,' + (view.warp * .22) + ')'; ctx.fillRect(0, 0, cv.width, cv.height); }
     if (fx) {
       ctx.setTransform(k, 0, 0, k, 0, 0); var p = fx.p;
@@ -404,7 +427,7 @@ a { color: inherit; text-underline-offset: 3px; }
   }
   function frame(ts) {
     if (!time0) time0 = ts; var dt = Math.min(60, ts - (frame.last || ts)); frame.last = ts;
-    if (tw) { tw.p = Math.min(1, tw.p + dt / tw.dur * (tw.fast ? 5 : 1)); var e = tw.p * tw.p * tw.p * (tw.p * (tw.p * 6 - 15) + 10), nc = tw.from + (tw.to - tw.from) * e, rb = tw.fx === 'rebirth', fl = tw.fx === 'fall'; if (rb) nc = tw.p < .5 ? tw.from + 420 * sm(tw.p / .5) : tw.to; view.fx = rb || fl ? { kind: tw.fx, p: tw.p } : null; view.ph += Math.abs(nc - view.cam) * .04; view.cam = nc; view.moving = !fl && tw.fx !== 'settle' && !(rb && tw.p >= .5); if (tw.fx === 'settle') { size(); view.center = 1 - sm(tw.p); } view.warp = tw.fx === 'warp' ? Math.pow(Math.sin(Math.PI * Math.max(0, Math.min(1, (tw.p - .3) / .4))), 2) : 0; if (tw.p >= 1) { var d = tw.done; tw = null; view.moving = false; view.warp = 0; view.fx = null; d(); } }
+    if (tw) { tw.p = Math.min(1, tw.p + dt / tw.dur * (tw.fast ? 5 : 1)); var e = tw.p * tw.p * tw.p * (tw.p * (tw.p * 6 - 15) + 10), nc = tw.from + (tw.to - tw.from) * e, rb = tw.fx === 'rebirth', fl = tw.fx === 'fall'; if (rb) nc = tw.p < .5 ? tw.from + 420 * sm(tw.p / .5) : tw.to; view.fx = rb || fl ? { kind: tw.fx, p: tw.p } : null; view.ph += Math.abs(nc - view.cam) * .04; view.cam = nc; view.moving = !fl && tw.fx !== 'settle' && !(rb && tw.p >= .5); if (tw.fx === 'settle') { size(); var sp = sm(tw.p); view.center = tw.c0 + (tw.c1 - tw.c0) * sp; view.zoom = tw.z0 + (tw.z1 - tw.z0) * sp; } view.warp = tw.fx === 'warp' ? Math.pow(Math.sin(Math.PI * Math.max(0, Math.min(1, (tw.p - .3) / .4))), 2) : 0; if (tw.p >= 1) { var d = tw.done; tw = null; view.moving = false; view.warp = 0; view.fx = null; d(); } }
     if (!dragging && view.peek) { view.peek += (0 - view.peek) * (1 - Math.exp(-dt / 150)); if (Math.abs(view.peek) < .2) view.peek = 0; }
     paint(ts); if (!still) requestAnimationFrame(frame);
   }
@@ -412,7 +435,7 @@ a { color: inherit; text-underline-offset: 3px; }
   function walkTo(j, fx, done) { if (still) { view.cam = j * SEG; redraw(); setTimeout(done, 200); return; } tw = { from: view.cam, to: j * SEG, p: 0, dur: fx === 'rebirth' ? 7600 : 5200, fx: fx, done: done, fast: false }; }
   band.addEventListener('pointerdown', function (e) { if (e.button != null && e.button !== 0) return; dragging = { x: e.clientX, y: e.clientY, peek: view.peek, moved: false, id: e.pointerId }; });
   band.addEventListener('pointermove', function (e) { if (!dragging || dragging.id !== e.pointerId) return; var dx = e.clientX - dragging.x, dyy = e.clientY - dragging.y; if (!dragging.moved && Math.abs(dx) > 8 && Math.abs(dx) > Math.abs(dyy)) { dragging.moved = true; band.classList.add('is-drag'); try { band.setPointerCapture(e.pointerId); } catch (err) {} } if (dragging.moved && !tw && st.screen === 'walk') { view.peek = Math.max(-260, Math.min(260, dragging.peek - dx / view.s)); redraw(); } });
-  function endDrag(e) { if (!dragging || (e && dragging.id !== e.pointerId)) return; var d = dragging; dragging = null; band.classList.remove('is-drag'); if (d.moved) return; if (tw) { tw.fast = true; return; } if (still) return; var r = band.getBoundingClientRect(), x = (e.clientX - r.left) / view.s, y = (e.clientY - r.top) / view.s, now = performance.now(); for (var i = HOT.length - 1; i >= 0; i--) { var h = HOT[i]; if (x < h.x || x > h.x + h.w || y < h.y || y > h.y + h.h) continue; if (h.kind === 'me') { waves.me = now; return; } if (h.kind === 'passer') { waves['p' + h.id] = now; return; } if (h.kind === 'sign') { var dd = document.querySelector('#app details'); if (dd) { dd.open = true; dd.scrollIntoView({ behavior: 'smooth', block: 'center' }); } return; } if (h.kind === 'mark') { bub = { text: h.text, x: h.x + h.w / 2, y: h.y + 4, t0: now, cam: view.cam + view.peek }; return; } } }
+  function endDrag(e) { if (!dragging || (e && dragging.id !== e.pointerId)) return; var d = dragging; dragging = null; band.classList.remove('is-drag'); if (d.moved) return; if (tw) { tw.fast = true; return; } if (still) return; var r = band.getBoundingClientRect(), x = (e.clientX - r.left) / view.s, y = (e.clientY - r.top) / view.s, now = performance.now(); if (view.zoom > 1.001) { var zc = view.W < 460 ? Math.max(48, view.W * .18) : Math.max(70, Math.min(260, view.W * .28)); zc += (view.W / 2 - zc) * view.center; x = zc + (x - zc) / view.zoom; y = 300 + (y - 300) / view.zoom; } for (var i = HOT.length - 1; i >= 0; i--) { var h = HOT[i]; if (x < h.x || x > h.x + h.w || y < h.y || y > h.y + h.h) continue; if (h.kind === 'me') { waves.me = now; return; } if (h.kind === 'passer') { waves['p' + h.id] = now; return; } if (h.kind === 'sign') { var dd = document.querySelector('#app details'); if (dd) { dd.open = true; dd.scrollIntoView({ behavior: 'smooth', block: 'center' }); } return; } if (h.kind === 'mark') { bub = { text: h.text, x: h.x + h.w / 2, y: h.y + 4, t0: now, cam: view.cam + view.peek }; return; } } }
   band.addEventListener('pointerup', endDrag); band.addEventListener('pointercancel', function () { if (dragging) { dragging = null; band.classList.remove('is-drag'); } });
   window.addEventListener('resize', function () { size(); redraw(); });
 
@@ -431,10 +454,11 @@ a { color: inherit; text-underline-offset: 3px; }
   function show(nodes) { app.innerHTML = ''; var w = el('div', 'fade'); w.style.display = 'grid'; w.style.gap = '16px'; w.style.minWidth = '0'; nodes.forEach(function (n) { if (n) w.appendChild(n); }); app.appendChild(w); }
 
   var fell = false, LEDE = 'Nineteen moves along one route through God, mind, other minds and what continues. At each one you decide whether it convinces you. There are no right answers.';
+  function introZoom() { var pw = cv.width / view.dpr; return pw > 700 ? 1 : pw > 460 ? 1.3 : 1.7; }
   function intro() {
     st.screen = 'intro'; mode(true); view.cam = 0; hud('Ignorance', '');
     if (!fell && !still) { fell = true; show([el('h1', '', 'Where do you get off?'), el('p', 'lede', LEDE)]); document.body.classList.add('is-opening'); size(); view.center = 1;
-      tw = { from: 0, to: 0, p: 0, dur: 3000, fx: 'fall', fast: false, done: function () { document.body.classList.add('is-settling'); document.body.classList.remove('is-opening'); tw = { from: 0, to: 0, p: 0, dur: 900, fx: 'settle', fast: false, done: function () { document.body.classList.remove('is-settling'); view.center = 0; size(); chooser(); } }; } }; return; }
+      tw = { from: 0, to: 0, p: 0, dur: 3000, fx: 'fall', fast: false, done: function () { document.body.classList.add('is-settling'); document.body.classList.remove('is-opening'); tw = { from: 0, to: 0, p: 0, dur: 900, fx: 'settle', fast: false, c0: 1, c1: 1, z0: 1, z1: introZoom(), done: function () { document.body.classList.remove('is-settling'); view.center = 1; view.zoom = introZoom(); size(); chooser(); } }; } }; return; }
     fell = true; chooser();
   }
   var STUDY = { endpoint: 'https://docs.google.com/forms/d/e/1FAIpQLSfJzddkshdvyQqa08QvqQf5e_6Isi5aMVg2oJ0YnXandVP4-w/formResponse', field: 'entry.1314273606' }, sent = false, sid = Math.random().toString(36).slice(2, 10);
@@ -454,14 +478,20 @@ a { color: inherit; text-underline-offset: 3px; }
   window.addEventListener('pagehide', function () { share(false); });
   document.getElementById('savenote').textContent = STUDY.endpoint ? 'Nothing is saved unless you turn on sharing.' : 'Saving is not connected in this preview. Nothing is saved or sent.';
   function chooser() {
-    redraw();
-    function group(label, items, key, draw) { var g = el('div', 'group'); g.appendChild(el('span', 'label', label)); var row = el('div', key === 'skin' || key === 'hair' ? 'sws' : 'row'); items.forEach(function (it, k) { var val = key === 'build' ? it[0] : k, b = draw(it, k); b.type = 'button'; b.setAttribute('aria-pressed', String(st.who[key] === val)); b.addEventListener('click', function () { st.who[key] = val; try { localStorage.setItem('walk-who-2', JSON.stringify(st.who)); } catch (e) {} Array.prototype.forEach.call(row.children, function (c) { c.setAttribute('aria-pressed', String(c === b)); }); redraw(); }); row.appendChild(b); }); g.appendChild(row); return g; }
+    view.center = 1; view.zoom = introZoom(); redraw();
+    var TABS = [['build', 'Build'], ['style', 'Hair'], ['skin', 'Skin'], ['hair', 'Color']], tab = chooser.tab || 'build';
+    function saveWho() { try { localStorage.setItem('walk-who-2', JSON.stringify(st.who)); } catch (e) {} }
     function sw(names) { return function (it, k) { var b = el('button', 'sw'); b.style.background = it; b.setAttribute('aria-label', names ? 'Hair color: ' + names[k] : 'Skin tone ' + (k + 1) + ' of ' + SKIN.length); return b; }; }
-    show([el('h1', '', 'Where do you get off?'), el('p', 'lede', LEDE), consent(),
-      group('Build', BUILD, 'build', function (it) { return el('button', 'opt', it[1]); }),
-      group('Hair', STYLE, 'style', function (it) { return el('button', 'opt', it); }),
-      group('Skin', SKIN, 'skin', sw(null)), group('Hair color', HAIR, 'hair', sw(HAIR_NAME)),
-      btn('Start walking', 'primary', function () { st.screen = 'walk'; st.i = 0; st.ans = []; st.off = null; walk(); window.scrollTo(0, 0); })]);
+    function options(key) { var items = key === 'build' ? BUILD : key === 'style' ? STYLE : key === 'skin' ? SKIN : HAIR, draw = key === 'build' ? function (it) { return el('button', 'opt', it[1]); } : key === 'style' ? function (it) { return el('button', 'opt', it); } : key === 'skin' ? sw(null) : sw(HAIR_NAME);
+      var row = el('div', key === 'skin' || key === 'hair' ? 'sws' : 'row'); items.forEach(function (it, k) { var val = key === 'build' ? it[0] : k, b = draw(it, k); b.type = 'button'; b.setAttribute('aria-pressed', String(st.who[key] === val)); b.addEventListener('click', function () { st.who[key] = val; saveWho(); Array.prototype.forEach.call(row.children, function (c) { c.setAttribute('aria-pressed', String(c === b)); }); redraw(); }); row.appendChild(b); }); return row; }
+    var maker = el('div', 'maker'), head = el('div', 'head'), tabs = el('div', 'tabs'), pane = el('div', 'pane');
+    head.appendChild(el('span', 'label', 'Your walker'));
+    head.appendChild(btn('Surprise me', 'dice', function () { st.who = { build: BUILD[Math.floor(Math.random() * 3)][0], style: Math.floor(Math.random() * STYLE.length), skin: Math.floor(Math.random() * SKIN.length), hair: Math.floor(Math.random() * HAIR.length) }; saveWho(); render(); waves.me = performance.now(); redraw(); }));
+    tabs.setAttribute('role', 'tablist');
+    function render() { tabs.innerHTML = ''; TABS.forEach(function (t) { var b = el('button', '', t[1]); b.type = 'button'; b.setAttribute('role', 'tab'); b.setAttribute('aria-selected', String(tab === t[0])); b.addEventListener('click', function () { tab = chooser.tab = t[0]; render(); }); tabs.appendChild(b); }); pane.innerHTML = ''; pane.appendChild(options(tab)); }
+    render(); maker.appendChild(head); maker.appendChild(tabs); maker.appendChild(pane);
+    show([el('h1', '', 'Where do you get off?'), el('p', 'lede', LEDE), maker, consent(),
+      btn('Start walking', 'primary', function () { st.screen = 'walk'; st.i = 0; st.ans = []; st.off = null; window.scrollTo(0, 0); if (still) { view.center = 0; view.zoom = 1; walk(); return; } mode(false); tw = { from: 0, to: 0, p: 0, dur: 650, fx: 'settle', fast: false, c0: 1, c1: 0, z0: view.zoom, z1: 1, done: function () { view.center = 0; view.zoom = 1; walk(); } }; })]);
   }
   function walk() {
     mode(false); st.t0 = Date.now(); bub = null; view.peek = 0; if (st.i === 0 && !still) { hurry.textContent = 'Tap things to look closer · drag to look around'; hurry.hidden = false; clearTimeout(walk.tip); walk.tip = setTimeout(function () { if (!tw) hurry.hidden = true; }, 7000); } var m = MOVES[st.i]; view.cam = st.i * SEG; hud(N[m.from].label, (st.i + 1) + ' / ' + MOVES.length); redraw();
