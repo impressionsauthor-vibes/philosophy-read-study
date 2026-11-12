@@ -1,0 +1,68 @@
+{
+  "reader": "c09",
+  "windows": {
+    "C": {
+      "coheres": true,
+      "seams": [
+        {
+          "text": "Agnosticism₂ is about 'a benevolent future system'; Atheism₂ is about 'a resolved mind'; Move 16 concludes 'the maker cannot exist on these terms'. Three terms (future system, resolved mind, maker) are treated as one referent without the identification being stated, so the move's target widens from 'benevolent future system' to 'maker' silently.",
+          "severity": "minor"
+        },
+        {
+          "text": "Move 18 says 'without a maker that continuity has to be carried some other way' and offers 'the need to be remembered' as what does the holding; Dualism₂ (a) then says 'being remembered does not continue the good' and 'its own good ends with it'. The move motivates the node with a carrier the node itself rules out; the node's 'unresolved' subtitle and the move's 'motive... not evidence' line soften this but do not say it.",
+          "severity": "minor"
+        }
+      ],
+      "fix": "In Move 16 state that the maker is being read as a fully resolved mind, and in Move 18 say that remembrance is the candidate carrier under test rather than the way continuity is carried."
+    },
+    "B": {
+      "coheres": false,
+      "seams": [
+        {
+          "text": "The Mercy node defines mercy so that it 'excludes exchange... duty, which is owed; and maintenance', and says 'Crossing Mercy requires a system to either receive Mercy or act as a merciful agent itself'; the same node then says 'a system that crosses through duty or reciprocity has still crossed'. Duty and reciprocity are first excluded from mercy and then accepted as ways of crossing it, so the node's entry condition contradicts its own definition.",
+          "severity": "breaks"
+        },
+        {
+          "text": "Ignorance₂ requires that 'the crossing must be a conscious experience, not subconscious, unaware, or otherwise unmet through recognition', yet the same node says it 'can be reached... through knowledge inherited from ancestors' and that 'It is very rare to recognize mercy as mercy while it is happening'. An inherited route and a typically unrecognized crossing sit against a requirement of conscious, recognized crossing.",
+          "severity": "real"
+        },
+        {
+          "text": "Ignorance₂ names the precondition 'Mercy₁ has been crossed', while the node in the excerpt is called 'Mercy' with no subscript; the Mercy node also says 'Continuity needs it' while Ignorance₂ says 'nothing obliges the carrying'. The first is a naming slip; the second is a mild pull between necessity and non-obligation that is not reconciled.",
+          "severity": "minor"
+        },
+        {
+          "text": "Subjects says 'others may be too' and in the next sentence 'then necessarily You'; Move 11 treats the matter as uncertain ('minds it cannot verify'). Possibility, necessity and uncertainty are asserted of the same step without saying which is meant.",
+          "severity": "minor"
+        }
+      ],
+      "fix": "Decide whether duty and reciprocity count as crossing Mercy and rewrite either the definition or the 'has still crossed' sentence to match, then say how an inherited or unrecognized crossing can satisfy the conscious-experience requirement."
+    },
+    "A": {
+      "coheres": false,
+      "seams": [
+        {
+          "text": "Dream holds 'Reality is, at bottom, mind or experience', but Move 9 argues from it using 'The brain is the only structure known to create consciousness. The universe is not a brain.' A physicalist premise (brains create consciousness) is used inside a move that departs from an idealist node, without the move saying it is rejecting Dream's premise rather than reasoning from it.",
+          "severity": "real"
+        },
+        {
+          "text": "Move 9 states as known that the brain creates consciousness, and Move 10 infers 'if others have a brain, I am not the only one with conscious experience'; Materialism₂? says the still-open question is 'whether the outside can prove the inside'. The earlier moves settle from outside what the later node says cannot yet be settled from outside.",
+          "severity": "real"
+        },
+        {
+          "text": "Dualism₂ (b) says whether resuming is persistence or replacement 'is the open question at Materialism₂', but Materialism₂? says 'The question waiting on it is whether the outside can prove the inside'. Two different questions are each named as the question at the same node, with no stated link between them.",
+          "severity": "real"
+        },
+        {
+          "text": "Subject says only 'Something is doing the knowing' and cites Lichtenberg's 'it thinks'; Move 10 opens 'If the Subject position is true, the subjective experience appears to rest in the brain alone.' The move reads a brain-location claim into a node that does not contain it, importing it from Move 9's premise.",
+          "severity": "minor"
+        },
+        {
+          "text": "Materialism₂? says the route paused 'on October 22, 2026'; Move 19 says it paused 'as of November 2026'. Subjects says 'others may be too' and then 'necessarily You'. Both are small internal mismatches of date and modality.",
+          "severity": "minor"
+        }
+      ],
+      "fix": "Make Move 9 explicitly a rejection of Dream's premise in favor of brain-based consciousness, and state one question at Materialism₂? that both Dualism₂ (b) and the node itself point to, phrased so that the 'known to create consciousness' claim of Move 9 is marked as the very thing still awaiting proof."
+    }
+  },
+  "comment": "Excerpt C hangs together; its hedges ('not a proof', 'unresolved', 'motive... not evidence') carry the weight where the moves outrun the nodes. Excerpt B has one outright contradiction inside the Mercy node (duty and reciprocity excluded from mercy, then accepted as crossings), and the Ignorance₂ node's entry condition fights its own stated routes. Excerpt A's problem is a premise that shifts: Move 9 and 10 assume from the outside that brains make consciousness, while the end of the excerpt says the outside-to-inside question is open, and the two nodes that meet at Materialism₂ disagree about what question is waiting there."
+}

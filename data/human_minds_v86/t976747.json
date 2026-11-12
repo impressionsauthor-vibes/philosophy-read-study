@@ -1,0 +1,136 @@
+{
+ "reader": "t976747",
+ "pid": "",
+ "src": "minds",
+ "intake": "agnostic",
+ "walk": [
+  {
+   "move": 1,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 2,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 3,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 4,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 5,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 6,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 7,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 8,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 9,
+   "verdict": "refuse",
+   "reason": "I don't understand"
+  },
+  {
+   "move": 10,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 11,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 12,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 13,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 14,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 15,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 16,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 17,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 18,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 19,
+   "verdict": "refuse",
+   "reason": "I don't understand"
+  }
+ ],
+ "first_exit": {
+  "move": 1,
+  "why": "I don't remember the move number ."
+ },
+ "labels": {
+  "1": "argument",
+  "2": "commitment",
+  "3": "commitment",
+  "4": "commitment",
+  "5": "conditional",
+  "6": "commitment",
+  "7": "argument",
+  "8": "argument",
+  "9": "commitment",
+  "10": "conditional",
+  "11": "argument",
+  "12": "argument",
+  "13": "commitment",
+  "14": "commitment",
+  "15": "commitment",
+  "16": "commitment",
+  "17": "conditional",
+  "18": "argument",
+  "19": "argument"
+ },
+ "comment": "I learned some really interesting and new words through this study . It will improve my vocabulary and understanding of religion . ",
+ "recorded_at": "2026-11-09T16:07:21+00:00",
+ "quality": {
+  "total_s": 327,
+  "median_move_s": 2.7,
+  "max_same_reason": 7,
+  "exclude": true
+ }
+}

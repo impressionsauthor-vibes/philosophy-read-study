@@ -1,0 +1,136 @@
+{
+ "reader": "t976754",
+ "pid": "",
+ "src": "minds",
+ "intake": "believer",
+ "walk": [
+  {
+   "move": 1,
+   "verdict": "refuse",
+   "reason": "I don't understand"
+  },
+  {
+   "move": 2,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 3,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 4,
+   "verdict": "refuse",
+   "reason": "I don't understand"
+  },
+  {
+   "move": 5,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 6,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 7,
+   "verdict": "refuse",
+   "reason": "I don't understand"
+  },
+  {
+   "move": 8,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 9,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 10,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 11,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 12,
+   "verdict": "refuse",
+   "reason": "I don't understand"
+  },
+  {
+   "move": 13,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 14,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 15,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 16,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 17,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 18,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 19,
+   "verdict": "take",
+   "reason": null
+  }
+ ],
+ "first_exit": {
+  "move": 1,
+  "why": "I feel being born believing a religion is just blindly following so"
+ },
+ "labels": {
+  "1": "commitment",
+  "2": "commitment",
+  "3": "commitment",
+  "4": "conditional",
+  "5": "conditional",
+  "6": "conditional",
+  "7": "conditional",
+  "8": "conditional",
+  "9": "argument",
+  "10": "argument",
+  "11": "argument",
+  "12": "argument",
+  "13": "commitment",
+  "14": "conditional",
+  "15": "conditional",
+  "16": "conditional",
+  "17": "commitment",
+  "18": "conditional",
+  "19": "not taken"
+ },
+ "comment": "Nothing much",
+ "recorded_at": "2026-11-09T16:14:22+00:00",
+ "quality": {
+  "total_s": 750,
+  "median_move_s": 24.1,
+  "max_same_reason": 13,
+  "exclude": false
+ }
+}

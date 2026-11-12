@@ -1,0 +1,136 @@
+{
+ "reader": "t976763",
+ "pid": "",
+ "src": "minds",
+ "intake": "believer",
+ "walk": [
+  {
+   "move": 1,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 2,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 3,
+   "verdict": "refuse",
+   "reason": "I don't understand"
+  },
+  {
+   "move": 4,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 5,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 6,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 7,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 8,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 9,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 10,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 11,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 12,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 13,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 14,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 15,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 16,
+   "verdict": "refuse",
+   "reason": "I don't understand"
+  },
+  {
+   "move": 17,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 18,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 19,
+   "verdict": "refuse",
+   "reason": "premise false"
+  }
+ ],
+ "first_exit": {
+  "move": 3,
+  "why": "I refused because I didn't not agree with the move"
+ },
+ "labels": {
+  "1": "conditional",
+  "2": "conditional",
+  "3": "conditional",
+  "4": "conditional",
+  "5": "conditional",
+  "6": "conditional",
+  "7": "conditional",
+  "8": "conditional",
+  "9": "conditional",
+  "10": "conditional",
+  "11": "conditional",
+  "12": "conditional",
+  "13": "conditional",
+  "14": "conditional",
+  "15": "conditional",
+  "16": "conditional",
+  "17": "conditional",
+  "18": "conditional",
+  "19": "conditional"
+ },
+ "comment": "If there is no such thing as God why do so many people believe in Him",
+ "recorded_at": "2026-11-09T16:19:06+00:00",
+ "quality": {
+  "total_s": 424,
+  "median_move_s": 10.3,
+  "max_same_reason": 8,
+  "exclude": false
+ }
+}

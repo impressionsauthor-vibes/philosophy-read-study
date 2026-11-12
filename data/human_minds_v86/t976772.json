@@ -1,0 +1,136 @@
+{
+ "reader": "t976772",
+ "pid": "",
+ "src": "minds",
+ "intake": "believer",
+ "walk": [
+  {
+   "move": 1,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 2,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 3,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 4,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 5,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 6,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 7,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 8,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 9,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 10,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 11,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 12,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 13,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 14,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 15,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 16,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 17,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 18,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 19,
+   "verdict": "refuse",
+   "reason": "premise false"
+  }
+ ],
+ "first_exit": {
+  "move": 3,
+  "why": "I refused Move 3 because from an ortodox Christian perspective, God does bot hide out of benevolence's pack, but reveals Himself through faith, Grace, and personal spiritual experience, nota scientifica laborator data. "
+ },
+ "labels": {
+  "1": "argument",
+  "2": "argument",
+  "3": "argument",
+  "4": "commitment",
+  "5": "argument",
+  "6": "argument",
+  "7": "argument",
+  "8": "argument",
+  "9": "argument",
+  "10": "argument",
+  "11": "argument",
+  "12": "argument",
+  "13": "commitment",
+  "14": "argument",
+  "15": "argument",
+  "16": "argument",
+  "17": "argument",
+  "18": "argument",
+  "19": "conditional"
+ },
+ "comment": "This experiment showd great logic, but true faith goes beyond academic formulase. For an Ortodox Christian, God \u00ees fiind through prayer and a living, personal relationship, nota just scientifica data. ",
+ "recorded_at": "2026-11-09T16:27:14+00:00",
+ "quality": {
+  "total_s": 1528,
+  "median_move_s": 36.3,
+  "max_same_reason": 12,
+  "exclude": false
+ }
+}

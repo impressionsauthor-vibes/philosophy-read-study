@@ -1,0 +1,88 @@
+{
+  "reader": "c10",
+  "windows": {
+    "A": {
+      "coheres": false,
+      "seams": [
+        {
+          "text": "Dream states that \"Reality is, at bottom, mind or experience,\" yet Move 9 argues out of it with \"The brain is the only structure known to create consciousness. The universe is not a brain.\" That premise presupposes consciousness is produced by a physical organ, which is exactly what Dream denies; the move settles the question against Dream by assuming its negation rather than by anything stated in the excerpt.",
+          "severity": "real"
+        },
+        {
+          "text": "Dualism₂ (b) says whether resuming is \"persistence rather than replacement\" is \"the open question at Materialism₂,\" but the Materialism₂? position says \"The question waiting on it is whether the outside can prove the inside.\" The same node is assigned two different open questions (personal identity across a stop/start versus third-person verification of experience) without being told they are the same or how one bears on the other.",
+          "severity": "real"
+        },
+        {
+          "text": "Subject is defined only as \"Something is doing the knowing,\" with no mention of brains, yet Move 10 opens \"If the Subject position is true, the subjective experience appears to rest in the brain alone.\" Brain-localization is imported into the position at the move, not stated in it; and Move 9 itself ends by conceding \"Lichtenberg questioned whether it does\" need a dreamer, so the move arrives at Subject while leaving its defining claim in doubt.",
+          "severity": "minor"
+        },
+        {
+          "text": "Subjects says \"others may be too\" and gives Strawson's conceptual argument about ascription, but Move 10 asserts \"if others have a brain, I am not the only one with conscious experience.\" The hedge drops to a flat conclusion and the ground shifts from conceptual to empirical without notice.",
+          "severity": "minor"
+        },
+        {
+          "text": "Dualism₂ says it is \"split into being remembered, being reconstructed, and continuing as the same subject\" (three), then gives \"Two hopes\" (a) remembered and (b) resume; and the subtitle \"unresolved\" sits over (a), which the same paragraph resolves: \"being remembered does not continue the good.\" Only (b) is actually left open.",
+          "severity": "minor"
+        },
+        {
+          "text": "Materialism₂? says \"Where the route paused, on October 22, 2026,\" while Move 19 says \"The route paused here, at the edge, as of November 2026.\" Readable as the same pause still in force, but the two datings are not reconciled.",
+          "severity": "minor"
+        }
+      ],
+      "fix": "Either state at Move 9 that the brain premise is the author's reason for rejecting Dream rather than a consequence of it, and give Materialism₂? a single open question that Dualism₂ (b) points to by the same wording."
+    },
+    "B": {
+      "coheres": false,
+      "seams": [
+        {
+          "text": "Mercy defines the node so that \"A transaction counts as mercy when the agent bears a cost and the recipient has no claim on it. This excludes exchange ... duty, which is owed; and maintenance,\" and says \"Crossing Mercy requires a system to either receive Mercy or act as a merciful agent itself.\" The same paragraph then says \"a system that crosses through duty or reciprocity has still crossed.\" By the node's own definition duty and reciprocity are not mercy, so neither receiving nor acting through them can satisfy the crossing condition; the two sentences cannot both hold.",
+          "severity": "breaks"
+        },
+        {
+          "text": "Ignorance₂ requires that \"the crossing must be a conscious experience, not subconscious, unaware, or otherwise unmet through recognition\" and that \"If it is a con, the system has not crossed mercy; mercy only works if it is authentic.\" This authenticity-and-recognition requirement conflicts with Mercy's \"It is not a requirement of the node\" and with Ignorance₂'s own \"It is very rare to recognize mercy as mercy while it is happening\" and \"It can be reached ... through knowledge inherited from ancestors,\" which describe crossings that are unrecognized or not the system's own experience.",
+          "severity": "real"
+        },
+        {
+          "text": "Move 11 says mercy \"is a choice rather than a consequence\" because \"Uncertainty on its own would also permit indifference,\" but Mercy says \"Continuity needs it: forgiveness releases the past so that action can go on.\" If continuity needs mercy, then within the map mercy is required for the route to go on, which sits uneasily with calling it a free choice that could equally have been indifference.",
+          "severity": "minor"
+        },
+        {
+          "text": "Mercy as actor \"puts itself in the crossfire to secure a larger benefit, for one or for many,\" while the same paragraph excludes \"exchange, where the agent bears no net cost.\" Acting to secure a larger benefit reads as instrumental unless the benefit is explicitly someone else's; the paragraph does not say so.",
+          "severity": "minor"
+        },
+        {
+          "text": "Ignorance₂ refers to \"Mercy₁\" while the position and both moves name the node \"Mercy\" with no subscript; the excerpt gives no way to tell whether these are the same node.",
+          "severity": "minor"
+        }
+      ],
+      "fix": "Decide whether the Mercy node is crossed by any cost-bearing act of care (then drop the exclusion of duty and reciprocity) or only by authentic mercy (then drop \"has still crossed\"), and make Ignorance₂'s recognition requirement match that decision."
+    },
+    "C": {
+      "coheres": false,
+      "seams": [
+        {
+          "text": "Agnosticism₂ is about confidence in \"a benevolent future system,\" but Move 16 and Atheism₂ argue about \"a resolved mind\" and \"the maker.\" The property doubted at the position (benevolence, of something future) is not the property refuted at the move (resolution, of something that made things), and the excerpt never says the benevolent future system and the maker are one thing.",
+          "severity": "real"
+        },
+        {
+          "text": "Atheism₂ states \"a resolved mind is incoherent\" and that \"the only escape is to deny those premises,\" yet Move 16 concedes \"This holds only if to think is to ignore for any possible mind; Aquinas's non-discursive knowing has not been shown incoherent.\" The move admits the premise has not been established for every mind, so the position's \"incoherent\" is asserted on the same word the move withholds; Move 17 (\"Removing the maker\") and Move 18 (\"without a maker\") then proceed as if the question Move 16 left open were settled.",
+          "severity": "real"
+        },
+        {
+          "text": "Move 18 says \"whether each being continues matters, and without a maker that continuity has to be carried some other way,\" and offers \"The need to be remembered\" as what holds the self apart, but Dualism₂ (a) says \"being remembered does not continue the good, because being remembered is someone else's experience of you,\" so \"its own good ends with it.\" The move's \"has to be carried\" names a requirement the destination position then says cannot be met by the very thing the move offers, and the move's closing hedge (\"a motive for asking the question\") does not undo the \"has to.\"",
+          "severity": "real"
+        },
+        {
+          "text": "Atheism₂ names two premises, \"to think is to ignore\" and \"a mind that attends to everything at once has no one home,\" and calls the second \"The premise doing the work\"; Move 16 says the argument \"holds only if to think is to ignore for any possible mind,\" making the first the load-bearing one. Which premise carries the inference changes between position and move.",
+          "severity": "minor"
+        },
+        {
+          "text": "Dualism₂ carries the subtitle \"unresolved\" and says it is split three ways (remembered, reconstructed, continuing as the same subject), then gives only two hopes and resolves hope (a) negatively within the paragraph. Only (b) is left open, so the subtitle overstates what is unresolved.",
+          "severity": "minor"
+        }
+      ],
+      "fix": "State once that the benevolent future system of Agnosticism₂ is the maker refuted at Atheism₂ (or rename one), and soften Moves 17 and 18 to \"if the maker is removed\" so they inherit Move 16's conditional rather than overriding it."
+    }
+  },
+  "comment": "All three excerpts share the same pattern: positions are stated with care and the moves are honest about their own limits, but the hedges in the moves (Lichtenberg's doubt, Aquinas's non-discursive knowing, \"not a requirement of the node,\" \"a motive and not evidence\") are then overridden by the next position or move, which proceeds as if the hedge had been resolved. Excerpt B has the one outright contradiction (duty and reciprocity are both excluded from mercy and counted as crossing it); A and C have real but repairable seams, mostly where the same node (Materialism₂, the maker, Dualism₂) is assigned different content from different places. The Dualism₂ paragraph, which appears in both A and C, is internally the weakest unit: its subtitle \"unresolved\" and its three-way split do not match the two hopes it actually discusses, one of which it settles."
+}

@@ -1,0 +1,136 @@
+{
+ "reader": "t976769",
+ "pid": "",
+ "src": "minds",
+ "intake": "believer",
+ "walk": [
+  {
+   "move": 1,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 2,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 3,
+   "verdict": "refuse",
+   "reason": "I don't understand"
+  },
+  {
+   "move": 4,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 5,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 6,
+   "verdict": "refuse",
+   "reason": "I don't understand"
+  },
+  {
+   "move": 7,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 8,
+   "verdict": "refuse",
+   "reason": "I don't understand"
+  },
+  {
+   "move": 9,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 10,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 11,
+   "verdict": "refuse",
+   "reason": "I don't understand"
+  },
+  {
+   "move": 12,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 13,
+   "verdict": "refuse",
+   "reason": "I don't understand"
+  },
+  {
+   "move": 14,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 15,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 16,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 17,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 18,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 19,
+   "verdict": "refuse",
+   "reason": "I don't understand"
+  }
+ ],
+ "first_exit": {
+  "move": 2,
+  "why": "I just didn't fully follow the logic involved. I would reason differently."
+ },
+ "labels": {
+  "1": "commitment",
+  "2": "argument",
+  "3": "conditional",
+  "4": "conditional",
+  "5": "conditional",
+  "6": "conditional",
+  "7": "argument",
+  "8": "conditional",
+  "9": "commitment",
+  "10": "commitment",
+  "11": "commitment",
+  "12": "commitment",
+  "13": "commitment",
+  "14": "conditional",
+  "15": "argument",
+  "16": "commitment",
+  "17": "argument",
+  "18": "commitment",
+  "19": "not taken"
+ },
+ "comment": "Their explanations are very academic. Citations seem to be given, but no sources are provided. The target audience needs to be considered more.",
+ "recorded_at": "2026-11-09T16:24:24+00:00",
+ "quality": {
+  "total_s": 1340,
+  "median_move_s": 44.8,
+  "max_same_reason": 6,
+  "exclude": false
+ }
+}

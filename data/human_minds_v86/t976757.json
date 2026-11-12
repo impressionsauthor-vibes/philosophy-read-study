@@ -1,0 +1,136 @@
+{
+ "reader": "t976757",
+ "pid": "",
+ "src": "minds",
+ "intake": "believer",
+ "walk": [
+  {
+   "move": 1,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 2,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 3,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 4,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 5,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 6,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 7,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 8,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 9,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 10,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 11,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 12,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 13,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 14,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 15,
+   "verdict": "refuse",
+   "reason": "doesn't follow"
+  },
+  {
+   "move": 16,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 17,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise"
+  },
+  {
+   "move": 18,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 19,
+   "verdict": "refuse",
+   "reason": "premise false"
+  }
+ ],
+ "first_exit": {
+  "move": 2,
+  "why": "I Rembered two because it was fantastic."
+ },
+ "labels": {
+  "1": "conditional",
+  "2": "commitment",
+  "3": "argument",
+  "4": "argument",
+  "5": "commitment",
+  "6": "argument",
+  "7": "conditional",
+  "8": "commitment",
+  "9": "commitment",
+  "10": "argument",
+  "11": "commitment",
+  "12": "argument",
+  "13": "conditional",
+  "14": "commitment",
+  "15": "argument",
+  "16": "commitment",
+  "17": "argument",
+  "18": "argument",
+  "19": "commitment"
+ },
+ "comment": "Autor tolked about other relugion ",
+ "recorded_at": "2026-11-09T16:16:24+00:00",
+ "quality": {
+  "total_s": 885,
+  "median_move_s": 24.6,
+  "max_same_reason": 9,
+  "exclude": false
+ }
+}

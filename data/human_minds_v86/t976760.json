@@ -1,0 +1,136 @@
+{
+ "reader": "t976760",
+ "pid": "",
+ "src": "minds",
+ "intake": "believer",
+ "walk": [
+  {
+   "move": 1,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 2,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 3,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 4,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 5,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 6,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 7,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 8,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 9,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 10,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 11,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 12,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 13,
+   "verdict": "take",
+   "reason": null
+  },
+  {
+   "move": 14,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 15,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 16,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 17,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 18,
+   "verdict": "refuse",
+   "reason": "premise false"
+  },
+  {
+   "move": 19,
+   "verdict": "refuse",
+   "reason": "premise false"
+  }
+ ],
+ "first_exit": {
+  "move": 2,
+  "why": "My first refusal was at the premise of classic Theism. As a practicing Hindu, I do not identify with this ideology of Abrahamic sects. "
+ },
+ "labels": {
+  "1": "commitment",
+  "2": "argument",
+  "3": "argument",
+  "4": "argument",
+  "5": "argument",
+  "6": "argument",
+  "7": "argument",
+  "8": "argument",
+  "9": "argument",
+  "10": "argument",
+  "11": "commitment",
+  "12": "conditional",
+  "13": "commitment",
+  "14": "argument",
+  "15": "argument",
+  "16": "argument",
+  "17": "argument",
+  "18": "argument",
+  "19": "not taken"
+ },
+ "comment": "When the route ends at a certain point, I believe it often beneficial to reconsider the entire approach. From any of the earlier steps, perhaps exploring other belief systems. ",
+ "recorded_at": "2026-11-09T16:16:35+00:00",
+ "quality": {
+  "total_s": 933,
+  "median_move_s": 8.9,
+  "max_same_reason": 15,
+  "exclude": false
+ }
+}
