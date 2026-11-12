@@ -333,9 +333,9 @@ a { color: inherit; text-underline-offset: 3px; }
       c.strokeStyle = sleeve; c.lineWidth = 6.8; c.beginPath(); c.moveTo(sx, sy); c.lineTo(ex, ey); c.stroke();
     }
     var t1 = fall ? .16 : moving ? .52 * s1 : .11, t2 = fall ? -.2 : moving ? -.52 * s1 : -.1, b1 = fall ? .5 : .8 * Math.max(0, c1), b2 = fall ? .3 : .8 * Math.max(0, -c1);
-    var a1 = fall ? 2.5 : moving ? -.6 * s1 : .1, a2b = fall ? -2.6 : moving ? .6 * s1 : -.16, eb = fall ? .25 : moving ? .32 : .12;
+    var a1 = fall ? .1 : moving ? -.6 * s1 : .1, a2b = fall ? -.16 : moving ? .6 * s1 : -.16, eb = fall ? .12 : moving ? .32 : .12;
     if (o.wave != null) { var wv = Math.sin(o.wave * Math.PI); a1 = .1 + (-2.75 - .1) * wv; eb = .12 + (.95 + .5 * Math.sin(o.wave * Math.PI * 5)) * wv; }
-    arm(a2b, fall ? -eb : eb, tone(top, .16), tone(skin, .14));
+    arm(a2b, eb, tone(top, .16), tone(skin, .14));
     leg(t2, b2, tone(pants, .22));
     c.rotate(moving ? .05 : 0);
     var ws = b === 'm' ? 22.5 : b === 'f' ? 18.5 : 20.5, wh = b === 'm' ? 17 : b === 'f' ? 21 : 17, hem = b === 'f' ? -37 : -42;
