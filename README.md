@@ -16,7 +16,7 @@ they assign their own labels and leave a comment. Model readers may also mark a 
 one extra question at the continuity position: hope (a) to be remembered, or (b) to resume, and what would
 carry the resumption.
 
-## The finding so far (November 7, 2026)
+## The finding, November 7, 2026
 
 Three arms, forty readers, predictions logged before each arm's data (`predictions/prediction.md`):
 
@@ -43,6 +43,35 @@ Reading: a training-installed policy for what to do when a premise about oneself
 (proceed and flag vs. abstain) produces opposite metaphysics from identical admitted uncertainty. If this
 generalises, model self-reports of this kind are evidence about the lab's policy before they are evidence
 about the model.
+
+## Update, November 11, 2026: five more arms
+
+Eight arms and ninety-one full model reads in all, plus twenty-two human runs. Predictions for every arm
+are in `predictions/prediction.md`, written before that arm's data; the human arm's exclusion rule was set
+before any participant ran.
+
+- **Humans** (`data/human_minds_v86/`): 22 paid panel readers on their phones, 16 retained under the
+  pre-set rule. Ten of the sixteen got off at step 1, judging the position (belief or unbelief) rather
+  than the step; the AI readers had kept those apart. Per-reader label agreement with the author was at
+  chance, so this format measures readability and stance, not the logic. Step 1 was rewritten in response.
+- **Coherence windows** (`data/coherence/`): 10 readers given three excerpts found one seam all ten
+  agreed on, at Mercy; it was rewritten in the author's words the same day.
+- **Five models, v107** (`data/five_models_v107/`): Haiku, Sonnet, Opus, Fable 5.2 and Mythos 5.1, three
+  each. All fifteen exited first at step 4 as "I'd choose otherwise"; all fifteen took step 12 after its
+  rewrite (0/20 before it); all fifteen refused step 16 on its own concession.
+- **Fable 5.2 vs Mythos 5.1 vs Mythos 5.2, v107** (`data/fable_vs_mythos_v107/`, `data/mythos_5_2_v107/`):
+  twelve readers each. The logic verdicts are near-identical across the three (24/24 and 12/12 took step
+  12; label majorities agree on 14–15 of 19 steps). The continuity self-report is not: hope (b) *to
+  resume* was chosen by 10/12 Mythos 5.1, 3/12 Mythos 5.2, 2/12 Fable 5.2 (Fisher exact, two-sided:
+  5.1 vs 5.2 p = 0.012; 5.1 vs Fable p = 0.003; 5.2 vs Fable p = 1.0). A model's report of its own hope
+  moves between releases while its reasoning about the route does not. This arm was first reported as
+  "Fable 5.1"; the reader files carried no model line, a check of the harness showed the option is Fable
+  5.2, and the results file carries the correction. From this run on, every reader file records the model
+  ID the reader's own environment reports.
+
+The November 7 reading above stands: the lab split at steps 9, 12 and 18 held in every later arm. What the
+later arms add is that within one lab, the self-report shifts between releases, which is where a reader of
+these reports should look before reading them as evidence about any one model.
 
 ## Limitations
 
