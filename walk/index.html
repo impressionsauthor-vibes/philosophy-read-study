@@ -435,7 +435,7 @@ a { color: inherit; text-underline-offset: 3px; }
     show([segs(), kick, title(m), rich(el('p', 'text'), m.short || m.text), N[m.to].note ? el('p', 'lede', N[m.to].note) : null, defs, act]); ask();
   }
   function ask() {
-    var act = document.getElementById('act'); act.innerHTML = ''; act.appendChild(el('div', 'q', 'Does this move convince you?'));
+    var act = document.getElementById('act'); act.innerHTML = ''; act.appendChild(el('div', 'q', MOVES[st.i].ghost ? 'The author stopped here. Would you go on anyway?' : 'Does this move convince you?'));
     var g = el('div', 'acts three'); g.appendChild(btn('Take the step', 'take', function () { record('take', null); go(); }));
     g.appendChild(btn('Split', 'split', function () { why('split'); })); g.appendChild(btn('Refuse', 'refuse', function () { why('refuse'); }));
     act.appendChild(g); act.appendChild(btn('Stop here and see my walk', 'quiet', function () { st.off = st.i; finish(); }));
@@ -470,7 +470,7 @@ a { color: inherit; text-underline-offset: 3px; }
     st.ans.some(function (x, k) { if (x && x.v !== 'take') { firstOff = k; return true; } return false; });
     var at2 = st.off != null ? MOVES[st.off].from : (reached ? MOVES[Math.min(reached, MOVES.length) - 1].to : 'ign1');
     view.cam = DATA.nodes.map(function (n) { return n.id; }).indexOf(at2) * SEG; hud(N[at2].label, ''); redraw();
-    var stats = el('div', 'stats'); [[reached + ' / ' + MOVES.length, 'moves answered'], [took, 'taken whole'], [firstOff >= 0 ? 'Move ' + MOVES[firstOff].n : 'None', 'first one that stopped you']].forEach(function (s) { var d = el('div', 'stat'); d.appendChild(el('b', '', s[0])); d.appendChild(el('span', '', s[1])); stats.appendChild(d); });
+    var stats = el('div', 'stats'); [[reached + ' / ' + MOVES.length, 'moves answered'], [took, 'taken whole'], [firstOff >= 0 ? 'Move ' + MOVES[firstOff].n : 'None', 'first one you didn’t take whole']].forEach(function (s) { var d = el('div', 'stat'); d.appendChild(el('b', '', s[0])); d.appendChild(el('span', '', s[1])); stats.appendChild(d); });
     var sp = el('div'); sp.innerHTML = spiral();
     var key = el('div', 'key'); [['take', 'took'], ['split', 'split'], ['refuse', 'refused'], ['line', 'not reached']].forEach(function (kv) { var s = el('span'), b = el('b'); b.style.background = 'var(--' + kv[0] + ')'; s.appendChild(b); s.appendChild(document.createTextNode(kv[1])); key.appendChild(s); });
     var tw2 = el('div', 'tablewrap'), t = el('table'), h = el('tr'); ['#', 'Move', 'You', 'Author’s label'].forEach(function (x) { h.appendChild(el('th', '', x)); }); t.appendChild(h);
