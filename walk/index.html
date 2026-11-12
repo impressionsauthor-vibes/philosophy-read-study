@@ -157,15 +157,40 @@ button.dice { padding: 7px 13px; font-size: 14px; background: var(--panel); }
 .pane .row button.opt { padding: 9px 15px; background: var(--panel); }
 .pane .row button.opt[aria-pressed="true"] { background: var(--ink); color: var(--panel); border-color: var(--ink); }
 .intro-foot { color: var(--muted); font-size: .93rem; }
-@media (min-width: 960px) {
-  body.is-intro { display: grid; grid-template-columns: minmax(0, 1fr) 480px; min-height: 100vh; }
-  body.is-intro .band { position: sticky; top: 0; height: 100vh !important; }
+/* Wide screens: the scene fills the window on every stage; the character maker and the move card float over it as a panel on the right, so the landscape is what you look at and the words come when you ask. */
+@media (min-width: 700px) {
+  body.is-intro .band, body.is-scene .band, body.is-card .band { position: fixed; inset: 0; top: 0; height: auto !important; }
+  body.is-intro, body.is-scene, body.is-card { min-height: 100vh; overflow: hidden; }
+  body.is-intro .band::after, body.is-scene .band::after, body.is-card .band::after { display: none; }
+  body.is-scene .sheet { display: none; }
+  body.is-scene .cue { display: inline-flex; }
+  body.is-scene .hurry { left: 18px; right: 18px; max-width: none; text-align: center; bottom: calc(92px + env(safe-area-inset-bottom, 0px)); }
+  body.is-intro .sheet, body.is-card .sheet { position: fixed; z-index: 7; top: 68px; right: 24px; bottom: auto; max-height: calc(100vh - 92px); width: clamp(360px, 40vw, 520px); min-height: 0; overflow-y: auto; overscroll-behavior: contain; border-radius: 26px; background: var(--panel); box-shadow: 0 22px 70px rgba(10, 8, 30, .3); padding-bottom: 0; animation: panel-in .45s cubic-bezier(.2, .7, .2, 1) both; }
+  body.is-intro .sheet > .gut, body.is-card .sheet > .gut { padding-inline: 22px; }
+  body.is-intro .inner, body.is-card .inner { max-width: none; padding-block: 22px 22px; }
   body.is-intro .strip { margin-inline: 0; padding-inline: 0; scroll-padding-inline: 0; }
-  body.is-intro .band::after { display: none; }
-  body.is-intro .sheet { min-height: 100vh; border-left: 1px solid var(--line); }
-  body.is-intro .inner { max-width: none; padding-block: 34px 28px; }
-  body.is-intro h1 { font-size: 38px; }
+  body.is-intro h1 { font-size: 36px; }
+  .landing { padding-bottom: calc(44px + env(safe-area-inset-bottom, 0px)); padding-left: max(40px, env(safe-area-inset-left, 0px)); gap: 14px; }
+  .landing h1 { font-size: clamp(44px, 5vw, 64px); }
+  .landing p { font-size: 1.12rem; max-width: 40ch; }
+  body.is-card footer { display: none; }
+  body.is-card .back { display: inline-flex; }
+  body.is-card .app > .fade { gap: 10px !important; }
+  body.is-card h2 { font-size: 26px; }
+  body.is-card .text { font-size: 15.5px; line-height: 1.45; }
+  body.is-card .lede { font-size: 14px; line-height: 1.4; }
+  body.is-card .kick { font-size: 12px; }
+  body.is-card details { padding: 8px 12px; }
+  body.is-card summary { font-size: .9rem; }
+  body.is-card details p { font-size: .9rem; margin-top: 6px; }
+  body.is-card .q { font-size: 1.05rem; }
+  body.is-card button { padding: 11px 16px; }
+  body.is-card button.quiet { padding: 2px 0; font-size: .9rem; }
+  body.is-card .acts, body.is-card #act { gap: 8px !important; }
 }
+@keyframes panel-in { from { opacity: 0; transform: translateX(28px); } to { opacity: 1; transform: none; } }
+.back { display: none; align-items: center; gap: 8px; justify-self: start; background: var(--soft); color: var(--muted); border: 0; border-radius: 999px; padding: 7px 14px 7px 12px; font-size: .88rem; font-weight: 600; cursor: pointer; }
+.back:hover { color: var(--ink); background: var(--line); }
 .stats { display: flex; flex-wrap: wrap; gap: 8px; }
 .stat { background: var(--soft); border-radius: 14px; padding: 10px 14px; display: grid; }
 .stat b { font-family: var(--display); font-weight: 800; font-size: 1.5rem; line-height: 1.1; font-variant-numeric: tabular-nums; }
@@ -218,6 +243,7 @@ a { color: inherit; text-underline-offset: 3px; }
   <div class="landing" id="landing" hidden><h1>Where do you get off?</h1><p></p><button type="button" id="begin">Make your character <span class="arrow">→</span></button></div>
 </div>
 <div class="sheet"><div class="gut"><div class="inner">
+  <button class="back" id="back" type="button"><span class="arrow">←</span> Back to the scene</button>
   <main id="app" class="app"></main>
   <footer>
     <b>Route and ideas by E.H ’26</b>
@@ -377,7 +403,7 @@ a { color: inherit; text-underline-offset: 3px; }
     topOff = topOff || 0; fullH = fullH || 344;
     HOT_ON = !!live; if (live) HOT.length = 0;
     function A(x) { return at(Math.min(x, cam + 440)); }
-    var narrow = W < 460, cx = narrow ? Math.max(48, W * .18) : Math.max(70, Math.min(260, W * .28)), S = at(cam), i, s, sx, g, wx, pr; cx += (W / 2 - cx) * (mid || 0);
+    var narrow = W < 460, cx = narrow ? Math.max(48, W * .18) : Math.max(70, Math.min(260, W * .28)), S = at(cam), i, s, sx, g, wx, pr; cx += ((W - (mid ? PANX : 0)) / 2 - cx) * (mid || 0);
     var SGN = narrow ? 116 : 150, SHR = narrow ? W - cx - 50 : 250, COL = narrow ? W - cx - 66 : 300, FAR = narrow ? W - cx - 36 : 330, FKS = narrow ? Math.max(.55, (W - cx - 44) / 260) : 1;
     var skyT = col(S, 'st'), skyB = col(S, 'sb'), sunC = col(S, 'sun'), sa = num(S, 'sa'), night = num(S, 'night'), amb = col(S, 'amb'), ak = num(S, 'ak');
     if (topOff > 0) { g = c.createLinearGradient(0, -topOff, 0, 0); g.addColorStop(0, css(mix(skyT, [8, 14, 48], .28))); g.addColorStop(1, css(skyT)); c.fillStyle = g; c.fillRect(0, -topOff - 2, W, topOff + 6); }
@@ -510,11 +536,12 @@ a { color: inherit; text-underline-offset: 3px; }
   var cv = document.getElementById('cv'), band = document.getElementById('band'), ctx = cv.getContext('2d'), off = document.createElement('canvas'), octx = off.getContext('2d');
   var still = !!(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
   var view = { cam: 0, ph: 0, moving: false, warp: 0, fx: null, center: 0, zoom: 1, W: 800, s: 1, dpr: 1, peek: 0, ty: 0 }, tw = null, time0 = 0, dragging = null;
-  function size() { var r = band.getBoundingClientRect(), dpr = Math.min(2, window.devicePixelRatio || 1); cv.width = off.width = Math.max(2, Math.round(r.width * dpr)); cv.height = off.height = Math.max(2, Math.round(r.height * dpr)); view.dpr = dpr; var scene = document.body.classList.contains('is-scene') || document.body.classList.contains('is-landing'), card = document.body.classList.contains('is-card'); view.ch = (r.height - 26) / view.s; if (scene || card) { view.s = r.width / 340; var ch = (r.height - (scene ? 0 : 26)) / view.s + (scene ? 2 : 0); view.ch = ch; view.W = 340; view.ty = scene ? Math.max(0, (ch - 340) * (document.body.classList.contains('is-landing') ? .3 : .6)) : Math.min(0, -(344 - ch) + 30); } else { view.s = (r.height - 26) / 340; view.W = r.width / view.s; view.ty = 0; view.ch = 344; } }
+  function size() { var r = band.getBoundingClientRect(), dpr = Math.min(2, window.devicePixelRatio || 1); cv.width = off.width = Math.max(2, Math.round(r.width * dpr)); cv.height = off.height = Math.max(2, Math.round(r.height * dpr)); view.dpr = dpr; var scene = document.body.classList.contains('is-scene') || document.body.classList.contains('is-landing'), card = document.body.classList.contains('is-card'), intro = document.body.classList.contains('is-intro'), wide = !phone(); view.ch = (r.height - 26) / view.s; PANEL = 0; if (wide && (card || intro) && !document.body.classList.contains('is-landing')) { var sh = document.querySelector('.sheet'); if (sh && sh.offsetWidth) PANEL = sh.getBoundingClientRect().width + 24; } else if (wide && document.body.classList.contains('is-landing')) { var ld = document.querySelector('.landing p'); if (ld) PANEL = -(ld.getBoundingClientRect().width + 80); } if ((scene || card) && !wide) { view.s = r.width / 340; var ch = (r.height - (scene ? 0 : 26)) / view.s + (scene ? 2 : 0); view.ch = ch; view.W = 340; view.ty = scene ? Math.max(0, (ch - 340) * (document.body.classList.contains('is-landing') ? .3 : .6)) : Math.min(0, -(344 - ch) + 30); } else { var res = (scene || card || (wide && intro)) ? 0 : 26; view.s = (r.height - res) / 340; view.W = r.width / view.s; view.ty = 0; view.ch = 344; } PANEL = PANEL / view.s; if (still || view.px == null) view.px = PANEL; }
+  var PANEL = 0, PANX = 0;
   var FALLER = { build: 'a', style: 2, skin: 9, hair: 1 };
   function bounce(t) { t = Math.max(0, Math.min(1, t)); return t < .8 ? (t / .8) * (t / .8) : 1 - .035 * Math.sin(Math.PI * (t - .8) / .2); }
   function paint(time) {
-    var k = view.dpr * view.s, fx = view.fx, dy = 0, cx = view.W < 460 ? Math.max(48, view.W * .18) : Math.max(70, Math.min(260, view.W * .28)), target = view.warp > .001 ? octx : ctx, g; cx += (view.W / 2 - cx) * view.center;
+    var k = view.dpr * view.s, fx = view.fx, dy = 0, cx = view.W < 460 ? Math.max(48, view.W * .18) : Math.max(70, Math.min(260, view.W * .28)), target = view.warp > .001 ? octx : ctx, g; PANX = view.px || 0; cx += ((view.W - PANX) / 2 - cx) * view.center;
     if (fx) dy = fx.kind === 'fall' ? 430 * (1 - bounce(fx.p)) : fx.p < .5 ? 0 : fx.p < .64 ? 430 : 430 * (1 - bounce((fx.p - .64) / .3));
     target.setTransform(k, 0, 0, k, 0, k * view.ty); if (view.zoom > 1.001) { target.translate(cx, 300); target.scale(view.zoom, view.zoom); target.translate(-cx, -300); } drawScene(target, view.W, view.cam + view.peek, time, (fx && fx.kind === 'fall') ? FALLER : st.who, view.ph, view.moving, dy, view.center, true, Math.max(0, view.ty), view.ch);
     if (view.warp > .001) { ctx.setTransform(1, 0, 0, 1, 0, 0); ctx.clearRect(0, 0, cv.width, cv.height); var a = view.warp * 26 * view.dpr, z = 1 + view.warp * .06, hh = 3 * view.dpr; for (var y = 0; y < cv.height; y += hh) { var dx = a * Math.sin(y * .03 / view.dpr + time * .011); ctx.drawImage(off, 0, y, cv.width, hh, dx - (z - 1) * cv.width / 2, y, cv.width * z, hh); } ctx.fillStyle = 'rgba(255,255,255,' + (view.warp * .22) + ')'; ctx.fillRect(0, 0, cv.width, cv.height); }
@@ -532,6 +559,7 @@ a { color: inherit; text-underline-offset: 3px; }
   function frame(ts) {
     if (!time0) time0 = ts; var bh = band.clientHeight; if (bh !== frame.h) { frame.h = bh; size(); } var dt = Math.min(60, ts - (frame.last || ts)); frame.last = ts;
     if (tw) { tw.p = Math.min(1, tw.p + dt / tw.dur * (tw.fast ? 5 : 1)); var e = tw.p * tw.p * tw.p * (tw.p * (tw.p * 6 - 15) + 10), nc = tw.from + (tw.to - tw.from) * (tw.fx === 'enter' ? 1 - Math.pow(1 - tw.p, 2.4) : e), rb = tw.fx === 'rebirth', fl = tw.fx === 'fall'; if (rb) nc = tw.p < .5 ? tw.from + 420 * sm(tw.p / .5) : tw.to; view.fx = rb || fl ? { kind: tw.fx, p: tw.p } : null; view.ph += Math.abs(nc - view.cam) * .04; view.cam = nc; view.moving = !fl && tw.fx !== 'settle' && !(rb && tw.p >= .5); if (tw.fx === 'settle' || tw.fx === 'enter') { size(); var sp = sm(tw.fx === 'enter' ? tw.p / .32 : tw.p); view.center = tw.c0 + (tw.c1 - tw.c0) * sp; view.zoom = tw.z0 + (tw.z1 - tw.z0) * sp; } view.warp = tw.fx === 'warp' ? Math.pow(Math.sin(Math.PI * Math.max(0, Math.min(1, (tw.p - .3) / .4))), 2) : 0; if (tw.p >= 1) { var d = tw.done; tw = null; view.moving = false; view.warp = 0; view.fx = null; d(); } }
+    if (view.px !== PANEL) { view.px += (PANEL - view.px) * (1 - Math.exp(-dt / 180)); if (Math.abs(view.px - PANEL) < .3) view.px = PANEL; }
     if (!dragging && view.peek) { view.peek += (0 - view.peek) * (1 - Math.exp(-dt / 150)); if (Math.abs(view.peek) < .2) view.peek = 0; }
     paint(ts); if (!still) requestAnimationFrame(frame);
   }
@@ -539,7 +567,7 @@ a { color: inherit; text-underline-offset: 3px; }
   function walkTo(j, fx, done) { if (still) { view.cam = j * SEG; redraw(); setTimeout(done, 200); return; } tw = { from: view.cam, to: j * SEG, p: 0, dur: fx === 'rebirth' ? 7600 : 5200, fx: fx, done: done, fast: false }; }
   band.addEventListener('pointerdown', function (e) { if (e.button != null && e.button !== 0) return; if (e.target && e.target.closest && e.target.closest('.cue')) return; dragging = { x: e.clientX, y: e.clientY, peek: view.peek, moved: false, id: e.pointerId }; });
   band.addEventListener('pointermove', function (e) { if (!dragging || dragging.id !== e.pointerId) return; var dx = e.clientX - dragging.x, dyy = e.clientY - dragging.y; if (!dragging.moved && Math.abs(dx) > 8 && Math.abs(dx) > Math.abs(dyy)) { dragging.moved = true; band.classList.add('is-drag'); try { band.setPointerCapture(e.pointerId); } catch (err) {} } if (dragging.moved && !tw && st.screen === 'walk') { view.peek = Math.max(-260, Math.min(260, dragging.peek - dx / view.s)); redraw(); } });
-  function endDrag(e) { if (!dragging || (e && dragging.id !== e.pointerId)) return; var d = dragging; dragging = null; band.classList.remove('is-drag'); if (d.moved) return; if (tw) { tw.fast = true; return; } if (still) return; var r = band.getBoundingClientRect(), x = (e.clientX - r.left) / view.s, y = (e.clientY - r.top) / view.s - view.ty, now = performance.now(); if (view.zoom > 1.001) { var zc = view.W < 460 ? Math.max(48, view.W * .18) : Math.max(70, Math.min(260, view.W * .28)); zc += (view.W / 2 - zc) * view.center; x = zc + (x - zc) / view.zoom; y = 300 + (y - 300) / view.zoom; } for (var i = HOT.length - 1; i >= 0; i--) { var h = HOT[i]; if (x < h.x || x > h.x + h.w || y < h.y || y > h.y + h.h) continue; if (h.kind === 'me') { waves.me = now; return; } if (h.kind === 'passer') { waves['p' + h.id] = now; return; } if (h.kind === 'sign') { var dd = document.querySelector('#app details'); if (dd) { dd.open = true; dd.scrollIntoView({ behavior: 'smooth', block: 'center' }); } return; } if (h.kind === 'mark') { bub = { text: h.text, x: h.x + h.w / 2, y: h.y + 4, t0: now, cam: view.cam + view.peek }; return; } } }
+  function endDrag(e) { if (!dragging || (e && dragging.id !== e.pointerId)) return; var d = dragging; dragging = null; band.classList.remove('is-drag'); if (d.moved) return; if (tw) { tw.fast = true; return; } if (still) return; var r = band.getBoundingClientRect(), x = (e.clientX - r.left) / view.s, y = (e.clientY - r.top) / view.s - view.ty, now = performance.now(); if (view.zoom > 1.001) { var zc = view.W < 460 ? Math.max(48, view.W * .18) : Math.max(70, Math.min(260, view.W * .28)); zc += ((view.W - (view.px || 0)) / 2 - zc) * view.center; x = zc + (x - zc) / view.zoom; y = 300 + (y - 300) / view.zoom; } for (var i = HOT.length - 1; i >= 0; i--) { var h = HOT[i]; if (x < h.x || x > h.x + h.w || y < h.y || y > h.y + h.h) continue; if (h.kind === 'me') { waves.me = now; return; } if (h.kind === 'passer') { waves['p' + h.id] = now; return; } if (h.kind === 'sign') { if (document.body.classList.contains('is-scene')) { stage('card'); window.scrollTo(0, 0); return; } var dd = document.querySelector('#app details'); if (dd) { dd.open = true; dd.scrollIntoView({ behavior: 'smooth', block: 'center' }); } return; } if (h.kind === 'mark') { bub = { text: h.text, x: h.x + h.w / 2, y: h.y + 4, t0: now, cam: view.cam + view.peek }; return; } } }
   band.addEventListener('pointerup', endDrag); band.addEventListener('pointercancel', function () { if (dragging) { dragging = null; band.classList.remove('is-drag'); } });
   window.addEventListener('resize', function () { size(); redraw(); });
 
@@ -560,13 +588,14 @@ a { color: inherit; text-underline-offset: 3px; }
   var fell = false, LEDE = 'Nineteen moves along one route through God, mind, other minds and what continues. At each one you decide whether it convinces you. There are no right answers.';
   var cue = document.getElementById('cue');
   function phone() { return window.innerWidth < 700; }
-  function stage(name) { document.body.classList.toggle('is-scene', name === 'scene'); document.body.classList.toggle('is-card', name === 'card'); if (name !== 'landing') { document.body.classList.remove('is-landing'); document.getElementById('landing').hidden = true; } if (name !== 'scene') cue.hidden = true; size(); redraw(); }
+  function stage(name) { document.body.classList.toggle('is-scene', name === 'scene'); document.body.classList.toggle('is-card', name === 'card'); if (name !== 'landing') { document.body.classList.remove('is-landing'); document.getElementById('landing').hidden = true; } if (name !== 'scene') cue.hidden = true; var shv = document.querySelector('.sheet'); if (shv) shv.scrollTop = 0; size(); redraw(); }
   cue.addEventListener('click', function () { stage('card'); window.scrollTo(0, 0); });
+  document.getElementById('back').addEventListener('click', function () { if (st.screen !== 'walk') return; cue.hidden = false; stage('scene'); });
   function introZoom() { var pw = cv.width / view.dpr; return pw > 700 ? 1 : pw > 460 ? 1.3 : 1.7; }
   function intro() {
     st.screen = 'intro'; stage(null); mode(true); view.cam = 0; hud('Ignorance', '');
-    if (!fell && !still) { fell = true; if (phone()) document.body.classList.add('is-landing'); show([el('h1', '', 'Where do you get off?'), el('p', 'lede', LEDE)]); document.body.classList.add('is-opening'); size(); view.center = 1;
-      tw = { from: 0, to: 0, p: 0, dur: 3000, fx: 'fall', fast: false, done: function () { document.body.classList.add('is-settling'); document.body.classList.remove('is-opening'); tw = { from: 0, to: 0, p: 0, dur: 900, fx: 'settle', fast: false, c0: 1, c1: 1, z0: 1, z1: phone() ? 1 : introZoom(), done: function () { document.body.classList.remove('is-settling'); view.center = 1; size(); chooser(); if (document.body.classList.contains('is-landing')) { landing.querySelector('p').textContent = LEDE; landing.hidden = false; } } }; } }; return; }
+    if (!fell && !still) { fell = true; document.body.classList.add('is-landing'); show([el('h1', '', 'Where do you get off?'), el('p', 'lede', LEDE)]); document.body.classList.add('is-opening'); size(); view.center = 1;
+      tw = { from: 0, to: 0, p: 0, dur: 3000, fx: 'fall', fast: false, done: function () { document.body.classList.add('is-settling'); document.body.classList.remove('is-opening'); tw = { from: 0, to: 0, p: 0, dur: 900, fx: 'settle', fast: false, c0: 1, c1: 1, z0: 1, z1: phone() ? 1 : introZoom(), done: function () { document.body.classList.remove('is-settling'); view.center = 1; size(); chooser(); if (document.body.classList.contains('is-landing')) { landing.querySelector('p').textContent = LEDE; landing.hidden = false; size(); } } }; } }; return; }
     fell = true; chooser();
   }
   var STUDY = { endpoint: 'https://docs.google.com/forms/d/e/1FAIpQLSfJzddkshdvyQqa08QvqQf5e_6Isi5aMVg2oJ0YnXandVP4-w/formResponse', field: 'entry.1314273606' }, sent = false, sid = Math.random().toString(36).slice(2, 10);
@@ -593,8 +622,8 @@ a { color: inherit; text-underline-offset: 3px; }
   function startWalk() {
     st.screen = 'walk'; st.i = 0; st.ans = []; st.off = null; window.scrollTo(0, 0); landing.hidden = true;
     if (still) { view.center = 0; view.zoom = 1; walk(); return; }
-    var ph = phone(), target = ph ? { left: 0, top: 0, width: window.innerWidth, height: window.innerHeight } : { left: 0, top: 0, width: window.innerWidth, height: Math.round(window.innerHeight * .68 + 26) };
-    morphBand(target, 700, null); app.innerHTML = ''; mode(false); if (ph) { document.body.classList.add('is-scene'); cue.hidden = true; }
+    var target = { left: 0, top: 0, width: window.innerWidth, height: window.innerHeight };
+    morphBand(target, 700, null); app.innerHTML = ''; mode(false); document.body.classList.add('is-scene'); cue.hidden = true;
     hud('Ignorance', '1 / ' + MOVES.length);
     view.cam = -470; tw = { from: -470, to: 0, p: 0, dur: 2600, fx: 'enter', fast: false, c0: 1, c1: 0, z0: view.zoom, z1: 1, done: function () { view.center = 0; view.zoom = 1; walk(); } };
   }
@@ -624,7 +653,7 @@ a { color: inherit; text-underline-offset: 3px; }
     var act = el('div'); act.id = 'act'; act.style.display = 'grid'; act.style.gap = '12px';
     var body = el('div', 'body'); body.appendChild(rich(el('p', 'text'), m.short || m.text)); if (N[m.to].note) body.appendChild(el('p', 'lede', N[m.to].note)); body.appendChild(defs);
     show([segs(), kick, title(m), body, act]); ask();
-    if (phone()) { cue.innerHTML = ''; cue.appendChild(document.createTextNode(N[m.from].label + ' ')); cue.appendChild(el('span', 'arrow', '→')); cue.appendChild(el('span', 'go', ' ' + N[m.to].label)); cue.hidden = false; stage('scene'); } else stage(null);
+    { cue.innerHTML = ''; cue.appendChild(document.createTextNode(N[m.from].label + ' ')); cue.appendChild(el('span', 'arrow', '→')); cue.appendChild(el('span', 'go', ' ' + N[m.to].label)); cue.hidden = false; stage('scene'); }
   }
   function ask() {
     var act = document.getElementById('act'); act.innerHTML = ''; act.appendChild(el('div', 'q', MOVES[st.i].ghost ? 'The author stopped here. Would you go on anyway?' : 'Does this move convince you?'));
@@ -644,7 +673,7 @@ a { color: inherit; text-underline-offset: 3px; }
   function record(v, r) { st.ans[st.i] = { v: v, r: r, ms: Date.now() - st.t0 }; }
   function go() {
     var m = MOVES[st.i], last = st.i === MOVES.length - 1; try { window.scrollTo({ top: 0, behavior: still ? 'auto' : 'smooth' }); } catch (e) { window.scrollTo(0, 0); }
-    if (phone()) { stage('scene'); cue.hidden = true; } try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) { window.scrollTo(0, 0); }
+    stage('scene'); cue.hidden = true; try { window.scrollTo({ top: 0, behavior: 'smooth' }); } catch (e) { window.scrollTo(0, 0); }
     hud('→ ' + N[m.to].label, (st.i + 1) + ' / ' + MOVES.length); hurry.textContent = 'Tap to hurry'; hurry.hidden = still; clearTimeout(walk.tip);
     show([segs(), el('div', 'kick', 'Walking'), title(m)]);
     walkTo(st.i + 1, m.from === 'ign2' ? 'warp' : m.from === 'mercy' ? 'rebirth' : null, function () { hurry.hidden = true; st.i++; if (last) { st.off = null; finish(); } else walk(); });
