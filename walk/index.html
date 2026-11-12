@@ -20,7 +20,7 @@
   :root:not([data-theme="light"]) { --bg: #0E0D14; --panel: #191822; --ink: #F1EFF7; --muted: #A39FB5; --line: #2E2C3B; --soft: #22212D; --take: #4FD1B0; --split: #F0B250; --refuse: #FF8AA0; --focus: #93A8FF; color-scheme: dark; }
 }
 :root[data-theme="dark"] { --bg: #0E0D14; --panel: #191822; --ink: #F1EFF7; --muted: #A39FB5; --line: #2E2C3B; --soft: #22212D; --take: #4FD1B0; --split: #F0B250; --refuse: #FF8AA0; --focus: #93A8FF; color-scheme: dark; }
-body { background: var(--bg); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.55; padding-block: 0 40px; }
+body { background: var(--panel); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.55; padding-block: 0 0; }
 .gut { padding-left: max(18px, env(safe-area-inset-left, 0px)); padding-right: max(18px, env(safe-area-inset-right, 0px)); }
 p { margin: 0; }
 
@@ -47,7 +47,7 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .pill { font-weight: 650; font-size: 13px; letter-spacing: .04em; background: rgba(15, 12, 35, .42); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-radius: 999px; padding: 6px 12px; white-space: nowrap; text-shadow: none; font-variant-numeric: tabular-nums; }
 .hurry { position: absolute; right: 0; bottom: 40px; color: #fff; font-size: 13px; font-weight: 600; opacity: .85; text-shadow: 0 1px 10px rgba(10, 8, 30, .6); pointer-events: none; }
 
-.sheet { position: relative; background: var(--panel); min-height: 40vh; }
+.sheet { position: relative; background: var(--panel); min-height: 40vh; padding-bottom: max(28px, env(safe-area-inset-bottom, 0px)); }
 .inner { max-width: 720px; margin: 0 auto; padding-block: 2px 28px; display: grid; gap: 16px; min-width: 0; }
 .fade { animation: rise .32s ease both; }
 @keyframes rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
@@ -105,7 +105,8 @@ button.dice { padding: 7px 13px; font-size: 14px; background: var(--panel); }
 .intro-foot { color: var(--muted); font-size: .93rem; }
 @media (min-width: 960px) {
   body.is-intro { display: grid; grid-template-columns: minmax(0, 1fr) 480px; min-height: 100vh; }
-  body.is-intro .band { position: relative; top: auto; height: 100vh !important; }
+  body.is-intro .band { position: sticky; top: 0; height: 100vh !important; }
+  body.is-intro .strip { margin-inline: 0; padding-inline: 0; scroll-padding-inline: 0; }
   body.is-intro .band::after { display: none; }
   body.is-intro .sheet { min-height: 100vh; border-left: 1px solid var(--line); }
   body.is-intro .inner { max-width: none; padding-block: 34px 28px; }
@@ -132,8 +133,20 @@ td.n { color: var(--muted); font-variant-numeric: tabular-nums; }
 .gallery figure { margin: 0; display: grid; gap: 4px; }
 .gallery canvas { width: 100%; aspect-ratio: 16 / 9; border-radius: 12px; display: block; }
 .gallery figcaption { font-size: 13px; font-weight: 600; color: var(--muted); }
-footer { border-top: 1px solid var(--line); padding-top: 14px; color: var(--muted); font-size: .9rem; display: grid; gap: 4px; }
+footer { border-top: 1px solid var(--line); padding-top: 16px; color: var(--muted); font-size: .9rem; display: grid; gap: 8px; }
 footer b { color: var(--ink); font-family: var(--display); font-weight: 700; font-size: 1rem; }
+footer .links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 2px; }
+footer .links a { display: inline-flex; align-items: center; gap: 6px; text-decoration: none; color: var(--ink); background: var(--soft); border-radius: 999px; padding: 7px 13px; font-size: .88rem; font-weight: 600; }
+footer .links a:hover { background: var(--line); }
+footer .links a span { color: var(--muted); font-weight: 500; }
+/* The route ahead: a strip of the twenty scenes, under the maker. */
+.strip { display: flex; gap: 8px; overflow-x: auto; scroll-snap-type: x proximity; scroll-padding-inline: 18px; margin-inline: max(-18px, calc(-1 * env(safe-area-inset-left, 0px) - 18px)); padding: 2px 18px 6px; -webkit-overflow-scrolling: touch; scrollbar-width: none; }
+.strip::-webkit-scrollbar { display: none; }
+.strip figure { margin: 0; flex: 0 0 auto; width: 150px; scroll-snap-align: start; display: grid; gap: 5px; }
+.strip canvas { width: 150px; height: 84px; border-radius: 10px; display: block; background: var(--soft); }
+.strip figcaption { font-size: 12px; font-weight: 600; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.strip-head { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; }
+.strip-head a { font-size: .88rem; color: var(--muted); }
 a { color: inherit; text-underline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) { .fade { animation: none; } button { transition: none; } }
 </style>
@@ -152,8 +165,8 @@ a { color: inherit; text-underline-offset: 3px; }
   <main id="app" style="display:grid;gap:16px;min-width:0"></main>
   <footer>
     <b>Route and ideas by E.H ’26</b>
-    <span>Drawn and coded by Claude. Every position and move is quoted from <a href="https://claude.ai/artifact/2Awx6e5zHePcjoC6v8d8QQ">The Archimedean Approach</a>, version 110; a few are shortened for the walk.</span>
-    <span>Study records: <a href="https://github.com/impressionsauthor-vibes/philosophy-read-study">github.com/impressionsauthor-vibes/philosophy-read-study</a> · <a href="#scenes">See all twenty scenes</a></span>
+    <span>Drawn and coded by Claude. Every position and move is quoted from the map, version 110; a few are shortened for the walk.</span>
+    <div class="links"><a href="https://claude.ai/artifact/2Awx6e5zHePcjoC6v8d8QQ">The Archimedean Approach <span>↗</span></a><a href="https://github.com/impressionsauthor-vibes/philosophy-read-study">Study records <span>↗</span></a><a href="#scenes">All twenty scenes</a></div>
     <span id="savenote"></span>
   </footer>
 </div></div></div>
@@ -490,8 +503,11 @@ a { color: inherit; text-underline-offset: 3px; }
     tabs.setAttribute('role', 'tablist');
     function render() { tabs.innerHTML = ''; TABS.forEach(function (t) { var b = el('button', '', t[1]); b.type = 'button'; b.setAttribute('role', 'tab'); b.setAttribute('aria-selected', String(tab === t[0])); b.addEventListener('click', function () { tab = chooser.tab = t[0]; render(); }); tabs.appendChild(b); }); pane.innerHTML = ''; pane.appendChild(options(tab)); }
     render(); maker.appendChild(head); maker.appendChild(tabs); maker.appendChild(pane);
+    var stripWrap = el('div'), stripHead = el('div', 'strip-head'), strip = el('div', 'strip'); stripWrap.style.display = 'grid'; stripWrap.style.gap = '8px'; stripHead.appendChild(el('span', 'kick', 'The route ahead')); var seeAll = el('a', '', 'See them large'); seeAll.href = '#scenes'; stripHead.appendChild(seeAll); stripWrap.appendChild(stripHead); stripWrap.appendChild(strip);
+    DATA.nodes.forEach(function (n, j) { var f = el('figure'), c = document.createElement('canvas'); c.width = 300; c.height = 168; f.appendChild(c); f.appendChild(el('figcaption', '', n.label)); strip.appendChild(f); });
+    setTimeout(function () { Array.prototype.forEach.call(strip.querySelectorAll('canvas'), function (c, j) { var x = c.getContext('2d'), k = 168 / 340; x.setTransform(k, 0, 0, k, 0, 0); drawScene(x, 300 / k, j * SEG, 1300 + j * 700, st.who, 0, false); }); }, 60);
     show([el('h1', '', 'Where do you get off?'), el('p', 'lede', LEDE), maker, consent(),
-      btn('Start walking', 'primary', function () { st.screen = 'walk'; st.i = 0; st.ans = []; st.off = null; window.scrollTo(0, 0); if (still) { view.center = 0; view.zoom = 1; walk(); return; } mode(false); tw = { from: 0, to: 0, p: 0, dur: 650, fx: 'settle', fast: false, c0: 1, c1: 0, z0: view.zoom, z1: 1, done: function () { view.center = 0; view.zoom = 1; walk(); } }; })]);
+      btn('Start walking', 'primary', function () { st.screen = 'walk'; st.i = 0; st.ans = []; st.off = null; window.scrollTo(0, 0); if (still) { view.center = 0; view.zoom = 1; walk(); return; } mode(false); tw = { from: 0, to: 0, p: 0, dur: 650, fx: 'settle', fast: false, c0: 1, c1: 0, z0: view.zoom, z1: 1, done: function () { view.center = 0; view.zoom = 1; walk(); } }; }), stripWrap]);
   }
   function walk() {
     mode(false); st.t0 = Date.now(); bub = null; view.peek = 0; if (st.i === 0 && !still) { hurry.textContent = 'Tap things to look closer · drag to look around'; hurry.hidden = false; clearTimeout(walk.tip); walk.tip = setTimeout(function () { if (!tw) hurry.hidden = true; }, 7000); } var m = MOVES[st.i]; view.cam = st.i * SEG; hud(N[m.from].label, (st.i + 1) + ' / ' + MOVES.length); redraw();
