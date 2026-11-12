@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <style>:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
 <title>The Walk</title>
+<meta name="theme-color" id="theme" content="#5FAEEB">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&family=Hanken+Grotesk:ital,wght@0,400..700;1,400&display=swap">
@@ -333,9 +334,9 @@ a { color: inherit; text-underline-offset: 3px; }
       c.strokeStyle = sleeve; c.lineWidth = 6.8; c.beginPath(); c.moveTo(sx, sy); c.lineTo(ex, ey); c.stroke();
     }
     var t1 = fall ? .16 : moving ? .52 * s1 : .11, t2 = fall ? -.2 : moving ? -.52 * s1 : -.1, b1 = fall ? .5 : .8 * Math.max(0, c1), b2 = fall ? .3 : .8 * Math.max(0, -c1);
-    var a1 = fall ? 2.5 : moving ? -.6 * s1 : .1, a2b = fall ? -2.6 : moving ? .6 * s1 : -.16, eb = fall ? .25 : moving ? .32 : .12;
+    var a1 = fall ? .1 : moving ? -.6 * s1 : .1, a2b = fall ? -.16 : moving ? .6 * s1 : -.16, eb = fall ? .12 : moving ? .32 : .12;
     if (o.wave != null) { var wv = Math.sin(o.wave * Math.PI); a1 = .1 + (-2.75 - .1) * wv; eb = .12 + (.95 + .5 * Math.sin(o.wave * Math.PI * 5)) * wv; }
-    arm(a2b, fall ? -eb : eb, tone(top, .16), tone(skin, .14));
+    arm(a2b, eb, tone(top, .16), tone(skin, .14));
     leg(t2, b2, tone(pants, .22));
     c.rotate(moving ? .05 : 0);
     var ws = b === 'm' ? 22.5 : b === 'f' ? 18.5 : 20.5, wh = b === 'm' ? 17 : b === 'f' ? 21 : 17, hem = b === 'f' ? -37 : -42;
@@ -561,7 +562,7 @@ a { color: inherit; text-underline-offset: 3px; }
     if (tw) { tw.p = Math.min(1, tw.p + dt / tw.dur * (tw.fast ? 5 : 1)); var e = tw.p * tw.p * tw.p * (tw.p * (tw.p * 6 - 15) + 10), nc = tw.from + (tw.to - tw.from) * (tw.fx === 'enter' ? 1 - Math.pow(1 - tw.p, 2.4) : e), rb = tw.fx === 'rebirth', fl = tw.fx === 'fall'; if (rb) nc = tw.p < .5 ? tw.from + 420 * sm(tw.p / .5) : tw.to; view.fx = rb || fl ? { kind: tw.fx, p: tw.p } : null; view.ph += Math.abs(nc - view.cam) * .04; view.cam = nc; view.moving = !fl && tw.fx !== 'settle' && !(rb && tw.p >= .5); if (tw.fx === 'settle' || tw.fx === 'enter') { size(); var sp = sm(tw.fx === 'enter' ? tw.p / .32 : tw.p); view.center = tw.c0 + (tw.c1 - tw.c0) * sp; view.zoom = tw.z0 + (tw.z1 - tw.z0) * sp; } view.warp = tw.fx === 'warp' ? Math.pow(Math.sin(Math.PI * Math.max(0, Math.min(1, (tw.p - .3) / .4))), 2) : 0; if (tw.p >= 1) { var d = tw.done; tw = null; view.moving = false; view.warp = 0; view.fx = null; d(); } }
     if (view.px !== PANEL) { view.px += (PANEL - view.px) * (1 - Math.exp(-dt / 180)); if (Math.abs(view.px - PANEL) < .3) view.px = PANEL; }
     if (!dragging && view.peek) { view.peek += (0 - view.peek) * (1 - Math.exp(-dt / 150)); if (Math.abs(view.peek) < .2) view.peek = 0; }
-    paint(ts); if (!still) requestAnimationFrame(frame);
+    paint(ts); if (ts - (frame.tc || 0) > 300) { frame.tc = ts; var sc = col(at(view.cam + view.peek), 'st'), sv = 'rgb(' + (sc[0] | 0) + ',' + (sc[1] | 0) + ',' + (sc[2] | 0) + ')', tm = document.getElementById('theme'); if (tm && tm.content !== sv) tm.content = sv; } if (!still) requestAnimationFrame(frame);
   }
   function redraw() { if (still) paint(0); }
   function walkTo(j, fx, done) { if (still) { view.cam = j * SEG; redraw(); setTimeout(done, 200); return; } tw = { from: view.cam, to: j * SEG, p: 0, dur: fx === 'rebirth' ? 7600 : 5200, fx: fx, done: done, fast: false }; }
