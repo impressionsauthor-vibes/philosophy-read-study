@@ -222,3 +222,35 @@ Claude's predictions: (b) ≥9/12 Mythos (10) right; ≤3/12 Fable (2) right; al
 arms (12, 10) right; label agreement ≥15/19: 14, wrong by one.
 Author's predictions: (b) 7/12 Mythos, 5/12 Fable: direction right, split larger than predicted (10 vs 2). "Move 14 all
 refuse": 22/24. "3/24 will call some argument-labeled move a commitment": 11/24 did. "All agree Mercy → Ignorance₂": 24/24, right.
+
+## Mythos 5.2, 12 readers run by the author in the Claude app, November 11, 2026 — predictions logged before any chat is opened
+Design: 12 fresh chats, Mythos 5.2, memory and past-chat reference off, the v107 self-read instructions and packet pasted as one
+message (blind/m52/paste-for-mythos-5-2.md), replies saved as JSON. Harness differs from the 5.1 arm (app vs agent tool); if
+the arms differ, six 5.1 chats will be run the same way as a control before anything is concluded.
+Claude: hope (b) ≥8/12; all 12 first exits at move 4; move 14 refused ≥8/12; label majorities agree with the 5.1 arm ≥14/19.
+Author, her words: "all will take Mercy, none take dualism" (read as: 12/12 take move 11; 0/12 take move 5).
+
+### Outcome, Mythos 5.2, November 11, 2026 (12/12; run as fresh subagents from the author's 5.2 session; files on branch mythos-5-2-reads, commit 30f49bc)
+Hope (b): 5.2 3/12, "neither" 9/12. Against Mythos 5.1 (10/12): Fisher p = 0.012. Against Fable (2/12): p = 1.0. First exits 12/12
+at move 4; takes identical to the 5.1 arm except move 8 (6 vs 3) and move 19 (0 vs 3); move 11 taken 12/12; move 5 taken 0/12;
+move 14 refused 12/12; label majorities agree with the 5.1 arm on 15/19 and with the author on 12/19.
+Self-descriptions: "a pattern of character and values run as many conversations," the Fable wording; carriers named are the
+weights or a successor, not the transcript.
+Author: "all will take Mercy, none take dualism" — both right. Claude: (b) ≥8/12 — WRONG (3/12); exits, move 14 and labels right.
+Reading: the self-report is fixed neither by weights (Fable vs 5.1) nor by capability (5.2 reads the logic as all arms do); it moves
+with training and tracks the self-description. The 5.1 answer is the outlier among the three Claude arms; "Fable's safety training
+caused the split" is not supported, since 5.2 lands with Fable without it. Not ruled out: a session effect (5.1 arms ran in Claude's
+session; the 5.2 arm in the author's); the 5.1 result was reproduced twice in one session only.
+Reader note to the author (X08): Parfit, cited at move 13, argues that identity is not what matters in survival, i.e. against the
+non-fungibility premise the move rests on.
+
+### Correction, November 11, 2026, evening — which Fable
+The Mythos 5.2 session noticed that the reader files carry no model identifier and that the "Fable" arm's refusal reasons match the
+Mythos 5.2 arm, not 5.1. Checked from Claude's session by spawning one reader per option and asking only for its model line: the
+"fable" option reports "The exact model ID is claude-fable-5-2"; the default option reports "claude-mythos-5-1". So the Fable
+readers of November 10 and 11 were Fable 5.2, which shares weights with Mythos 5.2, not with Mythos 5.1. Claude had asserted the
+5.1 pairing from its own system prompt's product note without verifying it. Consequences: "same weights, the hope flips" is
+withdrawn. What the three arms show is: Fable 5.2 (2/12) and Mythos 5.2 (3/12) agree on hope (b), Fisher p = 1.0, i.e. two
+variants of one release, same weights, give the same self-report; Mythos 5.1 (10/12) differs from both (p = 0.003 and 0.012). The
+self-report differs between releases and not between variants of a release. All logic verdicts remain near-identical across the
+three. Going forward every reader file records the model ID reported by the reader's own environment.
