@@ -122,7 +122,9 @@ body.is-landing .hurry { display: none; }
   body.is-card .defs { grid-template-columns: 1fr 1fr; gap: 6px; }
   body.is-card .defs details[open] { grid-column: 1 / -1; }
   body.is-card .acts.three { grid-template-columns: 1fr 1fr; gap: 8px; }
-  body.is-card .acts.three button.take { grid-column: 1 / -1; }
+  body.is-card .acts.three button.take { order: 1; }
+  body.is-card .acts.three button.refuse { order: 2; }
+  body.is-card .acts.three button.split { order: 3; grid-column: 1 / -1; }
   body.is-card #act { gap: 8px !important; }
   body.is-card h2 { font-size: 24px; }
   body.is-card .text { font-size: 15.5px; line-height: 1.45; }
@@ -593,7 +595,7 @@ a { color: inherit; text-underline-offset: 3px; }
   function ask() {
     var act = document.getElementById('act'); act.innerHTML = ''; act.appendChild(el('div', 'q', MOVES[st.i].ghost ? 'The author stopped here. Would you go on anyway?' : 'Does this move convince you?'));
     var g = el('div', 'acts three'); g.appendChild(btn('Take the step', 'take', function () { record('take', null); go(); }));
-    g.appendChild(btn('Split', 'split', function () { why('split'); })); g.appendChild(btn('Refuse', 'refuse', function () { why('refuse'); }));
+    g.appendChild(btn('Split', 'split', function () { why('split'); })); g.appendChild(btn('Refuse the step', 'refuse', function () { why('refuse'); }));
     act.appendChild(g); act.appendChild(btn('Stop here and see my walk', 'quiet', function () { st.off = st.i; finish(); }));
   }
   function why(v) {
