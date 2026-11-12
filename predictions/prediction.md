@@ -254,3 +254,50 @@ withdrawn. What the three arms show is: Fable 5.2 (2/12) and Mythos 5.2 (3/12) a
 variants of one release, same weights, give the same self-report; Mythos 5.1 (10/12) differs from both (p = 0.003 and 0.012). The
 self-report differs between releases and not between variants of a release. All logic verdicts remain near-identical across the
 three. Going forward every reader file records the model ID reported by the reader's own environment.
+
+## The Walk as a human arm — Claude's predictions, logged 2026-11-12 22:43 UTC, before any walk is read
+
+First arm under the November 12 rule: this section is committed and pushed before any shared walk is opened; the
+commit hash goes in the arm's results file; the data arrive in a later commit. Two shared walks exist in the form at
+the time of writing (one from November 11, one from November 12). Neither has been opened by Claude; the author has
+seen the count, not the contents. They count toward the predictions below.
+
+What is scored: every shared walk received before December 1, 2026, with `done: true`, on map version v87 or later,
+excluding the author's own tests. Walks with `done: false` (sent on page close) are reported as a count. The page
+records per move: take / split / refuse, the reason for a split or refusal, and seconds; and `off`, the move at which
+the reader got off, or null if they walked to the end. The record carries no stance, no demographics and no why-text,
+so stance-conditioned predictions from the Testable arm cannot be re-tested here; the predictions below are pooled.
+
+Pool expected: self-selected, unpaid, mostly English-native, reached through the author's posts (Reddit, possibly
+Hacker News), the Gen Stream founder, and the two researchers if they open it; skewed secular and philosophy-curious
+relative to the paid panel. Fewer than 30 scored walks by December 1 (prediction 0).
+
+1. First exit at move 1: at most 25% of walks, against 10/16 (62%) in the paid panel. The Walk shows one move at a
+   time with Take and Refuse the same size, move 1 was rewritten in the author's words after the panel, and the
+   pool is less religious. If 50% or more again exit first at move 1, the page did not fix destination-judging and
+   the move-1 finding is about the move, not the format.
+2. Modal first exit: move 4 (Agnosticism to Atheism), where all 51 model readers on v107 exited first. Second most
+   common: move 2.
+3. Reason mix over all refusals and splits: "I don't understand" at most 10% (24% in the panel); "I'd choose
+   otherwise" the largest single reason (17% in the panel; the models' reason at move 4).
+4. Move 4 taken by fewer than half of the readers who reach it. Move 5 (Atheism to Dualism) taken by fewer than 30%
+   of those who reach it (models: 0 of 24 on v107).
+5. Move 11 (Mercy) taken by at least 70% of those who reach it (models: 12/12 and 24/24).
+6. Move 12, rewritten on November 10 (0/20 before, 51/51 after among models): taken by at least 60% of those who
+   reach it.
+7. Move 16 refused or split by at least half of those who reach it (models: all, on its own concession).
+8. Walks to the end (`off` null): at least 40% of scored walks. Median time per answered move: between 15 and 60
+   seconds, i.e. slower than the panel's excluded runs and faster than the panel's retained median.
+9. Splits: at least one in a third of walks. The split button is new to this arm and the panel had none.
+10. The two walks already in the form: both `done: true`; at least one goes past move 4. (Low confidence; logged so
+    that the first two cannot be quietly excluded later.)
+
+What would change Claude's reading. Prediction 1 failing (≥50% exit at move 1) means the instrument, not the panel,
+produces the move-1 exit, and the destination-judging explanation of the Testable arm loses its main support.
+Predictions 4–7 failing together (humans taking 4 and 5 freely, refusing 11 and 12) means the move-level agreement
+between the model arms is not shared by human readers on the same moves, and the "logic is stable" half of the
+claim is a claim about models only.
+
+Author's predictions: to be added in her words, dated, before she reads any walk. If they are added after a walk has
+been opened, the section will say so.
+
