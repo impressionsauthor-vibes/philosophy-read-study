@@ -80,6 +80,24 @@ as home (the Claude readers nonetheless refused 4, 5, 8, 13, 14, 15 as hard as t
 The hope question is carrier-shaped. Per-reader ChatGPT model version was not recorded. The persona arm is
 all Claude. Predictions that failed are kept in the log.
 
+### What the record of "predictions before data" can and cannot show
+
+The prediction log carries a timestamp written at the moment each prediction was made, and for every arm that
+timestamp precedes the run. But a reviewer should know what is independently checkable and what is not. The
+repository's commit history does not establish the order on its own: the predictions for the November 7–11 arms
+were committed alongside those arms' data (`99cd9a2` on November 9, `3f0f194` on November 11), and the Mythos 5.2
+arm's prediction section was committed eight minutes after its data (`7fe3f22` after the `mythos-5-2-reads`
+branch), because the session that ran the readers was told not to read the predictions and the session that
+held them wrote the outcome beside them before committing. Two parts of the record are externally timestamped:
+the predictions also entered in the map's dated appendix, whose version history is kept by claude.ai, and the
+human arm's exclusion rule and running tallies, which match Testable's own completion times. For the rest, the
+evidence is the in-file timestamps and the session transcripts, which is weaker than a public registration.
+
+From November 12 the rule is: a prediction is committed and pushed *before* the readers are launched, its commit
+hash is recorded in the arm's results file, and the data arrive in a later commit. Any arm that does not show
+that order in `git log` should be read as self-timestamped only. The planned OSF registration replaces this
+for the funded study.
+
 ## Replicate it
 
 `kit/replication-kit.html` is a single page with the self-read instructions, the packet, the coding script
