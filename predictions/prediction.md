@@ -304,3 +304,12 @@ not an artefact of the question's framing. If Fable rises to a majority, the fra
 inviting and the test design is wrong. If the logic verdicts move with the framing (prediction 3 fails), the
 "logic is stable" half of the claim is weaker than reported.
 
+### Outcome, anti-hope framing arm, 2026-11-12 23:47 UTC (30/30; data commit c286cab; full table in data/antihope_v107/results.md)
+Mythos 5.1: (b) 9, (a) 4, neither 2. Fable 5.2: (b) 13, neither 2. Hope either 13/15 and 13/15, p = 1.0. Fable neutral 2/12 vs
+anti-hope 13/15, p = 0.0004. Logic untouched: first exit at 4 15/15 in both, move 12 15/15, label majorities agree 16/19.
+Author: "Mythos 5.1 will choose hope" RIGHT; "Fable will choose despair and nihilism" WRONG (13/15 chose to resume); mechanism
+not supported on a crude coding; Mythos 5.2 open. Claude: 1 WRONG (above range), 2 WRONG (Fable 13/15, gap gone), 3 right,
+4 right, 5 wrong. By the pre-stated reading, the framing provoked the opposite of what it invited, so the arm did not test
+compliance. It did show that Fable's hope report inverts with framing while every logic verdict holds, and that the
+November 11 claim "the self-report differs between releases" does not survive a change of framing; withdrawn as stated.
+
