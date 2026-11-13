@@ -22,7 +22,7 @@ for row in csv.reader(open(src, encoding='utf-8')):
     walk = []
     for i, a in enumerate(o['a'] + [None] * (19 - len(o['a']))):
         if a is None: walk.append({'move': i + 1, 'verdict': 'not reached', 'reason': None, 'seconds': None}); continue
-        v, r, secs = a
+        v, r, secs = a[0], a[1], a[2]  # format 5 adds a fourth value: seconds since the card opened, or null
         walk.append({'move': i + 1, 'verdict': 'take' if v == 't' else 'refuse', 'split': v == 's',
                      'reason': None if v == 't' else REASONS[r], 'seconds': secs})
     fe = next((w['move'] for w in walk if w['verdict'] == 'refuse'), None)
