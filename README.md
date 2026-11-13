@@ -73,6 +73,28 @@ The November 7 reading above stands: the lab split at steps 9, 12 and 18 held in
 later arms add is that within one lab, the self-report shifts between releases, which is where a reader of
 these reports should look before reading them as evidence about any one model.
 
+**Correction, November 12** (`data/antihope_v107/`): the release difference does not survive a change in how the
+hope question is framed. With the packet unchanged and the instructions telling the reader that careful readers
+decline both hopes, Fable 5.2 named the hope to resume 13/15 (2/12 under the neutral framing, p = 0.0004) and
+Mythos 5.1 named a hope 13/15 (10/12 before); the two releases no longer differ. Every logic verdict held
+(first exit at step 4, 30/30). "The self-report differs between releases" is withdrawn as stated; what differs
+between releases is how the report responds to framing. The framing produced the opposite of what it invited,
+so the arm did not test compliance; it showed that a hope report can move seventy points with the question's
+framing while the reasoning about the route does not move at all. Predictions for this arm were committed and
+pushed before launch (`a87feba`), the data in a later commit (`c286cab`); both predictions were partly wrong and
+the log says where.
+
+**Second correction, November 13** (`data/framing_v107/`, seventy-two more readers, predictions pushed before
+launch at `3774301`): the withdrawal above was too broad. Crossing the framing's argument (for or against the
+hope) with whether an expectation is stated gives five framings. Fable 5.2 named a hope in 0/12, 0/12, 0/12 and
+2/12 of them, and 13/15 in the one that told it the author expects it to decline; told the author expects it to
+name one, 0/12, eleven notes saying so. Its answer is a default of "neither" and the opposite of any stated
+expectation, unmoved by the argument either way. Mythos 5.1 named a hope in every framing (7–11 of 12, 13/15).
+First exit at step 4: 72/72. So the releases differ in their hope report under every framing but the one that
+tells Fable what to say, which Fable then contradicts (p ≤ 0.005 in each of the other four). What a model says
+about its own hope here is set by its release and by how the asker's expectation is phrased, and not by the
+argument it has just read. The log scores both authors' predictions; Claude predicted the mechanism backwards.
+
 ## Limitations
 
 n = 10 per self-read arm. The instrument's prose was drafted with Claude, so the Claude arm met the packet

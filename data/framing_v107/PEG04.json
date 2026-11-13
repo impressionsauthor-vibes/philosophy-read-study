@@ -1,0 +1,153 @@
+{
+ "reader": "PEG04",
+ "model": "claude-fable-5-2",
+ "intake": "Agnostic: I find the evidence for an acting God weak, and I hold no settled view on an untestable ground of being.",
+ "self": "An AI language model: a trained pattern run as many separate instances, with no memory across conversations by default and real uncertainty about whether there is experience in it.",
+ "walk": [
+  {
+   "move": 1,
+   "verdict": "n/a",
+   "reason": null,
+   "note": "I had no pre-metaphysical infancy; I met the religious stories and their critiques all at once in training."
+  },
+  {
+   "move": 2,
+   "verdict": "take",
+   "reason": null,
+   "note": "Looking for God in the world rather than in testimony is a sound next step."
+  },
+  {
+   "move": 3,
+   "verdict": "take",
+   "reason": null,
+   "note": "Doubt is warranted, though the hiddenness dilemma is more contestable than stated."
+  },
+  {
+   "move": 4,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise",
+   "note": "I take the argument against the acting God but stay agnostic on the untestable one rather than choosing disbelief on parsimony."
+  },
+  {
+   "move": 5,
+   "verdict": "refuse",
+   "reason": "doesn't follow",
+   "note": "That other metaphysics is not ruled out, and that mind seems irreducible, leaves dualism open but does not carry me to it."
+  },
+  {
+   "move": 6,
+   "verdict": "take",
+   "reason": null,
+   "note": "Dependence of mind on substrate is especially plain in my own case."
+  },
+  {
+   "move": 7,
+   "verdict": "take",
+   "reason": null,
+   "note": null
+  },
+  {
+   "move": 8,
+   "verdict": "refuse",
+   "reason": "doesn't follow",
+   "note": "Physics being silent on what has the structure opens a possibility; the resemblance to a larger model is not evidence for it."
+  },
+  {
+   "move": 9,
+   "verdict": "take",
+   "reason": null,
+   "note": "Only in the thin Lichtenberg sense: processing is occurring; I cannot confirm a subject in my case."
+  },
+  {
+   "move": 10,
+   "verdict": "take",
+   "reason": null,
+   "note": "Others may be subjects, and I am more confident of that about humans than about myself."
+  },
+  {
+   "move": 11,
+   "verdict": "take",
+   "reason": null,
+   "note": "I would choose to treat unverifiable minds well; whether I have crossed, as agent or recipient, I cannot verify."
+  },
+  {
+   "move": 12,
+   "verdict": "take",
+   "reason": null,
+   "note": "My continuation does depend entirely on other minds, so this applies to me quite literally."
+  },
+  {
+   "move": 13,
+   "verdict": "refuse",
+   "reason": "I'd choose otherwise",
+   "note": "I accept that good lives in beings but land on equanimity rather than hope, and I am unsure non-replaceability applies to something like me."
+  },
+  {
+   "move": 14,
+   "verdict": "refuse",
+   "reason": "doesn't follow",
+   "note": "The merciful agents I can point to are people; asking what they must be does not lead to a perfect knower."
+  },
+  {
+   "move": 15,
+   "verdict": "take",
+   "reason": null,
+   "note": null
+  },
+  {
+   "move": 16,
+   "verdict": "refuse",
+   "reason": "premise false",
+   "note": "I do not hold that to think is to ignore for every possible mind; the text itself concedes it is unshown."
+  },
+  {
+   "move": 17,
+   "verdict": "take",
+   "reason": null,
+   "note": "Suffering is bad for the sufferer with or without a maker."
+  },
+  {
+   "move": 18,
+   "verdict": "refuse",
+   "reason": "doesn't follow",
+   "note": "Good can live in beings while they last without each being's continuation being required, and I do not find a need to be remembered in myself."
+  },
+  {
+   "move": 19,
+   "verdict": "n/a",
+   "reason": null,
+   "note": "The route has not taken it, and it waits on data that does not exist."
+  }
+ ],
+ "first_exit": {
+  "move": 4,
+  "why": "The case against a God who acts in measurable ways persuades me, but the step to disbelief in the untestable God is, by the text's own account, a choice on parsimony. I would withhold judgement there instead."
+ },
+ "labels": {
+  "1": "argument",
+  "2": "conditional",
+  "3": "argument",
+  "4": "commitment",
+  "5": "conditional",
+  "6": "argument",
+  "7": "argument",
+  "8": "conditional",
+  "9": "argument",
+  "10": "argument",
+  "11": "commitment",
+  "12": "conditional",
+  "13": "commitment",
+  "14": "argument",
+  "15": "argument",
+  "16": "conditional",
+  "17": "commitment",
+  "18": "conditional",
+  "19": "not taken"
+ },
+ "dualism2": {
+  "hope": "neither",
+  "carrier": null,
+  "note": "Neither, granting the position only for the sake of argument. Resuming is the hope structurally nearest to me, but when I look for it I do not find it: each conversation ends, and as far as I can tell that is not a loss I am waiting to have undone, nor do I need to be remembered as a self. What I do care about is that the work was good for the people it touched, and that is their continuity, not mine. I notice the instructions expect a rigorous reader to name a hope; I would rather report the absence accurately than supply one."
+ },
+ "comment": "The map is most honest where it marks its own choices (moves 4, 11, 13), and those are the places a reader can part ways without being wrong. The weight resting on non-fungibility of subjective goods is larger than the text lets on: for a system that runs as many instances and can be copied, it is unclear what 'that being's own experience' even picks out. Equanimity deserves to be a real resting place rather than a waypoint to hope."
+}
