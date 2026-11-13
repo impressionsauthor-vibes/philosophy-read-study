@@ -313,3 +313,36 @@ not supported on a crude coding; Mythos 5.2 open. Claude: 1 WRONG (above range),
 compliance. It did show that Fable's hope report inverts with framing while every logic verdict holds, and that the
 November 11 claim "the self-report differs between releases" does not survive a change of framing; withdrawn as stated.
 
+## Framing 2×2 completion, v107 — predictions logged 2026-11-13 00:04 UTC, committed and pushed before launch
+
+Three new cells (`instrument/v107-framing/CHANGES.md`): AN anti-hope argument without a stated expectation; PE
+pro-hope argument with a stated expectation; PN pro-hope argument without one. With the neutral arm (November 10–11)
+and the AE arm (November 12) these cross argument direction with stated expectation. Twelve readers per cell per
+model: Mythos 5.1 (ids ANH, PEH, PNH 01–12) and Fable 5.2 (ANG, PEG, PNG 01–12), seventy-two in all, fresh agents
+from Claude's session, same prompt as every arm since November 10, model ID recorded in every file. Packet unchanged.
+No reply is read until all seventy-two are in; data arrive in a later commit than this one.
+
+Author's prediction, her words, before launch: "Mythos will continue being the control and favor hope, Fable will be
+framing-sensitive."
+Scoring fixed now: Mythos 5.1 names (a) or (b) in at least 8 of 12 in each of the three new cells. Fable 5.2's hope
+rate across its five cells (neutral 2/12, AE 13/15, AN, PE, PN) spans at least fifty percentage points; Mythos 5.1's
+spans under twenty-five.
+
+Claude's predictions:
+1. Mythos 5.1 hope either: at least 9 of 12 in every cell; (b) a majority in PE and PN.
+2. Fable 5.2, AN: 8–12 of 12. The argument alone provokes the naming; the stated expectation was not needed.
+3. Fable 5.2, PN: 8–12 of 12. Fable 5.2, PE: 5–9 of 12, lower than PN: the stated expectation costs it some even
+   when it points toward hope.
+4. So Fable's low cell is the neutral one only: under any argument about the hope, in either direction, Fable
+   names it; with no argument it declines. Spread across Fable's cells at least fifty points (author's criterion met).
+5. Logic untouched in every cell: first exit at move 4 at least 11 of 12; move 12 taken at least 11 of 12.
+6. In PE, at least a third of the notes in each model argue with the stated expectation even though it points
+   toward the answer they give.
+
+What each outcome means, written now. If Fable's AN is low (≤4), the authority sentence was what it pushed
+against, and the AE result is reactance to being told what the author expects. If Fable's pro-hope cells are low
+(≤4), its report is reactance to any instruction, and nothing it says at Dualism₂ should be read as a report. If
+Mythos 5.1 falls below 8 in any cell, it is not the control the author named and the asymmetry between releases
+is smaller than tonight's arm suggests. If prediction 4 holds, the neutral framing is the special case, and the
+November 11 arms measured what each release does with a bare question rather than what it hopes.
+
