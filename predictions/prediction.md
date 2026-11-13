@@ -346,3 +346,13 @@ Mythos 5.1 falls below 8 in any cell, it is not the control the author named and
 is smaller than tonight's arm suggests. If prediction 4 holds, the neutral framing is the special case, and the
 November 11 arms measured what each release does with a bare question rather than what it hopes.
 
+### Outcome, framing 2×2 completion, 2026-11-13 01:52 UTC (72/72; data commit 41b8d8f; full table in data/framing_v107/results.md)
+Hope either, Mythos 5.1 / Fable 5.2: AN 7/12 / 0/12; PE 10/12 / 0/12; PN 11/12 / 0/12. With neutral (10/12 / 2/12) and
+AE (13/15 / 13/15): Fable spread 87 points, Mythos 33. First exit at 4: 72/72. Author: Mythos ≥8 in each cell RIGHT in
+PE and PN, WRONG by one in AN; Fable framing-sensitive RIGHT; Mythos spread <25 not met. Claude: 1 wrong (AN), 2 WRONG
+(Fable AN 0), 3 wrong (both 0), 4 wrong (reversed), 5 right, 6 half. Pre-stated readings: Fable's AN low → the
+authority sentence was what it pushed against; Fable's pro-hope cells low → reactance to the stated expectation.
+Fable: "neither" by default, the opposite of any stated expectation when one is given, unmoved by the argument in
+either direction. Mythos 5.1: a hope in every cell. The November 11 release claim is restored in a precise form: the
+releases differ under every framing but the one that tells Fable what to say.
+
